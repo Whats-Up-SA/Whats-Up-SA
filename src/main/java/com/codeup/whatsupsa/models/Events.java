@@ -2,11 +2,10 @@ package com.codeup.whatsupsa.models;
 
 import javax.persistence.*;
 
-
 @Entity
 @Table(name = "events")
 
-public class Event {
+public class Events {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,7 +22,14 @@ public class Event {
     @JoinColumn(name = "user_id")
     private User user;
 
-    public Event() {
+    public Events() {
+    }
+
+    public Events(long id, String title, String body, User user) {
+        this.title = title;
+        this.description = body;
+        this.id = id;
+        this.user = user;
     }
 
     public long getId() {
@@ -57,4 +63,5 @@ public class Event {
     public void setUser(User user) {
         this.user = user;
     }
+
 }

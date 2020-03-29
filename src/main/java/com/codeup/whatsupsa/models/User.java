@@ -21,7 +21,7 @@ public class User {
     private String password;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private List<Event> events;
+    private List<Events> events;
 
     public User() {
     }
@@ -71,11 +71,11 @@ public class User {
         this.password = password;
     }
 
-    public List<Event> getEvents() {
+    public List<Events> getEvents() {
         return events;
     }
 
-    public void setEvents(List<Event> events) {
+    public void setEvents(List<Events> events) {
         this.events = events;
     }
 }
