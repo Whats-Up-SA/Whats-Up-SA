@@ -14,7 +14,7 @@ insert into users (username, email, password) values ('adiss0', 'dadamides0@ramb
 use eventlister_db;
 
 insert into posts (title, user_id, description) values ('Ziegfeld Follies', 1, 'Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.');
-insert into posts (title, user_id, description) values ('Event Horizon', 1, 'In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.');
+insert into posts (title, user_id, description) values ('Events Horizon', 1, 'In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.');
 insert into posts (title, user_id, description) values ('Red Cliff (Chi bi)', 1, 'In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.');
 insert into posts (title, user_id, description) values ('Chandni Chowk to China', 1, 'Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.');
 insert into posts (title, user_id, description) values ('Waking Up in Reno', 1, 'Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.');
