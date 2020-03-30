@@ -6,6 +6,7 @@ import java.util.List;
 @Entity
 @Table(name = "users")
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
@@ -78,4 +79,5 @@ public class User {
     public void setEvents(List<Events> events) {
         this.events = events;
     }
+
 }
