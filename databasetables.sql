@@ -2,8 +2,8 @@ drop database if exists eventlister_db;
 
 create database eventlister_db;
 
-# use eventlister_db;
-#
+use eventlister_db;
+
 # Create table users
 # (
 #     id       BIGINT unsigned     not null auto_increment,
@@ -25,16 +25,16 @@ create database eventlister_db;
 #     Foreign key (action_user_id) references users (id)
 # );
 #
-# Create table posts
-# (
-#     id          BIGINT unsigned not null auto_increment,
-#     user_id     BIGINT unsigned not null,
-#     title       varchar(50)     not null,
-#     description text            not null,
-#     primary key (id),
-#     foreign key (user_id) references users (id)
-#         on delete cascade
-# );
+# # Create table posts
+# # (
+# #     id          BIGINT unsigned not null auto_increment,
+# #     user_id     BIGINT unsigned not null,
+# #     title       varchar(50)     not null,
+# #     description text            not null,
+# #     primary key (id),
+# #     foreign key (user_id) references users (id)
+# #         on delete cascade
+# # );
 #
 # Create table joinerEvents
 # (
@@ -63,9 +63,9 @@ create database eventlister_db;
 #     foreign key (event_id) references posts (id),
 #     foreign key (cat_id) references categories (id)
 # );
-
-use eventlister_db;
-
-Drop USER 'eventlister_user'@'localhost';
-CREATE USER 'eventlister_user'@'localhost' IDENTIFIED BY 'pasword';
-GRANT ALL ON eventlister_db.* TO 'eventlister_user'@'localhost';
+#
+# use eventlister_db;
+#
+# Drop USER 'eventlister_user'@'localhost';
+# CREATE USER 'eventlister_user'@'localhost' IDENTIFIED BY 'pasword';
+# GRANT ALL ON eventlister_db.* TO 'eventlister_user'@'localhost';
