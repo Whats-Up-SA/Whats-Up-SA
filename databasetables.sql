@@ -45,15 +45,15 @@ create database eventlister_db;
 #     foreign key (event_id) references posts (id)
 # );
 #
-Create table categories
-(
-    id        BIGINT unsigned not null,
-    parent_id BIGINT unsigned not null,
-    event_id  BIGINT unsigned not null,
-    category  varchar(255)    not null,
-    primary key (id),
-    foreign key (event_id) references posts (id)
-);
+# Create table categories
+# (
+#     id        BIGINT unsigned not null,
+#     parent_id BIGINT unsigned not null,
+#     event_id  BIGINT unsigned not null,
+#     category  varchar(255)    not null,
+#     primary key (id),
+#     foreign key (event_id) references posts (id)
+# );
 #
 # Create table joinerCat
 # (
