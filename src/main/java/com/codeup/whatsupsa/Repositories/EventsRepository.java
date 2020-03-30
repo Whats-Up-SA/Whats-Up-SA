@@ -1,10 +1,10 @@
 package com.codeup.whatsupsa.Repositories;
 
-import com.codeup.whatsupsa.models.Events;
+import com.codeup.whatsupsa.models.Event;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface EventsRepository extends JpaRepository<Events, Long> {
+public interface EventsRepository extends JpaRepository<Event, Long> {
 
-    Events findByTitle(String title);
+    Event findByTitle(String title);
 
 }

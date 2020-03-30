@@ -21,16 +21,23 @@ public class User {
     @Column(nullable = false, length = 255)
     private String password;
 
+    @Column(nullable = false)
+    private Boolean isAdmin;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private List<Events> events;
+    private List<Event> events;
+
+//    @ManyToMany(mappedBy = "events")
+//    private List<Event> events;
 
     public User() {
     }
 
-    public User(String username, String email, String password) {
+    public User(String username, String email, String password, boolean isAdmin) {
         this.username = username;
         this.email = email;
         this.password = password;
+        this.isAdmin = isAdmin;
     }
 
     public User(User copy) {
@@ -38,6 +45,7 @@ public class User {
         email = copy.email;
         username = copy.username;
         password = copy.password;
+        isAdmin = copy.isAdmin;
     }
 
     public long getId() {
@@ -72,11 +80,15 @@ public class User {
         this.password = password;
     }
 
-    public List<Events> getEvents() {
+    public boolean getIsAdmin() { return isAdmin; }
+
+    public void setIsAdmin(Boolean isAdmin) { this.isAdmin = isAdmin; }
+
+    public List<Event> getEvents() {
         return events;
     }
 
-    public void setEvents(List<Events> events) {
+    public void setEvents(List<Event> events) {
         this.events = events;
     }
 
