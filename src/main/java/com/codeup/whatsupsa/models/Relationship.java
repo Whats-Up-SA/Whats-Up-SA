@@ -1,64 +1,70 @@
 package com.codeup.whatsupsa.models;
 
 import javax.persistence.*;
-import java.io.Serializable;
-
-public class Relationship implements Serializable {
-    private long userOneID;
-    private long userTwoID;
-    private long actionUserID;
-}
 
 @Entity
-@IdClass(Relationship.class)
 @Table(name = "relationship")
 
 public class Relationship {
-    @Id
-    private long userOneID;
-    @Id
-    private long userTwoID;
-    @Id
-    private long actionUserID;
 
-}
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
     @ManyToOne
-    private User user;
+    @JoinColumn(name = "userOneID")
+    private User userOneID;
+
+    @ManyToOne
+    @JoinColumn(name = "userTwoID")
+    private User userTwoID;
+
+    @ManyToOne
+    @JoinColumn(name = "actionUserID")
+    private User actionUserID;
 
     @Column(nullable = false, columnDefinition = "TINYINT")
     private long status;
 
-//    public Relationship() {
-//    }
+    public Relationship() {
+    }
 
-    public Relationship(long userOneID, long userTwoID, long actionUserID, long status) {
+    public Relationship(User userOneID, User userTwoID, User actionUserID, long status) {
         this.userOneID = userOneID;
         this.userTwoID = userTwoID;
         this.actionUserID = actionUserID;
         this.status = status;
     }
 
-    public long getUserOneID() {
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public User getUserOneID() {
         return userOneID;
     }
 
-    public void setUserOneID(long userOneID) {
+    public void setUserOneID(User userOneID) {
         this.userOneID = userOneID;
     }
 
-    public long getUserTwoID() {
+    public User getUserTwoID() {
         return userTwoID;
     }
 
-    public void setUserTwoID(long userTwoID) {
+    public void setUserTwoID(User userTwoID) {
         this.userTwoID = userTwoID;
     }
 
-    public long getActionUserID() {
+    public User getActionUserID() {
         return actionUserID;
     }
 
-    public void setActionUserID(long actionUserID) {
+    public void setActionUserID(User actionUserID) {
         this.actionUserID = actionUserID;
     }
 
@@ -68,13 +74,5 @@ public class Relationship {
 
     public void setStatus(long status) {
         this.status = status;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 }

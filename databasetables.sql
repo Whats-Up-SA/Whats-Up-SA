@@ -12,7 +12,7 @@ use eventlister_db;
 #     password varchar(255)        not null,
 #     primary key (id)
 # );
-#
+# #
 # Create table relationship
 # (
 #     user_one_id    BIGINT unsigned not null,
