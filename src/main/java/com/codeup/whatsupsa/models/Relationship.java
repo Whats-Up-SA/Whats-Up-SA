@@ -1,26 +1,35 @@
 package com.codeup.whatsupsa.models;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
-@Entity
-@Table(name = "relationship")
-
-public class Relationship {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class Relationship implements Serializable {
     private long userOneID;
     private long userTwoID;
     private long actionUserID;
+}
 
+@Entity
+@IdClass(Relationship.class)
+@Table(name = "relationship")
+
+public class Relationship {
+    @Id
+    private long userOneID;
+    @Id
+    private long userTwoID;
+    @Id
+    private long actionUserID;
+
+}
     @ManyToOne
     private User user;
 
     @Column(nullable = false, columnDefinition = "TINYINT")
     private long status;
 
-    public Relationship() {
-    }
+//    public Relationship() {
+//    }
 
     public Relationship(long userOneID, long userTwoID, long actionUserID, long status) {
         this.userOneID = userOneID;
