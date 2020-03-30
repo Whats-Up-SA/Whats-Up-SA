@@ -1,11 +1,12 @@
 package com.codeup.whatsupsa.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "events")
 
-public class Events {
+public class Event {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,10 +23,28 @@ public class Events {
     @JoinColumn(name = "user_id")
     private User user;
 
-    public Events() {
+//    @ManyToMany(cascade = CascadeType.ALL)
+//    @JoinTable(
+//            name = "event_user",
+//            joinColumns = {@JoinColumn(name = "event_id")},
+//            inverseJoinColumns = {@JoinColumn(name = "user_id")}
+//    )
+//
+//    private List<User> users;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "event_category",
+            joinColumns = {@JoinColumn(name = "event_id")},
+            inverseJoinColumns = {@JoinColumn(name = "category_id")}
+            )
+
+    private List<Category> categories ;
+
+    public Event() {
     }
 
-    public Events(long id, String title, String body, User user) {
+    public Event(long id, String title, String body, User user) {
         this.title = title;
         this.description = body;
         this.id = id;
