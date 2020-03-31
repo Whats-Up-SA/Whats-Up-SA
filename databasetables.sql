@@ -2,7 +2,7 @@ drop database if exists eventlister_db;
 
 create database eventlister_db;
 
-use eventlister_db;
+# use eventlister_db;
 
 # Create table users
 # (

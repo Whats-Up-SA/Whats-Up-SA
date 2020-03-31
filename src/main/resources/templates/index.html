@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    <!-- Blog event -->
+    <div class="card mb-4" th:each="event : ${events}">
+        <div class="card-body">
+            <a th:href="@{|/events/${event.id}|}"><h2 class="card-title" th:text="${event.title}"></h2></a>
+            <p class="card-text" th:text="${event.description}"></p>
+
+            <a th:href="@{|/events/${event.id}/edit|}">
+                <button>Edit event</button>
+            </a>
+            <form th:action="@{|/events/${event.id}/delete|}" th:method="event" style="display:inline">
+                <button>Delete event</button>
+            </form>
+        </div>
+</body>
+</html>
