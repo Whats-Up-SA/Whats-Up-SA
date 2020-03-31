@@ -21,4 +21,10 @@ public class HomeController {
         model.addAttribute("events", eventsDao.findAll());
         return "/index";
     }
+
+    @GetMapping("/admin")
+    public String getUnapprovedPosts(Model model) {
+        model.addAttribute("events", eventsDao.findAll());
+        return "/admin";
+    }
 }
