@@ -6,10 +6,8 @@ import com.codeup.whatsupsa.Repositories.UserRepository;
 import com.codeup.whatsupsa.models.Event;
 import com.codeup.whatsupsa.models.User;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class EventController {
@@ -17,7 +15,7 @@ public class EventController {
     private EventsRepository eventDao;
     private UserRepository userDao;
 
-    public EventController(EventsRepository eventDao, UserRepository userDao){
+    public EventController(EventsRepository eventDao, UserRepository userDao) {
         this.eventDao = eventDao;
         this.userDao = userDao;
     }
@@ -30,7 +28,7 @@ public class EventController {
     }
 
     @PostMapping("/submit")
-    public String createPost(@RequestParam String title, @RequestParam String description ){
+    public String createPost(@RequestParam String title, @RequestParam String description) {
         Event newEvent = new Event();
         newEvent.setTitle(title);
         newEvent.setDescription(description);
@@ -41,6 +39,12 @@ public class EventController {
         return "redirect:/";
     }
 
-
+    @GetMapping("/events/{id}")
+    public String getPost(@PathVariable long id, Model model) {
+        Event event = eventDao.getOne(id);
+        model.addAttribute("title", event.getTitle());
+        model.addAttribute("description", event.getDescription());
+        return "events/show";
+    }
 
 }
