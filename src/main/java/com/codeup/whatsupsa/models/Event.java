@@ -56,7 +56,7 @@ public class Event {
     }
 
     public void setId(long id) {
-        this.id = id;
+        thisgi.id = id;
     }
 
     public String getTitle() {
