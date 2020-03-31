@@ -13,7 +13,6 @@ public class UserController {
     @ResponseBody
     public String showRegisterForm(Model model) {
         model.addAttribute("user", new User());
-//        model.addAttribute(new User());
         return "users/register";
     }
 
