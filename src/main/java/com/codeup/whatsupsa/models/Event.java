@@ -1,5 +1,7 @@
 package com.codeup.whatsupsa.models;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -18,6 +20,11 @@ public class Event {
 
     @Column(columnDefinition = "TEXT", nullable = false)
     private String description;
+
+    @Column(nullable = false)
+    @Type(type = "org.hibernate.type.NumericBooleanType")
+    private Boolean isApproved;
+
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -44,11 +51,12 @@ public class Event {
     public Event() {
     }
 
-    public Event(long id, String title, String body, User user) {
+    public Event(long id, String title, String body, User user, Boolean isApproved) {
         this.title = title;
         this.description = body;
         this.id = id;
         this.user = user;
+        this.isApproved = isApproved;
     }
 
     public long getId() {
@@ -83,4 +91,9 @@ public class Event {
         this.user = user;
     }
 
+    public Boolean getIsApproved() { return isApproved; }
+
+    public void setApproved(Boolean approved) {
+        isApproved = approved;
+    }
 }
