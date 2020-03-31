@@ -7,6 +7,7 @@ import com.codeup.whatsupsa.Repositories.UserRepository;
 import com.codeup.whatsupsa.models.Category;
 import com.codeup.whatsupsa.models.Event;
 import com.codeup.whatsupsa.models.User;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -36,8 +37,8 @@ public class EventController {
         Event newEvent = new Event();
         newEvent.setTitle(title);
         newEvent.setDescription(description);
-//        User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        newEvent.setUser(User);
+        User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        newEvent.setUser(loggedIn);
         newEvent.setApproved(true);
         eventDao.save(newEvent);
         return "redirect:/";
