@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Admin</title>
+</head>
+<body>
+<!-- event -->
+<div th:each="event : ${events}">
+	<div th:switch="${event.isApproved}">
+		<div th:case="false">
+			<a th:href="@{|/events/${event.id}|}"><h2 th:text="${event.title}"></h2></a>
+			<p th:text="${event.description}"></p>
+		</div>
+	</div>
+</div>
+</body>
+</html>
