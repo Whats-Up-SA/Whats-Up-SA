@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>register</title>
+</head>
+<body>
+
+    <div class="register-container">
+
+        <h1>create an account</h1>
+
+        <h2>please fill in your information</h2>
+        <form th:action="@{/register}" method="post" th:object="${user}">
+            <div class="form-input">
+                <label for="username">enter a username</label>
+                <input id="username" th:field="*{username}" th:text="text" placeholder="username">
+            </div>
+
+            <div class="form-input">
+                <label for="email">enter your email</label>
+                <input id="email" th:field="*{email}" placeholder="email" type="text">
+            </div>
+
+            <div class="form-input">
+                <label for="password">create a password</label>
+                <input id="password" th:field="*{password}" placeholder="password" type="password">
+            </div>
+
+            <div class="form-input">
+                <label for="confirm_password">confirm your password</label>
+                <input id="confirm_password" th:field="*{confirm_password}" placeholder="confirm password" type="password">
+            </div>
+
+            <input type="submit" value="create account">
+
+        </form>
+
+    </div>
+
+</body>
+</html>
