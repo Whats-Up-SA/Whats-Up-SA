@@ -33,6 +33,5 @@ VALUES ('arts', 0);
 insert into categories (category, parent_id)
 VALUES ('family', 0);
 
-
 insert into event_category(events_id, category_id)
 values (1, 2)

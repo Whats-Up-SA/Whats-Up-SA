@@ -23,7 +23,7 @@ public class User {
     @Column(nullable = false, length = 255)
     private String password;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     @Type(type = "org.hibernate.type.NumericBooleanType")
     private Boolean isAdmin;
 
@@ -83,9 +83,13 @@ public class User {
         this.password = password;
     }
 
-    public boolean getIsAdmin() { return isAdmin; }
+    public boolean getIsAdmin() {
+        return isAdmin;
+    }
 
-    public void setIsAdmin(Boolean isAdmin) { this.isAdmin = isAdmin; }
+    public void setIsAdmin(Boolean isAdmin) {
+        this.isAdmin = isAdmin;
+    }
 
     public List<Event> getEvents() {
         return events;
