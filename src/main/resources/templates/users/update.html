@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>update profile</title>
+</head>
+<body>
+
+    <div class="update-container">
+        <form action="/update" method="post">
+            <div class="input-group">
+                <label for="username">change username</label>
+                <input id="username" type="text">
+            </div>
+
+            <div class="input-group">
+                <label for="email">change email</label>
+                <input id="email" type="text">
+            </div>
+
+            <div class="input-group">
+                <label for="password">enter current password</label>
+                <input id="password" type="password">
+            </div>
+
+            <div class="input-group">
+                <label for="new">enter new password</label>
+                <input id="new" type="password">
+            </div>
+
+            <div class="input-group">
+                <label for="confirm">confirm new password</label>
+                <input id="confirm" type="password">
+            </div>
+
+            <input type="submit" th:value="update" class="submit-btn">
+        </form>
+    </div>
+
+</body>
+</html>
