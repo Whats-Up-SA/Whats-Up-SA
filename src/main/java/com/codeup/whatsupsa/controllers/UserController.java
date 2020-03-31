@@ -10,13 +10,13 @@ public class UserController {
     @ResponseBody
     public String landing() {
 
-        return "This is the placeholder for a registration page!";
+        return "/register";
     }
 
     @GetMapping("/profile")
     @ResponseBody
     public String profile() {
-        return "this is the profile page";
+        return "users/profile";
     }
 }
 
