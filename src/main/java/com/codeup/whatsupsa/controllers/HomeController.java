@@ -11,11 +11,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class HomeController {
 
     private EventsRepository eventsDao;
-    private UserRepository usersDao;
 
-    public HomeController(EventsRepository eventsDao, UserRepository usersDao) {
+    public HomeController(EventsRepository eventsDao) {
         this.eventsDao = eventsDao;
-        this.usersDao = usersDao;
     }
 
     @GetMapping("/")
