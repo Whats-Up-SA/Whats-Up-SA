@@ -42,7 +42,7 @@ public class Event {
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "event_category",
-            joinColumns = {@JoinColumn(name = "event_id")},
+//            joinColumns = {@JoinColumn(name = "event_id")},
             inverseJoinColumns = {@JoinColumn(name = "category_id")}
     )
 
