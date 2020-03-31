@@ -37,9 +37,9 @@ public class Event {
             name = "event_category",
             joinColumns = {@JoinColumn(name = "event_id")},
             inverseJoinColumns = {@JoinColumn(name = "category_id")}
-            )
+    )
 
-    private List<Category> categories ;
+    private List<Category> categories;
 
     public Event() {
     }
@@ -56,7 +56,7 @@ public class Event {
     }
 
     public void setId(long id) {
-        thisgi.id = id;
+        this.id = id;
     }
 
     public String getTitle() {
