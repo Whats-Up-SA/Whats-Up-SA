@@ -1,5 +1,7 @@
 package com.codeup.whatsupsa.models;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -22,6 +24,7 @@ public class User {
     private String password;
 
     @Column(nullable = false)
+    @Type(type = "org.hibernate.type.NumericBooleanType")
     private Boolean isAdmin;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
