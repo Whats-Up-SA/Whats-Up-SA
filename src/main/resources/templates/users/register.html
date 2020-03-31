@@ -21,17 +21,25 @@
         <div class="form-group">
             <label for="password">Password</label>
             <input class="form-control" id="password" type="password" th:field="*{password}"
-                   placeholder="Enter Password"/>
+                   placeholder="Enter Password" required="required"/>
         </div>
+
+        <div class="form-group">
+            <label for="confirmPassword">Confirm Password</label>
+            <input class="form-control" id="confirmPassword" type="password" th:field="*{confirmPassword}"
+                   placeholder="Confirm Password" required="required"/>
+        </div>
+
         <!--        <div class="form-input">-->
-        <!--            <label for="confirm_password">confirm your password</label>-->
+        <!--            <label for="confirm_password">Confirm your password</label>-->
         <!--            <input id="confirm_password" th:field="*{retypePassword}" placeholder="confirm password" type="password">-->
         <!--        </div>-->
+
         <input value="Sign me up!" type="submit"/>
 
-        <!--        <label for="isAdmin">Admin</label>-->
-        <!--        <input id="isAdmin" type="radio" th:field="*{isAdmin}">-->
-        <!--        <input type="submit" value="Create account">-->
+<!--        <label for="isAdmin">Admin</label>-->
+<!--        <input id="isAdmin" type="radio" th:field="*{isAdmin}">-->
+<!--        <input type="submit" value="Create account">-->
 
     </form>
 </div>
