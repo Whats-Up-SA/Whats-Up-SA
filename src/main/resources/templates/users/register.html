@@ -13,11 +13,12 @@
     <form th:action="@{/register}" method="POST" th:object="${user}">
         <div class="form-group">
             <label for="username">Username</label>
-            <input class="form-control" id="username" th:field="*{username}" placeholder="Enter Username"/>
+            <input class="form-control" id="username" th:field="*{username}" placeholder="Enter Username"
+                   required="required"/>
         </div>
         <div class="form-group">
             <label for="email">Email</label>
-            <input class="form-control" id="email" th:field="*{email}" placeholder="Enter Email"/>
+            <input class="form-control" id="email" th:field="*{email}" placeholder="Enter Email" required="required"/>
         </div>
         <div class="form-group">
             <label for="password">Password</label>
@@ -25,22 +26,21 @@
                    placeholder="Enter Password" required="required"/>
         </div>
 
-<!--        <div class="form-group">-->
-<!--            <label for="confirmPassword">Confirm Password</label>-->
-<!--            <input class="form-control" id="confirmPassword" type="password" th:field="*{confirmPassword}"-->
-<!--                   placeholder="Confirm Password" required="required"/>-->
-<!--        </div>-->
+        <!--        <div class="form-group">-->
+        <!--            <label for="confirmPassword">Confirm Password</label>-->
+        <!--            <input class="form-control" id="confirmPassword" type="password" th:field="*{confirmPassword}"-->
+        <!--                   placeholder="Confirm Password" required="required"/>-->
+        <!--        </div>-->
 
         <!--        <div class="form-input">-->
         <!--            <label for="confirm_password">Confirm your password</label>-->
         <!--            <input id="confirm_password" th:field="*{retypePassword}" placeholder="confirm password" type="password">-->
         <!--        </div>-->
 
-        <input value="Sign me up!" type="submit"/>
+        <input value="Create an Account" type="submit"/>
 
-<!--        <label for="isAdmin">Admin</label>-->
-<!--        <input id="isAdmin" type="radio" th:field="*{isAdmin}">-->
-<!--        <input type="submit" value="Create account">-->
+        <!--        <label for="isAdmin">Admin</label>-->
+        <!--        <input id="isAdmin" type="radio" th:field="*{isAdmin}">-->
 
     </form>
 </div>
