@@ -69,4 +69,15 @@ public class EventController {
         eventDao.save(e);
         return "redirect:/admin";
     }
+
+    @PostMapping("/events/{id}/delete")
+    public String delete(@PathVariable long id){
+//        System.out.println((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+//        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        if (loggedInUser.getId() == eventDao.getOne(id).getUser().getId())
+            // delete post
+            eventDao.deleteById(id);
+
+        return "redirect:/admin";
+    }
 }
