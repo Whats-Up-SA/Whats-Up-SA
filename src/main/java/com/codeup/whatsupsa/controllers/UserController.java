@@ -2,13 +2,17 @@ package com.codeup.whatsupsa.controllers;
 
 import com.codeup.whatsupsa.Repositories.UserRepository;
 import com.codeup.whatsupsa.models.User;
+import org.springframework.jmx.export.annotation.ManagedOperation;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
+
+import javax.validation.constraints.Max;
 
 @Controller
 public class UserController {
@@ -35,9 +39,31 @@ public class UserController {
     }
 
     @GetMapping("/profile")
-    @ResponseBody
-    public String profile() {
+    public String profile(Model model) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("user", userDao.getOne(user.getId()));
         return "users/profile";
     }
+
+//    @GetMapping("/profile/{id}")
+//    public String otherProfile(@PathVariable long id, Model model) {
+//        model.addAttribute("user", userDao.getOne(id));
+//        return "users/otherProfile";
+//    }
+
+    @GetMapping("/update")
+    public String showUpdateForm(Model model) {
+        model.addAttribute("user", new User());
+        return "users/update";
+    }
+
+    @PostMapping("/update")
+    public String saveUpdate(@ModelAttribute User user) {
+        String hash = passwordEncoder.encode(user.getPassword());
+        user.setPassword(hash);
+        userDao.save(user);
+        return "redirect:/profile";
+    }
+
 }
 
