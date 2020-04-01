@@ -50,7 +50,7 @@ public class EventController {
         Category category = categoryDao.getOne(id);
         model.addAttribute("title", event.getTitle());
         model.addAttribute("description", event.getDescription());
-//        model.addAttribute("category", category.getCategory());
+        model.addAttribute("category", category.getCategory());
         return "events/show";
     }
 
@@ -66,10 +66,13 @@ public class EventController {
 
     @PostMapping("/events/{id}/edit")
     public String updatePost(@PathVariable long id, @RequestParam String title, @RequestParam String body) {
+//        User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Event e = eventDao.getOne(id);
+//        if (loggedIn.getIsAdmin()) {
         e.setTitle(title);
         e.setDescription(body);
         eventDao.save(e);
+//        }
         return "redirect:/admin";
     }
 }
