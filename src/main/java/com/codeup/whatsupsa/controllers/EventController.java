@@ -60,18 +60,24 @@ public class EventController {
     }
 
     @GetMapping("/events/{id}/edit")
-    public String editEvent(@PathVariable long id, Model model){
+    public String editEvent(@PathVariable long id, Model model) {
+        User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Event eventToEdit = eventDao.getOne(id);
-        model.addAttribute("event", eventToEdit);
+        if (loggedIn.getIsAdmin()) {
+            model.addAttribute("event", eventToEdit);
+        }
         return "events/edit";
     }
 
     @PostMapping("/events/{id}/edit")
     public String updatePost(@PathVariable long id, @RequestParam String title, @RequestParam String body) {
+//        User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Event e = eventDao.getOne(id);
+//        if (loggedIn.getIsAdmin()) {
         e.setTitle(title);
         e.setDescription(body);
         eventDao.save(e);
+//        }
         return "redirect:/admin";
     }
 
