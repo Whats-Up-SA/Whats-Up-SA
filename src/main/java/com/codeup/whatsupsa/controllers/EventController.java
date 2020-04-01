@@ -12,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 public class EventController {
 
@@ -35,6 +37,9 @@ public class EventController {
     @PostMapping("/submit")
     public String createPost(@RequestParam String title, @RequestParam String description) {
         Event newEvent = new Event();
+//        model.addAttribute("categories", categoryDao.findAll());
+//        List<Category> categoryList = categoryDao.findAll();
+//        model.addAttribute("categories", categoryList);
         newEvent.setTitle(title);
         newEvent.setDescription(description);
         User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
