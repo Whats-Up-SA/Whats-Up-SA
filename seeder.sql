@@ -12,9 +12,10 @@ values ('Ziegfeld Follies', 1,
         'Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.',
         1);
 insert into events (title, user_id, description, is_approved)
-values ('Events Horizon', 2,
+values ('Events Horizon', 1,
         'In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.',
         1);
+
 # insert into events (title, user_id, description, is_approved)
 # values ('Red Cliff (Chi bi)', 2,
 #         'In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.', 1);
