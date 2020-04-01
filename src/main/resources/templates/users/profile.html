@@ -6,9 +6,9 @@
 </head>
 <body>
 
-    <div class="welcome">
-        <h1 th:text="welcome ${username}!"></h1>
-        <h5 th:text="${email}"></h5><a href="/update">edit</a>
+    <div class="welcome" th:object="${user}">
+        <h1 th:text="welcome ${user.username}!"></h1>
+        <h5 th:text="${user.email}"></h5><a href="/update">edit</a>
     </div>
 
     <h1>here are all your events</h1>
