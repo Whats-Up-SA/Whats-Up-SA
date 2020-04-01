@@ -54,4 +54,19 @@ public class EventController {
         return "events/show";
     }
 
+    @GetMapping("/events/{id}/edit")
+    public String editEvent(@PathVariable long id, Model model){
+        Event eventToEdit = eventDao.getOne(id);
+        model.addAttribute("event", eventToEdit);
+        return "events/edit";
+    }
+
+    @PostMapping("/events/{id}/edit")
+    public String updatePost(@PathVariable long id, @RequestParam String title, @RequestParam String body) {
+        Event e = eventDao.getOne(id);
+        e.setTitle(title);
+        e.setDescription(body);
+        eventDao.save(e);
+        return "redirect:/admin";
+    }
 }
