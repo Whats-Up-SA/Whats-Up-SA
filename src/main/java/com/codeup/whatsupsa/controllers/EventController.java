@@ -50,12 +50,12 @@ public class EventController {
         Category category = categoryDao.getOne(id);
         model.addAttribute("title", event.getTitle());
         model.addAttribute("description", event.getDescription());
-        model.addAttribute("category", category.getCategory());
+//        model.addAttribute("category", category.getCategory());
         return "events/show";
     }
 
     @GetMapping("/events/{id}/edit")
-    public String editEvent(@PathVariable long id, Model model){
+    public String editEvent(@PathVariable long id, Model model) {
         Event eventToEdit = eventDao.getOne(id);
         model.addAttribute("event", eventToEdit);
         return "events/edit";
