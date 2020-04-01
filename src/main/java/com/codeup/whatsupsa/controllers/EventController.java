@@ -12,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 public class EventController {
 
@@ -35,6 +37,9 @@ public class EventController {
     @PostMapping("/submit")
     public String createPost(@RequestParam String title, @RequestParam String description) {
         Event newEvent = new Event();
+//        model.addAttribute("categories", categoryDao.findAll());
+//        List<Category> categoryList = categoryDao.findAll();
+//        model.addAttribute("categories", categoryList);
         newEvent.setTitle(title);
         newEvent.setDescription(description);
         User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -67,6 +72,17 @@ public class EventController {
         e.setTitle(title);
         e.setDescription(body);
         eventDao.save(e);
+        return "redirect:/admin";
+    }
+
+    @PostMapping("/events/{id}/delete")
+    public String delete(@PathVariable long id){
+//        System.out.println((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+//        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        if (loggedInUser.getId() == eventDao.getOne(id).getUser().getId())
+            // delete post
+            eventDao.deleteById(id);
+
         return "redirect:/admin";
     }
 }
