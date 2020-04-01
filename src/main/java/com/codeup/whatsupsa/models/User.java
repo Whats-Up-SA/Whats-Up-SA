@@ -24,7 +24,7 @@ public class User {
     private String password;
 
     @Column(nullable = true)
-    @Type(type = "org.hibernate.type.NumericBooleanType")
+//    @Type(type = "org.hibernate.type.NumericBooleanType")
     private Boolean isAdmin;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
