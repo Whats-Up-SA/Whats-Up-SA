@@ -12,7 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @Controller
 public class EventController {
@@ -46,16 +45,16 @@ public class EventController {
         newEvent.setUser(loggedIn);
         newEvent.setApproved(true);
         eventDao.save(newEvent);
-        return "redirect:/";
+        return "redirect:/profile";
     }
 
     @GetMapping("/events/{id}")
     public String getPost(@PathVariable long id, Model model) {
         Event event = eventDao.getOne(id);
-        Category category = categoryDao.getOne(id);
+//        Category category = categoryDao.getOne(id);
         model.addAttribute("title", event.getTitle());
         model.addAttribute("description", event.getDescription());
-        model.addAttribute("category", category.getCategory());
+//        model.addAttribute("category", category.getCategory());
         return "events/show";
     }
 
