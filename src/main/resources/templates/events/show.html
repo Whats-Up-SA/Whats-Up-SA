@@ -10,7 +10,8 @@
 
     <h1 th:text="${title}"></h1>
     <p th:text="${description}"></p>
-    Category: <p th:text="${category}"></p>
+<!--    Category: <p th:text="${category}"></p>-->
+    <p>Categories: </p><div th:each="category : ${categories}"><p th:text="${category.category}"></p></div>
 
 </body>
 </html>
