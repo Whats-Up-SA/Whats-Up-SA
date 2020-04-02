@@ -63,10 +63,8 @@ public class UserController {
     }
 
     @PostMapping("/update")
-    public String saveUpdate(@ModelAttribute User user) {
-        String hash = passwordEncoder.encode(user.getPassword());
-        user.setPassword(hash);
-        userDao.save(user);
+    public String editProfile(Model model) {
+        model.addAttribute("user", new User());
         return "redirect:/profile";
     }
 
