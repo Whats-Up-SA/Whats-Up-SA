@@ -16,7 +16,7 @@ public class HomeController {
         this.eventsDao = eventsDao;
     }
 
-    @GetMapping("/")
+    @GetMapping({ "/", "/index" })
     public String getPosts(Model model) {
         model.addAttribute("events", eventsDao.findAll());
         return "/index";
