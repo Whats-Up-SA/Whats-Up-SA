@@ -71,5 +71,10 @@ public class UserController {
         return "redirect:/profile";
     }
 
+    @PostMapping("all/{id}/delete")
+    public String deleteUser(@PathVariable long id) {
+        userDao.deleteById(id);
+        return "redirect:/all";
+    }
 }
 
