@@ -1,9 +1,12 @@
 package com.codeup.whatsupsa.controllers;
 
+import com.codeup.whatsupsa.Repositories.EventsRepository;
 import com.codeup.whatsupsa.Repositories.UserRepository;
+import com.codeup.whatsupsa.models.Event;
 import com.codeup.whatsupsa.models.User;
 import org.springframework.jmx.export.annotation.ManagedOperation;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.parameters.P;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -76,5 +79,6 @@ public class UserController {
         userDao.deleteById(id);
         return "redirect:/all";
     }
+
 }
 
