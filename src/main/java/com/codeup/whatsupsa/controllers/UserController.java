@@ -1,6 +1,5 @@
 package com.codeup.whatsupsa.controllers;
 
-import com.codeup.whatsupsa.Repositories.EventsRepository;
 import com.codeup.whatsupsa.Repositories.UserRepository;
 import com.codeup.whatsupsa.models.User;
 import org.springframework.jmx.export.annotation.ManagedOperation;
@@ -19,23 +18,10 @@ import javax.validation.constraints.Max;
 public class UserController {
     private UserRepository userDao;
     private PasswordEncoder passwordEncoder;
-    private EventsRepository eventsDao;
 
     public UserController(UserRepository userDao, PasswordEncoder passwordEncoder) {
         this.userDao = userDao;
         this.passwordEncoder = passwordEncoder;
-    }
-
-    @GetMapping("/")
-    public String getPosts(Model model) {
-        model.addAttribute("events", eventsDao.findAll());
-        return "/index";
-    }
-
-    @GetMapping("/admin")
-    public String getUnapprovedPosts(Model model) {
-        model.addAttribute("events", eventsDao.findAll());
-        return "/admin";
     }
 
     @GetMapping("/register")
