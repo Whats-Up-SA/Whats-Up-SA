@@ -1,11 +1,9 @@
 package com.codeup.whatsupsa.controllers;
 
 import com.codeup.whatsupsa.Repositories.EventsRepository;
-import com.codeup.whatsupsa.Repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class HomeController {
@@ -18,7 +16,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String hello() {
-        return "index";
+        return "redirect:/index";
     }
 
     @GetMapping("/index")
