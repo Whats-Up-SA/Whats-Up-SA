@@ -5,6 +5,9 @@
 	<title>Submit an Event</title>
 </head>
 <body>
+<!--<th:block th:include="partials/navbar"/>-->
+<nav th:replace="partials/navbar.html :: navbar"></nav>
+
 <h1>Submit an Event</h1>
 <form th:action="@{|/submit|}" th:method="POST">
 	<label for="title">Title</label>

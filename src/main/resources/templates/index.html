@@ -5,6 +5,8 @@
     <title>events</title>
 </head>
 <body>
+<!--    <th:block th:include="partials/navbar"/>-->
+<nav th:replace="partials/navbar.html :: navbar"></nav>
 <!-- event -->
 <div th:each="event : ${events}">
     <div th:switch="${event.isApproved}">

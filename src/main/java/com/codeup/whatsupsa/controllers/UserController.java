@@ -18,6 +18,12 @@ public class UserController {
         this.passwordEncoder = passwordEncoder;
     }
 
+    @GetMapping("/all")
+    public String viewAllUsers(Model model) {
+        model.addAttribute("users", userDao.findAll());
+        return "users/all";
+    }
+
     @GetMapping("/register")
     public String showSignupForm(Model model) {
         model.addAttribute("user", new User());
@@ -59,5 +65,10 @@ public class UserController {
         return "redirect:/profile";
     }
 
+    @PostMapping("all/{id}/delete")
+    public String deleteUser(@PathVariable long id) {
+        userDao.deleteById(id);
+        return "redirect:/all";
+    }
 }
 
