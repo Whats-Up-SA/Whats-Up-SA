@@ -1,5 +1,6 @@
 package com.codeup.whatsupsa.controllers;
 
+import com.codeup.whatsupsa.Repositories.EventsRepository;
 import com.codeup.whatsupsa.Repositories.UserRepository;
 import com.codeup.whatsupsa.models.User;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -12,10 +13,12 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     private UserRepository userDao;
     private PasswordEncoder passwordEncoder;
+    private EventsRepository eventDao;
 
-    public UserController(UserRepository userDao, PasswordEncoder passwordEncoder) {
+    public UserController(UserRepository userDao, PasswordEncoder passwordEncoder, EventsRepository eventDao) {
         this.userDao = userDao;
         this.passwordEncoder = passwordEncoder;
+        this.eventDao = eventDao;
     }
 
     @GetMapping("/all")
@@ -41,6 +44,8 @@ public class UserController {
     @GetMapping("/profile")
     public String profile(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        model.addAttribute("events", eventDao.FindEventsByUserID(user.getId()));
         model.addAttribute("user", userDao.getOne(user.getId()));
         return "users/profile";
     }
