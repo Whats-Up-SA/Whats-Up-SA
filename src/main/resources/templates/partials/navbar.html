@@ -13,7 +13,7 @@
                 <a th:href="@{/login}">login</a>
             </li>
             <li sec:authorize="isAuthenticated()">
-                <a th:href="@{/events/submit}">create post</a>
+                <a th:href="@{/submit}">create post</a>
             </li>
             <li sec:authorize="isAuthenticated()">
                 <a th:href="@{/logout}">logout</a>
