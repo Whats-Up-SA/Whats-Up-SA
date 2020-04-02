@@ -4,19 +4,19 @@
     <nav th:fragment="navbar" class="nav">
         <ul>
             <li>
-                <a href="./index">view events</a>
+                <a th:href="@{/index}">view events</a>
             </li>
             <li sec:authorize="isAnonymous()">
-                <a href="/register">register</a>
+                <a th:href="@{/register}">register</a>
             </li>
             <li sec:authorize="isAnonymous()">
-                <a href="/login">login</a>
+                <a th:href="@{/login}">login</a>
             </li>
             <li sec:authorize="isAuthenticated()">
-                <a href="/events/submit">create post</a>
+                <a th:href="@{/events/submit}">create post</a>
             </li>
             <li sec:authorize="isAuthenticated()">
-                <a href="/logout">logout</a>
+                <a th:href="@{/logout}">logout</a>
             </li>
         </ul>
     </nav>

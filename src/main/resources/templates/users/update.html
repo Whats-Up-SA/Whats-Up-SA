@@ -5,6 +5,8 @@
     <title>update profile</title>
 </head>
 <body>
+<!--<th:block th:include="partials/navbar"/>-->
+<nav th:replace="partials/navbar.html :: navbar"></nav>
 
     <div class="update-container">
         <form action="/update" method="post" th:object="${user}">

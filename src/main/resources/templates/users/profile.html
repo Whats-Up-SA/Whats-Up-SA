@@ -5,6 +5,8 @@
     <title>profile</title>
 </head>
 <body>
+<!--<th:block th:include="partials/navbar"/>-->
+<nav th:replace="partials/navbar.html :: navbar"></nav>
 
     <div class="welcome" th:object="${user}">
         <h1 th:text="welcome ${user.username}!"></h1>
