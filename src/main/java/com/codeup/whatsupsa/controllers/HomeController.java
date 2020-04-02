@@ -17,14 +17,20 @@ public class HomeController {
     }
 
     @GetMapping("/")
-    public String getPosts(Model model) {
-        model.addAttribute("events", eventsDao.findAll());
-        return "/index";
+    public String hello() {
+        return "index";
     }
 
-    @GetMapping("/admin")
-    public String getUnapprovedPosts(Model model) {
+    @GetMapping("/index")
+    public String getPosts(Model model) {
         model.addAttribute("events", eventsDao.findAll());
-        return "/admin";
+        return "index";
     }
+
+//    @GetMapping("/admin")
+//    public String getUnapprovedPosts(Model model) {
+//        model.addAttribute("events", eventsDao.findAll());
+//        return "/admin";
+//    }
+
 }
