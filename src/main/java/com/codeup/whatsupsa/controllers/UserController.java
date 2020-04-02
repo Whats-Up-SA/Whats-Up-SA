@@ -24,6 +24,12 @@ public class UserController {
         this.passwordEncoder = passwordEncoder;
     }
 
+    @GetMapping("/all")
+    public String viewAllUsers(Model model) {
+        model.addAttribute("users", userDao.findAll());
+        return "users/all";
+    }
+
     @GetMapping("/register")
     public String showSignupForm(Model model) {
         model.addAttribute("user", new User());
