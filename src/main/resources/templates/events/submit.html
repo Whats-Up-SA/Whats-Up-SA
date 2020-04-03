@@ -5,20 +5,27 @@
 	<title>Submit an Event</title>
 </head>
 <body>
-<!--<th:block th:include="partials/navbar"/>-->
-<nav th:replace="partials/navbar.html :: navbar"></nav>
-
 <h1>Submit an Event</h1>
 <form th:action="@{|/submit|}" th:method="POST">
 	<label for="title">Title</label>
 	<input id="title" type="text" name="title" placeholder="Enter event title">
+	<br/>
 	<label for="description">Description</label>
 	<textarea id="description" name="description" placeholder="Enter event description"></textarea>
-<!--	<label for="parentCategory">Pick a parent category:</label>-->
-<!--	<select name="parentCategory" id="parentCategory">-->
-<!--		<div th:each="category : ${categories}"><option ></option></div>-->
-
-<!--	</select>-->
+	<br/>
+	<label for="parentCategory">Pick a parent category:</label>
+	<select name="parentCategory" id="parentCategory">
+		<option value="" selected disabled hidden>Categories</option>
+		<div th:each="category : ${parentCategories}">
+			<option th:value="${category.id}" th:text="${category.category}"></option>
+		</div>
+	</select>
+	<br/>
+	<div th:each="category : ${childCategories}">
+		<input type="checkbox" th:id="${category.id}" th:name="${category.id}" th:value="${category.id}">
+		<label th:for="${category.id}" th:text="${category.category}"></label>
+		<br/>
+	</div>
 	<button>Submit Event</button>
 </form>
 </body>
