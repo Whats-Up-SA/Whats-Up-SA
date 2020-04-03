@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
 
+<div>
     <nav th:fragment="navbar" class="nav">
         <ul>
-            <li>
+            <li class="nav-link">
                 <a th:href="@{/index}">view events</a>
             </li>
             <li sec:authorize="isAnonymous()">
@@ -23,5 +24,6 @@
             </li>
         </ul>
     </nav>
+</div>
 
 </html>
