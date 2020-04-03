@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="partials/head.html :: head">
 	<meta charset="UTF-8">
 	<title>Submit an Event</title>
 </head>
@@ -29,7 +29,7 @@
 		<label th:for="${category.id}" th:text="${category.category}"></label>
 		<br/>
 	</div>
-	<button>Submit Event</button>
+	<button id="submit-btn">Submit Event</button>
 </form>
 </body>
 </html>

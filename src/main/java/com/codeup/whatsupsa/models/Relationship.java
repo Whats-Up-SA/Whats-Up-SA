@@ -3,7 +3,7 @@ package com.codeup.whatsupsa.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "relationship")
+@Table(name = "relationship", uniqueConstraints={@UniqueConstraint(columnNames = {"userOneID" , "userTwoID"})})
 
 public class Relationship {
 

@@ -14,6 +14,9 @@
 			<a th:href="@{|/events/${event.id}|}"><h2 th:text="${event.title}"></h2></a>
 			<p th:text="${event.description}"></p>
 			<a th:href="@{|/events/${event.id}/edit|}"><p th:text="edit"></p></a>
+			<form th:action="@{|/events/${event.id}/approve|}" th:method="POST" style="display:inline">
+				<button>Approve Event</button>
+			</form>
 			<form th:action="@{|/events/${event.id}/delete|}" th:method="POST" style="display:inline">
 				<button>Delete Event</button>
 			</form>

@@ -53,6 +53,13 @@ public class UserController {
         return "users/profile";
     }
 
+    @GetMapping("/profile/{id}")
+    public String getPost(@PathVariable long id, Model model) {
+        User user = userDao.getOne(id);
+        model.addAttribute("user", user.getId());
+        return "events/show";
+    }
+
 //    @GetMapping("/profile/{id}")
 //    public String otherProfile(@PathVariable long id, Model model) {
 //        model.addAttribute("user", userDao.getOne(id));
@@ -76,11 +83,23 @@ public class UserController {
         return "redirect:/profile";
     }
 
+//    @PostMapping("all/{id}/delete")
+//    public String deleteUser(Model model) {
+//        User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//
+//        return "redirect:/index";
+//    }
+
+
     @PostMapping("all/{id}/delete")
-    public String deleteUser(@PathVariable long id) {
+    public String deleteUserPage(@PathVariable long id) {
         userDao.deleteById(id);
         return "redirect:/all";
     }
+<<<<<<< HEAD
 
 }
 
+=======
+}
+>>>>>>> 3e6e52c9f9359fe889f86aceabbcc1e65f29e498
