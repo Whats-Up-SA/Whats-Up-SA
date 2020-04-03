@@ -82,8 +82,16 @@ public class UserController {
         return "redirect:/profile";
     }
 
+//    @PostMapping("all/{id}/delete")
+//    public String deleteUser(Model model) {
+//        User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//
+//        return "redirect:/index";
+//    }
+
+
     @PostMapping("all/{id}/delete")
-    public String deleteUser(@PathVariable long id) {
+    public String deleteUserPage(@PathVariable long id) {
         userDao.deleteById(id);
         return "redirect:/all";
     }
