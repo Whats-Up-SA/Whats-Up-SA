@@ -8,36 +8,39 @@
 <!--<th:block th:include="partials/navbar"/>-->
 <nav th:replace="partials/navbar.html :: navbar"></nav>
 
-    <div class="update-container">
-        <form action="/update" method="post" th:object="${user}">
-            <div class="input-group">
-                <label for="username">change username</label>
-                <input th:field="*{username}" id="username" type="text">
-            </div>
+<div class="update-container">
+    <form th:action="@{/update}" method="post" th:object="${user}">
+        <div class="input-group">
+            <label for="username">change username</label>
+            <input th:field="*{username}" id="username" type="text">
+        </div>
 
-            <div class="input-group">
-                <label for="email">change email</label>
-                <input th:field="*{email}" id="email" type="text">
-            </div>
+        <div class="input-group">
+            <label for="email">change email</label>
+            <input th:field="*{email}" id="email" type="text">
+        </div>
 
-            <div class="input-group">
-                <label for="password">enter current password</label>
-                <input th:field="*{password}" id="password" type="password">
-            </div>
+        <div class="input-group">
+            <label for="password">enter new password</label>
+            <input th:field="*{password}" id="password" type="password">
+        </div>
 
-            <div class="input-group">
-                <label for="new">enter new password</label>
-                <input th:field="*{password}" id="new" type="password">
-            </div>
+        <input value="Update account" type="submit"/>
 
-<!--            <div class="input-group">-->
-<!--                <label for="confirm">confirm new password</label>-->
-<!--                <input id="confirm" type="password">-->
-<!--            </div>-->
+        <!--        <div class="input-group">-->
+        <!--            <label for="password">enter current password</label>-->
+        <!--            <input th:field="*{password}" id="password" type="password">-->
+        <!--        </div>-->
 
-            <input type="submit" th:value="update" class="submit-btn">
-        </form>
-    </div>
+
+        <!--            <div class="input-group">-->
+        <!--                <label for="confirm">confirm new password</label>-->
+        <!--                <input id="confirm" type="password">-->
+        <!--            </div>-->
+
+        <!--        <input type="submit" th:value="update" class="submit-btn">-->
+    </form>
+</div>
 
 </body>
 </html>

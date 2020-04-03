@@ -3,6 +3,7 @@ package com.codeup.whatsupsa.models;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
@@ -24,8 +25,7 @@ public class User {
     private String password;
 
     @Column(nullable = true)
-//    @Type(type = "org.hibernate.type.NumericBooleanType")
-    private Boolean isAdmin;
+    private Boolean admin;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Event> events;
@@ -36,11 +36,11 @@ public class User {
     public User() {
     }
 
-    public User(String username, String email, String password, boolean isAdmin) {
+    public User(String username, String email, String password, Boolean admin) {
         this.username = username;
         this.email = email;
         this.password = password;
-        this.isAdmin = isAdmin;
+        this.admin = admin;
     }
 
     public User(User copy) {
@@ -48,7 +48,7 @@ public class User {
         email = copy.email;
         username = copy.username;
         password = copy.password;
-        isAdmin = copy.isAdmin;
+        admin = copy.admin;
     }
 
     public long getId() {
@@ -83,12 +83,12 @@ public class User {
         this.password = password;
     }
 
-    public boolean getIsAdmin() {
-        return isAdmin;
+    public Boolean getAdmin() {
+        return admin;
     }
 
-    public void setIsAdmin(Boolean isAdmin) {
-        this.isAdmin = isAdmin;
+    public void setAdmin(Boolean admin) {
+        this.admin = admin;
     }
 
     public List<Event> getEvents() {
@@ -98,5 +98,4 @@ public class User {
     public void setEvents(List<Event> events) {
         this.events = events;
     }
-
 }

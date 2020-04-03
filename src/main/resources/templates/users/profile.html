@@ -5,17 +5,19 @@
     <title>profile</title>
 </head>
 <body>
-<!--<th:block th:include="partials/navbar"/>-->
-<nav th:replace="partials/navbar.html :: navbar"></nav>
 
-    <div class="welcome" th:object="${user}">
-        <h1 th:text="welcome ${user.username}!"></h1>
-        <h5 th:text="${user.email}"></h5><a th:href="@{/update}">edit</a>
-    </div>
+<div class="welcome" th:object="${user}">
+    <h1 th:text="${user.username}"></h1>
+    <h5 th:text="${user.email}"></h5><a href="/update">edit</a>
+</div>
 
-    <h1>here are your posts</h1>
+<th:block th:object="${events}">
+    <th:block th:each="event : ${events}">
+        <h1 th:text="${event.title}"></h1>
+        <h5 th:text="${event.description}"></h5>
+    </th:block>
+</th:block>
 
-    <h1>here are all your events</h1>
 <!--    <div class="calendar-container">-->
 <!--        placeholder for a calendar-->
 <!--    </div>-->
