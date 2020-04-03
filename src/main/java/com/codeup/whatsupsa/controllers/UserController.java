@@ -74,10 +74,16 @@ public class UserController {
         return "redirect:/profile";
     }
 
-    @PostMapping("all/{id}/delete")
-    public String deleteUser(@PathVariable long id) {
+//    @PostMapping("all/{id}/delete")
+//    public String deleteUser(@PathVariable long id) {
+//        userDao.deleteById(id);
+//        return "redirect:/index";
+//    }
+
+    @GetMapping("all/{id}/delete")
+    public String deleteUserPage(@PathVariable long id) {
         userDao.deleteById(id);
         return "redirect:/all";
     }
-}
 
+}
