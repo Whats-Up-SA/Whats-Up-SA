@@ -2,6 +2,7 @@ package com.codeup.whatsupsa.controllers;
 
 import com.codeup.whatsupsa.Repositories.EventsRepository;
 import com.codeup.whatsupsa.Repositories.UserRepository;
+import com.codeup.whatsupsa.models.Event;
 import com.codeup.whatsupsa.models.User;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -49,6 +50,13 @@ public class UserController {
         model.addAttribute("events", eventDao.FindEventsByUserID(user.getId()));
         model.addAttribute("user", userDao.getOne(user.getId()));
         return "users/profile";
+    }
+
+    @GetMapping("/profile/{id}")
+    public String getPost(@PathVariable long id, Model model) {
+        User user = userDao.getOne(id);
+        model.addAttribute("user", user.getId());
+        return "events/show";
     }
 
 //    @GetMapping("/profile/{id}")

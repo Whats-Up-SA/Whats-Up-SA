@@ -64,7 +64,7 @@ public class EventController {
         newEvent.setDescription(description);
         User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         newEvent.setUser(loggedIn);
-        newEvent.setApproved(true);
+        newEvent.setApproved(false);
         eventDao.save(newEvent);
         return "redirect:/profile";
     }
@@ -79,11 +79,23 @@ public class EventController {
 
     @GetMapping("/events/{id}/edit")
     public String editEvent(@PathVariable long id, Model model) {
+
+        List<Category> parentCategory = new ArrayList<>();
+        List<Category> categoryList = categoryDao.findAll();
+
+        for (Category category : categoryList) {
+            if (category.getParent_id() == 0) {
+                parentCategory.add(category);
+            }
+        }
+        model.addAttribute("parentCategories", parentCategory);
+
+
         User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Event eventToEdit = eventDao.getOne(id);
-        if (loggedIn.getAdmin()) {
+//        if (loggedIn.getAdmin()) {
             model.addAttribute("event", eventToEdit);
-        }
+//        }
         return "events/edit";
     }
 
@@ -108,5 +120,16 @@ public class EventController {
         eventDao.deleteById(id);
 
         return "redirect:/admin";
+    }
+
+    @PostMapping("/events/{id}/approve")
+    public String approvePost(@PathVariable long id) {
+//        System.out.println((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+//        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        if (loggedInUser.getId() == eventDao.getOne(id).getUser().getId())
+        Event e = eventDao.getOne(id);
+        e.setApproved(true);
+        eventDao.save(e);
+        return "redirect:/index";
     }
 }
