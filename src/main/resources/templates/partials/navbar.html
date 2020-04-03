@@ -16,6 +16,9 @@
             <a th:href="@{/submit}">create post</a>
         </li>
         <li sec:authorize="isAuthenticated()">
+            <a th:href="@{/profile}">profile</a>
+        </li>
+        <li sec:authorize="isAuthenticated()">
             <form th:action="@{/logout}" th:method="post">
                 <button>Logout</button>
             </form>

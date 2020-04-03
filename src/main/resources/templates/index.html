@@ -1,16 +1,29 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="partials/header.html :: header">>
     <meta charset="UTF-8">
     <title>events</title>
+<!--    <link rel="stylesheet" href="../templates/partials/custom.css">-->
+<!--    <style>-->
+<!--        li {-->
+<!--            list-style: none;-->
+<!--            display: flex;-->
+<!--            justify-content: center;-->
+<!--            align-content: end;-->
+<!--        }-->
+<!--        h2 {-->
+<!--            background-color: blue;-->
+<!--        }-->
+<!--    </style>-->
 </head>
 <body>
-<!--    <th:block th:include="partials/navbar"/>-->
+<!--<div th:replace="partials/header.html :: header"></div>-->
+    <th:block th:include="partials/header"/>
 <nav th:replace="partials/navbar.html :: navbar"></nav>
 <!-- event -->
 <div th:each="event : ${events}">
     <div th:switch="${event.isApproved}">
-        <div th:case="true">
+        <div th:case="true" class="test">
             <a th:href="@{|/events/${event.id}|}"><h2 th:text="${event.title}"></h2></a>
             <p th:text="${event.description}"></p>
         </div>

@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<!--<head th:replace="partials/header.html :: header">-->
 	<meta charset="UTF-8">
 	<title>edit event</title>
+
 </head>
 <body>
 <!--<th:block th:include="partials/navbar"/>-->
+
 <nav th:replace="partials/navbar.html :: navbar"></nav>
+
 
 <h1 th:text="${event.title}"></h1>
 <p th:text="${event.description}"></p>
