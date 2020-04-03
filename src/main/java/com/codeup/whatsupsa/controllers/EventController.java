@@ -12,6 +12,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
+
 @Controller
 public class EventController {
 
@@ -26,18 +30,36 @@ public class EventController {
     }
 
     @GetMapping("/submit")
-    public String landing() {
+    public String landing(Model model) {
+        List<Category> parentCategory = new ArrayList<>();
+        List<Category> childCategory = new ArrayList<>();
+        List<Category> categoryList = categoryDao.findAll();
 
-        //TODO: logic for checking if a user is logged in goes here
+        for (Category category : categoryList) {
+            if (category.getParent_id() == 0) {
+                parentCategory.add(category);
+            }
+        }
+        for (Category category : categoryList) {
+            if (category.getParent_id() != 0) {
+                childCategory.add(category);
+            }
+        }
+        model.addAttribute("parentCategories", parentCategory);
+        model.addAttribute("childCategories", childCategory);
+
         return "events/submit";
     }
 
     @PostMapping("/submit")
-    public String createPost(@RequestParam String title, @RequestParam String description) {
+    public String createPost(@RequestParam String title, @RequestParam String description, @RequestParam Long parentCategory,Model model) {
         Event newEvent = new Event();
-//        model.addAttribute("categories", categoryDao.findAll());
-//        List<Category> categoryList = categoryDao.findAll();
-//        model.addAttribute("categories", categoryList);
+        List<Category> eventCategories = new ArrayList<>();
+
+        eventCategories.add(categoryDao.getOne(parentCategory));
+
+        newEvent.setCategories(eventCategories);
+
         newEvent.setTitle(title);
         newEvent.setDescription(description);
         User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -46,14 +68,12 @@ public class EventController {
         eventDao.save(newEvent);
         return "redirect:/profile";
     }
-
     @GetMapping("/events/{id}")
     public String getPost(@PathVariable long id, Model model) {
         Event event = eventDao.getOne(id);
-//        Category category = categoryDao.getOne(id);
+        model.addAttribute("categories", event.getCategories());
         model.addAttribute("title", event.getTitle());
         model.addAttribute("description", event.getDescription());
-//        model.addAttribute("category", category.getCategory());
         return "events/show";
     }
 
