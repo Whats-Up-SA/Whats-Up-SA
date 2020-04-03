@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @Controller
 public class UserController {
     private UserRepository userDao;
@@ -63,8 +65,12 @@ public class UserController {
     }
 
     @PostMapping("/update")
-    public String editProfile(Model model) {
-        model.addAttribute("user", new User());
+    public String saveUpdate(@ModelAttribute User user) {
+        User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        user.setId(loggedIn.getId());
+        user.setPassword(loggedIn.getPassword());
+        user.setUsername(loggedIn.getUsername());
+        userDao.save(user);
         return "redirect:/profile";
     }
 
