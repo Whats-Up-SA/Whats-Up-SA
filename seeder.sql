@@ -1,8 +1,8 @@
 use eventlister_db;
 
-insert into users (username, email, password, is_admin)
+insert into users (username, email, password, admin)
 values ('adiss0', 'dadamides0@rambler.ru', 'n8I1Xt8vJlKu', 0);
-insert into users (username, email, password, is_admin)
+insert into users (username, email, password, admin)
 values ('shynde1', 'hlednor1@umn.edu', 'n1RbqxWWj3Vx', 1);
 
 use eventlister_db;

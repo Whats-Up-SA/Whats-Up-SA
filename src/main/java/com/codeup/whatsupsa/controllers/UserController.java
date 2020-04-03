@@ -1,27 +1,25 @@
 package com.codeup.whatsupsa.controllers;
 
+import com.codeup.whatsupsa.Repositories.EventsRepository;
 import com.codeup.whatsupsa.Repositories.UserRepository;
 import com.codeup.whatsupsa.models.User;
-import org.springframework.jmx.export.annotation.ManagedOperation;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Optional;
-
-import javax.validation.constraints.Max;
 
 @Controller
 public class UserController {
     private UserRepository userDao;
     private PasswordEncoder passwordEncoder;
+    private EventsRepository eventDao;
 
-    public UserController(UserRepository userDao, PasswordEncoder passwordEncoder) {
+    public UserController(UserRepository userDao, PasswordEncoder passwordEncoder, EventsRepository eventDao) {
         this.userDao = userDao;
         this.passwordEncoder = passwordEncoder;
+        this.eventDao = eventDao;
     }
 
     @GetMapping("/all")
@@ -47,6 +45,8 @@ public class UserController {
     @GetMapping("/profile")
     public String profile(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        model.addAttribute("events", eventDao.FindEventsByUserID(user.getId()));
         model.addAttribute("user", userDao.getOne(user.getId()));
         return "users/profile";
     }
@@ -59,13 +59,16 @@ public class UserController {
 
     @GetMapping("/update")
     public String showUpdateForm(Model model) {
-        model.addAttribute("user", new User());
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("user", user);
         return "users/update";
     }
 
     @PostMapping("/update")
     public String saveUpdate(@ModelAttribute User user) {
+        User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String hash = passwordEncoder.encode(user.getPassword());
+        user.setId(loggedIn.getId());
         user.setPassword(hash);
         userDao.save(user);
         return "redirect:/profile";

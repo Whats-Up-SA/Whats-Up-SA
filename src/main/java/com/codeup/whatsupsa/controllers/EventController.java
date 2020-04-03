@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
 @Controller
 public class EventController {
 
@@ -65,9 +66,8 @@ public class EventController {
         newEvent.setUser(loggedIn);
         newEvent.setApproved(true);
         eventDao.save(newEvent);
-        return "redirect:/";
+        return "redirect:/profile";
     }
-
     @GetMapping("/events/{id}")
     public String getPost(@PathVariable long id, Model model) {
         Event event = eventDao.getOne(id);
@@ -81,7 +81,7 @@ public class EventController {
     public String editEvent(@PathVariable long id, Model model) {
         User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Event eventToEdit = eventDao.getOne(id);
-        if (loggedIn.getIsAdmin()) {
+        if (loggedIn.getAdmin()) {
             model.addAttribute("event", eventToEdit);
         }
         return "events/edit";
@@ -100,12 +100,12 @@ public class EventController {
     }
 
     @PostMapping("/events/{id}/delete")
-    public String delete(@PathVariable long id){
+    public String delete(@PathVariable long id) {
 //        System.out.println((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
 //        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 //        if (loggedInUser.getId() == eventDao.getOne(id).getUser().getId())
-            // delete post
-            eventDao.deleteById(id);
+        // delete post
+        eventDao.deleteById(id);
 
         return "redirect:/admin";
     }
