@@ -57,22 +57,22 @@ public class UserController {
 //        return "users/otherProfile";
 //    }
 
-//    @GetMapping("/update")
-//    public String showUpdateForm(Model model) {
-//        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        model.addAttribute("user", user);
-//        return "users/update";
-//    }
+    @GetMapping("/update")
+    public String showUpdateForm(Model model) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("user", user);
+        return "users/update";
+    }
 
-//    @PostMapping("/update")
-//    public String saveUpdate(@ModelAttribute User user) {
-//        User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        user.setId(loggedIn.getId());
-//        user.setPassword(loggedIn.getPassword());
-//        user.setUsername(loggedIn.getUsername());
-//        userDao.save(user);
-//        return "redirect:/profile";
-//    }
+    @PostMapping("/update")
+    public String saveUpdate(@ModelAttribute User user) {
+        User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String hash = passwordEncoder.encode(user.getPassword());
+        user.setId(loggedIn.getId());
+        user.setPassword(hash);
+        userDao.save(user);
+        return "redirect:/profile";
+    }
 
     @PostMapping("all/{id}/delete")
     public String deleteUser(@PathVariable long id) {

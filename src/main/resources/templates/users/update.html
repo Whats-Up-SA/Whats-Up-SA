@@ -9,7 +9,7 @@
 <nav th:replace="partials/navbar.html :: navbar"></nav>
 
 <div class="update-container">
-    <form action="/update" method="post" th:object="${user}">
+    <form th:action="@{/update}" method="post" th:object="${user}">
         <div class="input-group">
             <label for="username">change username</label>
             <input th:field="*{username}" id="username" type="text">
@@ -20,15 +20,18 @@
             <input th:field="*{email}" id="email" type="text">
         </div>
 
+        <div class="input-group">
+            <label for="password">enter new password</label>
+            <input th:field="*{password}" id="password" type="password">
+        </div>
+
+        <input value="Update account" type="submit"/>
+
         <!--        <div class="input-group">-->
         <!--            <label for="password">enter current password</label>-->
         <!--            <input th:field="*{password}" id="password" type="password">-->
         <!--        </div>-->
 
-        <div class="input-group">
-            <label for="new">enter new password</label>
-            <input th:field="*{password}" id="new" type="password">
-        </div>
 
         <!--            <div class="input-group">-->
         <!--                <label for="confirm">confirm new password</label>-->
@@ -36,7 +39,6 @@
         <!--            </div>-->
 
         <!--        <input type="submit" th:value="update" class="submit-btn">-->
-        <input value="Update account" type="submit"/>
     </form>
 </div>
 
