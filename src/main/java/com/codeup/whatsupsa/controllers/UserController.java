@@ -95,5 +95,4 @@ public class UserController {
         userDao.deleteById(id);
         return "redirect:/all";
     }
-
 }
