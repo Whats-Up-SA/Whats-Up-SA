@@ -90,7 +90,7 @@ public class UserController {
 //    }
 
 
-    @GetMapping("all/{id}/delete")
+    @PostMapping("all/{id}/delete")
     public String deleteUserPage(@PathVariable long id) {
         userDao.deleteById(id);
         return "redirect:/all";
