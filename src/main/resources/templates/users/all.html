@@ -8,14 +8,13 @@
 
 <nav th:replace="partials/navbar.html :: navbar"></nav>
 
-    <div th:each="user : ${users}">
-        <p th:text="${user.username}"></p>
-        <p th:text="${user.email}"></p>
-<!--        <a th:href="@{|/all/${user.id}/delete|}">delete user</a>-->
-        <form th:action="@{|/all/${user.id}/delete|}" th:value="${user.id}" th:method="POST" style="display:inline">
-            <button>delete user</button>
-        </form>
-    </div>
+<div th:each="user : ${users}">
+    <p th:text="${user.username}"></p>
+    <p th:text="${user.email}"></p>
+    <form th:action="@{|/all/${user.id}/delete|}" th:value="${user.id}" th:method="POST" style="display:inline">
+        <button>delete user</button>
+    </form>
+</div>
 
 </body>
 </html>

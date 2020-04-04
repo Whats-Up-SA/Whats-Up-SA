@@ -2,15 +2,12 @@ package com.codeup.whatsupsa.controllers;
 
 import com.codeup.whatsupsa.Repositories.EventsRepository;
 import com.codeup.whatsupsa.Repositories.UserRepository;
-import com.codeup.whatsupsa.models.Event;
 import com.codeup.whatsupsa.models.User;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.parameters.P;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 
 @Controller
 public class UserController {
@@ -83,23 +80,10 @@ public class UserController {
         return "redirect:/profile";
     }
 
-//    @PostMapping("all/{id}/delete")
-//    public String deleteUser(Model model) {
-//        User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//
-//        return "redirect:/index";
-//    }
-
-
     @PostMapping("all/{id}/delete")
     public String deleteUserPage(@PathVariable long id) {
         userDao.deleteById(id);
         return "redirect:/all";
     }
-<<<<<<< HEAD
 
 }
-
-=======
-}
->>>>>>> 3e6e52c9f9359fe889f86aceabbcc1e65f29e498
