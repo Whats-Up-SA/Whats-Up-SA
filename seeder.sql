@@ -39,6 +39,7 @@ insert into categories (category, parent_id)
 VALUES ('Arts', 0);
 insert into categories (category, parent_id)
 VALUES ('Family', 0);
+
 insert into categories (category, parent_id)
 VALUES ('18+', 1),
        ('21+', 1),
