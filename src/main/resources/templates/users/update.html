@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
+<head th:replace="partials/header.html :: header">
     <meta charset="UTF-8">
     <title>update profile</title>
 </head>
@@ -10,35 +10,27 @@
 
 <div class="update-container">
     <form th:action="@{/update}" method="post" th:object="${user}">
-        <div class="input-group">
-            <label for="username">change username</label>
-            <input th:field="*{username}" id="username" type="text">
-        </div>
 
         <div class="input-group">
-            <label for="email">change email</label>
-            <input th:field="*{email}" id="email" type="text">
+            <label for="username">Username</label>
+            <input id="username" th:field="*{username}" placeholder="Username"/>
         </div>
-
         <div class="input-group">
-            <label for="password">enter new password</label>
-            <input th:field="*{password}" id="password" type="password">
+            <label for="email">Email</label>
+            <input id="email" th:field="*{email}" placeholder="Email"/>
         </div>
+        <div class="input-group">
+            <label for="password">Password</label>
+            <input class="password" type="password" th:field="*{password}" placeholder="Enter Password" id="password"/>
+        </div>
+        <div class="input-group">
+            <label for="confirmPassword">Confirm Password</label>
+            <input class="confirmPassword" placeholder="Confirm Password" type="password" required="required"
+                   id="confirmPassword">
 
-        <input value="Update account" type="submit"/>
+            <input value="Update account" class="btnSubmit" type="submit"/>
 
-        <!--        <div class="input-group">-->
-        <!--            <label for="password">enter current password</label>-->
-        <!--            <input th:field="*{password}" id="password" type="password">-->
-        <!--        </div>-->
-
-
-        <!--            <div class="input-group">-->
-        <!--                <label for="confirm">confirm new password</label>-->
-        <!--                <input id="confirm" type="password">-->
-        <!--            </div>-->
-
-        <!--        <input type="submit" th:value="update" class="submit-btn">-->
+        </div>
     </form>
 </div>
 
