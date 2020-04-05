@@ -5,7 +5,6 @@ $(document).ready(function () {
     });
 });
 
-
 // password confirmation on registration and update page
 $(function () {
     $(".btnSubmit").click(function () {

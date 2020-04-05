@@ -17,16 +17,16 @@
         </div>
         <div class="input-group">
             <label for="email">Email</label>
-            <input id="email" th:field="*{email}" placeholder="Email"/>
+            <input class="email" id="email" th:field="*{email}" placeholder="Email"/>
         </div>
         <div class="input-group">
             <label for="password">Password</label>
-            <input class="password" type="password" th:field="*{password}" placeholder="Enter Password" id="password"/>
+            <input class="password" type="password" th:field="*{password}" placeholder="Password" id="password"/>
         </div>
         <div class="input-group">
             <label for="confirmPassword">Confirm Password</label>
             <input class="confirmPassword" placeholder="Confirm Password" type="password" required="required"
-                   id="confirmPassword">
+                   id="confirmPassword"/>
 
             <input value="Update account" class="btnSubmit" id="updateSaved" type="submit"/>
 
