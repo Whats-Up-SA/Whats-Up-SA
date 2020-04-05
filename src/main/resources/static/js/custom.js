@@ -1,5 +1,5 @@
 // alert for submissions
-$(function () {
+$(document).ready(function () {
     $("#submit-btn").click(function () {
         alert("Thank you for your submission! It will be reviewed by an admin.");
     });
@@ -31,7 +31,7 @@ $(function () {
 });
 
 // alert for account updates
-// $(function () {
+// $(document).ready(function () {
 //     $("#updateSaved").click(function () {
 //         alert("Your account has been updated");
 //     });
