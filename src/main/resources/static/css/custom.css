@@ -83,4 +83,6 @@ li {
 .user-posts { grid-area: 3 / 2 / 4 / 3; }
 .calendar-container { grid-area: 2 / 3 / 4 / 4; }
 
+/*admin grid*/
+#admin-nav
 

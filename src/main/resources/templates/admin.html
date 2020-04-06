@@ -5,22 +5,28 @@
 	<title>Admin</title>
 </head>
 <body>
-<!--<th:block th:include="partials/navbar"/>-->
-<nav th:replace="partials/navbar.html :: navbar"></nav>
+
+<div class="admin-container">
+	<div id="nav">
+		<nav th:replace="partials/navbar.html :: navbar"></nav>
+	</div>
+
+	<h1 class="welcome-admin">welcome, admin</h1>
 <!-- event -->
-<div th:each="event : ${events}">
-	<div th:switch="${event.isApproved}">
-		<div th:case="false">
-			<a th:href="@{|/events/${event.id}|}"><h2 th:text="${event.title}"></h2></a>
-			<p th:text="${event.description}"></p>
-			<img class="eventImage" th:attr="src=@{${event.eventImage}}" style="height: 250px; width: auto"  alt=""/>
-			<a th:href="@{|/events/${event.id}/edit|}"><p th:text="edit"></p></a>
-			<form th:action="@{|/events/${event.id}/approve|}" th:method="POST" style="display:inline">
-				<button>Approve Event</button>
-			</form>
-			<form th:action="@{|/events/${event.id}/delete|}" th:method="POST" style="display:inline">
-				<button>Delete Event</button>
-			</form>
+	<div th:each="event : ${events}">
+		<div th:switch="${event.isApproved}">
+			<div th:case="false">
+				<a th:href="@{|/events/${event.id}|}"><h2 th:text="${event.title}"></h2></a>
+				<p th:text="${event.description}"></p>
+				<img class="eventImage" th:attr="src=@{${event.eventImage}}" style="height: 250px; width: auto"  alt=""/>
+				<a th:href="@{|/events/${event.id}/edit|}"><p th:text="edit"></p></a>
+				<form th:action="@{|/events/${event.id}/approve|}" th:method="POST" style="display:inline">
+					<button>Approve Event</button>
+				</form>
+				<form th:action="@{|/events/${event.id}/delete|}" th:method="POST" style="display:inline">
+					<button>Delete Event</button>
+				</form>
+			</div>
 		</div>
 	</div>
 </div>
