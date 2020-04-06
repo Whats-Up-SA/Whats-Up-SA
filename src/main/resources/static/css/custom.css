@@ -6,6 +6,7 @@ li {
     display: inline;
     float: right;
 }
+
 /*login page grid*/
 .login-container {
     display: grid;
@@ -21,6 +22,7 @@ li {
 .error-div5 { grid-area: 3 / 2 / 4 / 3; }
 .logout-div6 { grid-area: 4 / 2 / 5 / 3; }
 .form-div7 { grid-area: 5 / 2 / 6 / 3; }
+
 /*logout page grid*/
 .logout-container {
     display: grid;
@@ -50,6 +52,20 @@ li {
 .right-gutter { grid-area: 2 / 3 / 6 / 4; }
 #register-h1 { grid-area: 2 / 2 / 3 / 3; }
 .register-form { grid-area: 3 / 2 / 4 / 3; }
+
+/*update profile grid*/
+.update-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr .25fr 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+.update-header { grid-area: 1 / 1 / 2 / 4; }
+.lft-gutter  { grid-area: 2 / 1 / 6 / 2; }
+.rt-gutter { grid-area: 2 / 3 / 6 / 4; }
+.update-h1 { grid-area: 2 / 2 / 3 / 3; }
+.update-form { grid-area: 3 / 2 / 4 / 3; }
 
 
 
