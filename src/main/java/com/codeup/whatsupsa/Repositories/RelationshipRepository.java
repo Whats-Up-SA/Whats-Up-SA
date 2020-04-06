@@ -13,4 +13,22 @@ public interface RelationshipRepository extends JpaRepository<Relationship, Long
 
     @Query("FROM Relationship a WHERE (a.userOneID = ?1 OR a.userTwoID = ?1) AND a.status = 0 AND a.actionUserID <> ?1")
     List<Relationship> viewPendingRequests(User user);
+
+    @Query("FROM Relationship a WHERE (a.userOneID = ?1 OR a.userTwoID = ?1) AND a.status = 1")
+    List<Relationship> viewFriendsList(User user);
+
+    @Query("FROM Relationship a WHERE a.userOneID = ?1 AND a.userTwoID = ?2")
+    Relationship returnRelationshipFriends(User user, User checkUser);
+
+    @Query("SELECT count(a) FROM Relationship a WHERE a.userOneID = ?1 AND a.userTwoID = ?2")
+    Long getRelationshipByFriends(User user, User checkUser);
+
+    @Query("SELECT count(a) FROM Relationship a WHERE a.userOneID = ?1 AND a.userTwoID = ?2 AND a.status = 1")
+    Long checkFriendship(User user, User checkUser);
+
+    @Query("SELECT count(a) FROM Relationship a WHERE a.userOneID = ?1 AND a.userTwoID = ?2 AND a.status = 2")
+    Long checkDecline(User user, User checkUser);
+
+    @Query("SELECT count(a) FROM Relationship a WHERE a.userOneID = ?1 AND a.userTwoID = ?2 AND a.status = 0")
+    Long checkPending(User user, User checkUser);
 }

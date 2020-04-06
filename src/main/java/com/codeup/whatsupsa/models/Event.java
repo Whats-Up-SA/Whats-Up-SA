@@ -25,6 +25,8 @@ public class Event {
     @Type(type = "org.hibernate.type.NumericBooleanType")
     private Boolean isApproved;
 
+    @Column(nullable = false)
+    private String eventImage;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -105,5 +107,17 @@ public class Event {
 
     public void setCategories(List<Category> categories) {
         this.categories = categories;
+    }
+
+    public Boolean getApproved() {
+        return isApproved;
+    }
+
+    public String getEventImage() {
+        return eventImage;
+    }
+
+    public void setEventImage(String eventImage) {
+        this.eventImage = eventImage;
     }
 }

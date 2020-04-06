@@ -26,10 +26,20 @@
     </th:block>
 </th:block>
 
+<!--friends list-->
+<th:block th:object="${friendList}">
+    <p>Friend List:</p>
+    <th:block th:each="friend : ${friendList}">
+        <a th:href="@{|/profile/${friend.id}|}" th:text="${friend.username}"></a>
+        <br/>
+    </th:block>
+</th:block>
+
 <th:block th:object="${events}">
     <th:block th:each="event : ${events}">
         <h1 th:text="${event.title}"></h1>
         <h5 th:text="${event.description}"></h5>
+        <img class="eventImage" th:attr="src=@{${event.eventImage}}" style="height: 250px; width: auto"  alt=""/>
     </th:block>
 </th:block>
 

@@ -10,10 +10,31 @@
 
 <div class="welcome" th:object="${user}">
 	<h1 th:text="${user.username}"></h1>
+	<th:block th:object="${relationship}">
+		<div th:switch="${checkFriendship}">
+			<th:block th:case="1">
+				<form th:action="@{|/profile/${relationship.id}/unfriend|}" th:value="${relationship.id}" th:method="POST" style="display:inline">
+					<button>unfriend</button>
+				</form>
+			</th:block>
+			<th:block th:case="2">
+				<form th:action="@{|/profile/${relationship.id}/fr|}" th:value="${relationship.id}" th:method="POST" style="display:inline">
+					<button>add as friend</button>
+				</form>
+			</th:block>
+			<th:block th:case="3">
+				<form action="" style="display:inline">
+					<button disabled>friend request pending</button>
+				</form>
+			</th:block>
+			<th:block th:case="*">
+			<form th:action="@{|/users/detail/fr/${user.id}|}" th:value="${user.id}" th:method="POST" style="display:inline">
+				<button>add as friend</button>
+			</form>
+			</th:block>
+		</div>
+	</th:block>
 
-	<form th:action="@{|/users/detail/fr/${user.id}|}" th:value="${user.id}" th:method="POST" style="display:inline">
-		<button>add as friend</button>
-	</form>
 
 <!--	<h5 th:text="${user.email}"></h5><a href="/update">edit</a>-->
 </div>

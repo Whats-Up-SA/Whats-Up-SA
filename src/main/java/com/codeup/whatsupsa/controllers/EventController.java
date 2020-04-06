@@ -7,6 +7,7 @@ import com.codeup.whatsupsa.Repositories.UserRepository;
 import com.codeup.whatsupsa.models.Category;
 import com.codeup.whatsupsa.models.Event;
 import com.codeup.whatsupsa.models.User;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +23,8 @@ public class EventController {
     private EventsRepository eventDao;
     private UserRepository userDao;
     private CategoryRepository categoryDao;
+    @Value("${filestack.api.key}")
+    private String fsapi;
 
     public EventController(EventsRepository eventDao, UserRepository userDao, CategoryRepository categoryDao) {
         this.eventDao = eventDao;
@@ -47,12 +50,12 @@ public class EventController {
         }
         model.addAttribute("parentCategories", parentCategory);
         model.addAttribute("childCategories", childCategory);
-
+        model.addAttribute("fsapi", fsapi);
         return "events/submit";
     }
 
     @PostMapping("/submit")
-    public String createPost(@RequestParam String title, @RequestParam String description, @RequestParam Long parentCategory,Model model) {
+    public String createPost(@RequestParam String title, @RequestParam String description, @RequestParam Long parentCategory, @RequestParam(name = "eventImage") String eventImage) {
         Event newEvent = new Event();
         List<Category> eventCategories = new ArrayList<>();
 
@@ -62,18 +65,21 @@ public class EventController {
 
         newEvent.setTitle(title);
         newEvent.setDescription(description);
+        newEvent.setEventImage(eventImage);
         User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         newEvent.setUser(loggedIn);
         newEvent.setApproved(false);
         eventDao.save(newEvent);
         return "redirect:/profile";
     }
+
     @GetMapping("/events/{id}")
     public String getPost(@PathVariable long id, Model model) {
         Event event = eventDao.getOne(id);
         model.addAttribute("categories", event.getCategories());
         model.addAttribute("title", event.getTitle());
         model.addAttribute("description", event.getDescription());
+        model.addAttribute("eventImage", event.getEventImage());
         return "events/show";
     }
 
@@ -94,7 +100,7 @@ public class EventController {
         User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Event eventToEdit = eventDao.getOne(id);
 //        if (loggedIn.getAdmin()) {
-            model.addAttribute("event", eventToEdit);
+        model.addAttribute("event", eventToEdit);
 //        }
         return "events/edit";
     }

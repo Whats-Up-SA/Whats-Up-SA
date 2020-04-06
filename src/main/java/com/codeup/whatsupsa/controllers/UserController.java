@@ -53,24 +53,26 @@ public class UserController {
     @GetMapping("/profile")
     public String profile(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
+        //pending request logic
         List<Relationship> pendingRequests = relationshipDao.viewPendingRequests(user);
-
         java.util.List<java.util.Map.Entry<String,Long>> pairList= new java.util.ArrayList<>();
-
         for (Relationship pendingRequest : pendingRequests) {
-            Map.Entry<String, Long> j = new AbstractMap.SimpleEntry<>(pendingRequest.getActionUserID().getUsername(), pendingRequest.getId());
-            pairList.add(j);
+            Map.Entry<String, Long> newRequest = new AbstractMap.SimpleEntry<>(pendingRequest.getActionUserID().getUsername(), pendingRequest.getId());
+            pairList.add(newRequest);
         }
-
-
+        //friend list logic
+        List<User> friendUsers = new ArrayList<>();
+        for (Relationship friendPair : relationshipDao.viewFriendsList(user)){
+            if(friendPair.getUserOneID().getId() == user.getId()){
+                friendUsers.add(friendPair.getUserTwoID());
+            } else {
+                friendUsers.add(friendPair.getUserOneID());
+            }
+        }
+        model.addAttribute("friendList", friendUsers);
         model.addAttribute("pairList",pairList);
-
-//        model.addAttribute("pendingRequests", relationshipDao.viewPendingRequests(user));
-
         model.addAttribute("events", eventDao.FindEventsByUserID(user.getId()));
         model.addAttribute("user", user);
-//        model.addAttribute("user", userDao.getOne(user.getId()));
         return "users/profile";
     }
 
@@ -83,7 +85,66 @@ public class UserController {
 
     @GetMapping("/profile/{id}")
     public String otherProfile(@PathVariable long id, Model model) {
-        model.addAttribute("user", userDao.getOne(id));
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+//        if(user.getId() < id){
+//            Long checkFriends = relationshipDao.checkFriendship(user, userDao.getOne(id));
+//            if(checkFriends==0){
+//                if((relationshipDao.checkDecline(user, userDao.getOne(id)))==1){
+//                    checkFriends+=2;
+//                }
+//                if((relationshipDao.checkPending(user, userDao.getOne(id)))==1){
+//                    checkFriends+=3;
+//                }
+//            }
+//            model.addAttribute("relationship", relationshipDao.getRelationshipByFriends(user, userDao.getOne(id)).get(0));
+//            model.addAttribute("checkFriendship", checkFriends);
+//        } else {
+//            Long checkFriends = relationshipDao.checkFriendship(userDao.getOne(id), user);
+//            if(checkFriends==0){
+//                if((relationshipDao.checkDecline(userDao.getOne(id), user))==1){
+//                    checkFriends+=2;
+//                }
+//                if((relationshipDao.checkPending(userDao.getOne(id), user))==1){
+//                    checkFriends+=3;
+//                }
+//            }
+//            model.addAttribute("relationship", relationshipDao.getRelationshipByFriends(userDao.getOne(id), user).get(0));
+//            model.addAttribute("checkFriendship", checkFriends);
+//        }
+
+        int checkFriends = 0;
+        if(user.getId() < id) {
+            if (relationshipDao.getRelationshipByFriends(user, userDao.getOne(id)) == 1){
+                if (relationshipDao.checkPending(user, userDao.getOne(id))==1){
+                    checkFriends+=3;
+                }
+                if (relationshipDao.checkDecline(user, userDao.getOne(id))==1){
+                    checkFriends+=2;
+                }
+                if (relationshipDao.checkFriendship(user, userDao.getOne(id))==1){
+                    checkFriends+=1;
+                }
+                model.addAttribute("relationship", relationshipDao.returnRelationshipFriends(user, userDao.getOne(id)));
+            }
+            model.addAttribute("checkFriendship", checkFriends);
+        } else if (user.getId() > id){
+            if(relationshipDao.getRelationshipByFriends(userDao.getOne(id), user) ==1) {
+                if (relationshipDao.checkPending(userDao.getOne(id), user) == 1) {
+                    checkFriends += 3;
+                }
+                if (relationshipDao.checkDecline(userDao.getOne(id), user) == 1) {
+                    checkFriends += 2;
+                }
+                if (relationshipDao.checkFriendship(userDao.getOne(id), user) == 1) {
+                    checkFriends += 1;
+                }
+                model.addAttribute("relationship", relationshipDao.returnRelationshipFriends(userDao.getOne(id), user));
+            }
+            model.addAttribute("checkFriendship", checkFriends);
+        }
+
+            model.addAttribute("user", userDao.getOne(id));
         return "users/detail";
     }
 
@@ -128,6 +189,21 @@ public class UserController {
         r.setActionUserID((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         relationshipDao.save(r);
         return"redirect:/profile";
+    }
+
+    @PostMapping("/profile/{id}/fr")
+    public String friendRequestFromDenied(@PathVariable long id) {
+        Relationship r = relationshipDao.getOne(id);
+        r.setStatus(0);
+        r.setActionUserID((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        relationshipDao.save(r);
+        return "redirect:/profile";
+    }
+
+    @PostMapping("/profile/{id}/unfriend")
+    public String unfriend(@PathVariable long id) {
+        relationshipDao.deleteById(id);
+        return "redirect:/profile";
     }
 
     @GetMapping("/update")
