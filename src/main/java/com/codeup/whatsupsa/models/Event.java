@@ -53,12 +53,13 @@ public class Event {
     public Event() {
     }
 
-    public Event(long id, String title, String body, User user, Boolean isApproved) {
+    public Event(long id, String title, String body, User user, Boolean isApproved, String eventImage) {
         this.title = title;
         this.description = body;
         this.id = id;
         this.user = user;
         this.isApproved = isApproved;
+        this.eventImage = eventImage;
     }
 
     public long getId() {

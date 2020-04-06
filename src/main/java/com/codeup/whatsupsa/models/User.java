@@ -39,11 +39,12 @@ public class User {
     public User() {
     }
 
-    public User(String username, String email, String password, Boolean admin) {
+    public User(String username, String email, String password, Boolean admin, String profileImage) {
         this.username = username;
         this.email = email;
         this.password = password;
         this.admin = admin;
+        this.profileImage = profileImage;
     }
 
     public User(User copy) {
@@ -52,6 +53,7 @@ public class User {
         username = copy.username;
         password = copy.password;
         admin = copy.admin;
+        profileImage = copy.profileImage;
     }
 
     public String getProfileImage() {
