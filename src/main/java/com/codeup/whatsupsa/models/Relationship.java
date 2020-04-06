@@ -24,12 +24,12 @@ public class Relationship {
     private User actionUserID;
 
     @Column(nullable = false, columnDefinition = "TINYINT")
-    private long status;
+    private int status;
 
     public Relationship() {
     }
 
-    public Relationship(User userOneID, User userTwoID, User actionUserID, long status) {
+    public Relationship(User userOneID, User userTwoID, User actionUserID, int status) {
         this.userOneID = userOneID;
         this.userTwoID = userTwoID;
         this.actionUserID = actionUserID;
@@ -72,7 +72,7 @@ public class Relationship {
         return status;
     }
 
-    public void setStatus(long status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 }
