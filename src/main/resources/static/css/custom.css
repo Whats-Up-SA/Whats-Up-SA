@@ -67,6 +67,20 @@ li {
 .update-h1 { grid-area: 2 / 2 / 3 / 3; }
 .update-form { grid-area: 3 / 2 / 4 / 3; }
 
+/*profile grid*/
+.profile-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
 
+#nav { grid-area: 1 / 1 / 2 / 5; }
+#left { grid-area: 2 / 1 / 4 / 2; }
+#right { grid-area: 2 / 4 / 4 / 5; }
+.user-info { grid-area: 2 / 2 / 3 / 3; }
+.user-posts { grid-area: 3 / 2 / 4 / 3; }
+.calendar-container { grid-area: 2 / 3 / 4 / 4; }
 
 
