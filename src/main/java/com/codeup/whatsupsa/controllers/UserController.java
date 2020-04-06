@@ -71,17 +71,36 @@ public class UserController {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("user", user);
         model.addAttribute("fsapi", fsapi);
+        model.addAttribute("profileImage", user.getProfileImage());
         return "users/update";
     }
 
     @PostMapping("/update")
-    public String saveUpdate(@ModelAttribute User user, @RequestParam(name = "profileImage") String profileImage) {
+    public String saveUpdate(@ModelAttribute User user) {
         User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+//        User loggedIn = userDao.getOne(Id);
         String hash = passwordEncoder.encode(user.getPassword());
+
+//        userDao.findById(Id);
         user.setId(loggedIn.getId());
+
         user.setPassword(hash);
-        user.setProfileImage(profileImage);
+
+//        user.setProfileImage(loggedIn.getProfileImage());
+
+
+        //if the profile picture changes, then replace if not keep the same profile picture. prevent url from dropping off of the table
+
+//        if ((loggedIn.getProfileImage()) != null) {
+//            user.setProfileImage(loggedIn.getProfileImage());
+//        }
+//        if ((loggedIn.getProfileImage()) == null) {
+//            user.setProfileImage(profileImage);
+//        } else
+
         userDao.save(user);
+
         return "redirect:/profile";
     }
 

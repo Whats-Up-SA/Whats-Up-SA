@@ -47,6 +47,13 @@ public class User {
         this.profileImage = profileImage;
     }
 
+    public User(String username, String email, String password, Boolean admin) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.admin = admin;
+    }
+
     public User(User copy) {
         id = copy.id; // This line is SUPER important! Many things won't work if it's absent
         email = copy.email;
@@ -54,14 +61,6 @@ public class User {
         password = copy.password;
         admin = copy.admin;
         profileImage = copy.profileImage;
-    }
-
-    public String getProfileImage() {
-        return profileImage;
-    }
-
-    public void setProfileImage(String profileImage) {
-        this.profileImage = profileImage;
     }
 
     public long getId() {
@@ -94,6 +93,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getProfileImage() {
+        return profileImage;
+    }
+
+    public void setProfileImage(String profileImage) {
+        this.profileImage = profileImage;
     }
 
     public Boolean getAdmin() {
