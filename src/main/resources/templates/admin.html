@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="partials/header.html :: header">
 	<meta charset="UTF-8">
 	<title>Admin</title>
 </head>
@@ -13,7 +13,7 @@
 		<div th:case="false">
 			<a th:href="@{|/events/${event.id}|}"><h2 th:text="${event.title}"></h2></a>
 			<p th:text="${event.description}"></p>
-			<img class="eventImage" th:attr="src=@{${event.eventImage}}" style="height: 250px; width: auto"  alt="eventImage"/>
+			<img class="eventImage" th:attr="src=@{${event.eventImage}}" style="height: 250px; width: auto"/>
 			<a th:href="@{|/events/${event.id}/edit|}"><p th:text="edit"></p></a>
 			<form th:action="@{|/events/${event.id}/approve|}" th:method="POST" style="display:inline">
 				<button>Approve Event</button>

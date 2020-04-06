@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
+<head th:replace="partials/header.html :: header">
     <meta charset="UTF-8">
     <title>profile</title>
 </head>
@@ -11,14 +11,15 @@
 <div class="welcome" th:object="${user}">
     <h1 th:text="${user.username}"></h1>
     <h5 th:text="${user.email}"></h5><a href="/update">edit</a>
-    <img class="profileImage" th:attr="src=@{${user.profileImage}}" style="height: 250px; width: auto"  alt="profileImage"/>
+    <img class="profileImage" th:attr="src=@{${user.profileImage}}" style="height: 250px; width: auto"
+         alt="profileImage"/>
 </div>
 
 <th:block th:object="${events}">
     <th:block th:each="event : ${events}">
         <h1 th:text="${event.title}"></h1>
         <h5 th:text="${event.description}"></h5>
-        <img class="eventImage" th:attr="src=@{${event.eventImage}}" style="height: 250px; width: auto"  alt=""/>
+        <img class="eventImage" th:attr="src=@{${event.eventImage}}" style="height: 250px; width: auto"/>
     </th:block>
 </th:block>
 
