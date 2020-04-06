@@ -22,6 +22,20 @@ li {
 .logout-div6 { grid-area: 4 / 2 / 5 / 3; }
 .form-div7 { grid-area: 5 / 2 / 6 / 3; }
 /*logout page grid*/
+.logout-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+#header-div1 { grid-area: 1 / 1 / 2 / 4; }
+#lft-gutter-div2 { grid-area: 2 / 1 / 6 / 2; }
+#rt-gutter-div3 { grid-area: 2 / 3 / 6 / 4; }
+#h1-div4 { grid-area: 2 / 2 / 3 / 3; }
+.logout-div5 { grid-area: 3 / 2 / 4 / 3; }
+.form-div6 { grid-area: 4 / 2 / 5 / 3; }
 
 
 
