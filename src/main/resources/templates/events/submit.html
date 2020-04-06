@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials/header.html :: header">
-	<meta charset="UTF-8">
-	<title>Submit an Event</title>
+    <meta charset="UTF-8">
+    <title>Submit an Event</title>
 </head>
 <body>
 
@@ -10,26 +10,42 @@
 
 <h1>Submit an Event</h1>
 <form th:action="@{|/submit|}" th:method="POST">
-	<label for="title">Title</label>
-	<input id="title" type="text" name="title" placeholder="Enter event title">
-	<br/>
-	<label for="description">Description</label>
-	<textarea id="description" name="description" placeholder="Enter event description"></textarea>
-	<br/>
-	<label for="parentCategory">Pick a parent category:</label>
-	<select name="parentCategory" id="parentCategory">
-		<option value="" selected disabled hidden>Categories</option>
-		<div th:each="category : ${parentCategories}">
-			<option th:value="${category.id}" th:text="${category.category}"></option>
-		</div>
-	</select>
-	<br/>
-	<div th:each="category : ${childCategories}">
-		<input type="checkbox" th:id="${category.id}" th:name="${category.id}" th:value="${category.id}">
-		<label th:for="${category.id}" th:text="${category.category}"></label>
-		<br/>
-	</div>
-	<button id="submit-btn">Submit Event</button>
+    <label for="title">Title</label>
+    <input id="title" type="text" name="title" placeholder="Enter event title">
+    <br/>
+    <label for="description">Description</label>
+    <textarea id="description" name="description" placeholder="Enter event description"></textarea>
+    <br/>
+    <label for="parentCategory">Pick a parent category:</label>
+    <select name="parentCategory" id="parentCategory">
+        <option value="" selected disabled hidden>Categories</option>
+        <div th:each="category : ${parentCategories}">
+            <option th:value="${category.id}" th:text="${category.category}"></option>
+        </div>
+    </select>
+    <br/>
+    <div th:each="category : ${childCategories}">
+        <input type="checkbox" th:id="${category.id}" th:name="${category.id}" th:value="${category.id}">
+        <label th:for="${category.id}" th:text="${category.category}"></label>
+        <br/>
+    </div>
+    <input type="button" value="Add Image(s)" id="pickWatermark" onclick="pickMark()">
+    <input type="hidden" name="eventImage" id="eventImage">
+    <button id="submit-btn">Submit Event</button>
 </form>
+
+<script th:inline="javascript">
+    let client = filestack.init(document.querySelector('meta.fsapi').content);
+
+    function pickMark() {
+        client.pick({
+            accept: 'image/*',
+            maxFiles: 1
+        }).then(function (result) {
+            document.getElementById("eventImage").value = result.filesUploaded[0].url;
+        });
+    }
+</script>
+
 </body>
 </html>
