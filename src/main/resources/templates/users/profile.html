@@ -15,12 +15,35 @@
     <div id="left"></div>
     <div id="right"></div>
 
+
     <div class="user-info">
         <div class="welcome" th:object="${user}">
             <h1 th:text="${user.username}"></h1>
             <h5 th:text="${user.email}"></h5><a href="/update">edit</a>
         </div>
     </div>
+
+        <!--friend request notifications-->
+        <th:block th:object="${pairList}">
+            <th:block th:each="pair : ${pairList}">
+                <p><span th:text="${pair.key}"></span> has sent you a friend request.</p>
+                <form th:action="@{|/profile/${pair.value}/approve|}" th:method="POST" style="display:inline">
+                    <button>accept</button>
+                </form>
+                <form th:action="@{|/profile/${pair.value}/decline|}" th:method="POST" style="display:inline">
+                    <button>decline</button>
+                </form>
+            </th:block>
+        </th:block>
+
+        <!--friends list-->
+        <th:block th:object="${friendList}">
+            <p>Friend List:</p>
+            <th:block th:each="friend : ${friendList}">
+                <a th:href="@{|/profile/${friend.id}|}" th:text="${friend.username}"></a>
+                <br/>
+            </th:block>
+        </th:block>
 
     <div class="user-posts">
         <p>here are your posts</p>
@@ -38,5 +61,6 @@
     </div>
 
 </div>
+
 </body>
 </html>
