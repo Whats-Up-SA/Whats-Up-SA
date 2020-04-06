@@ -27,7 +27,7 @@
         <div th:case="true" class="test">
             <a th:href="@{|/events/${event.id}|}"><h2 th:text="${event.title}"></h2></a>
             <p th:text="${event.description}"></p>
-            <img class="eventImage" th:attr="src=@{${event.eventImage}}" style="height: 250px; width: auto"  alt=""/>
+            <img class="eventImage" th:attr="src=@{${event.eventImage}}" style="height: 250px; width: auto"  alt="eventImage"/>
         </div>
     </div>
 </div>

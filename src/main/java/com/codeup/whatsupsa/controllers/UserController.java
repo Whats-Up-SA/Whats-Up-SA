@@ -3,6 +3,7 @@ package com.codeup.whatsupsa.controllers;
 import com.codeup.whatsupsa.Repositories.EventsRepository;
 import com.codeup.whatsupsa.Repositories.UserRepository;
 import com.codeup.whatsupsa.models.User;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,8 @@ public class UserController {
     private UserRepository userDao;
     private PasswordEncoder passwordEncoder;
     private EventsRepository eventDao;
+    @Value("${filestack.api.key}")
+    private String fsapi;
 
     public UserController(UserRepository userDao, PasswordEncoder passwordEncoder, EventsRepository eventDao) {
         this.userDao = userDao;
@@ -67,15 +70,17 @@ public class UserController {
     public String showUpdateForm(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("user", user);
+        model.addAttribute("fsapi", fsapi);
         return "users/update";
     }
 
     @PostMapping("/update")
-    public String saveUpdate(@ModelAttribute User user) {
+    public String saveUpdate(@ModelAttribute User user, @RequestParam(name = "profileImage") String profileImage) {
         User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String hash = passwordEncoder.encode(user.getPassword());
         user.setId(loggedIn.getId());
         user.setPassword(hash);
+        user.setProfileImage(profileImage);
         userDao.save(user);
         return "redirect:/profile";
     }

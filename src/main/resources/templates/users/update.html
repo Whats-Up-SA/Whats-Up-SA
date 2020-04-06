@@ -28,11 +28,25 @@
             <input class="confirmPassword" placeholder="Confirm Password" type="password" required="required"
                    id="confirmPassword"/>
 
-            <input value="Update account" class="btnSubmit" id="updateSaved" type="submit"/>
+            <input type="button" value="Upload Profile Picture" id="pickWatermark" onclick="pickMark()">
+            <input type="hidden" name="profileImage" id="profileImage">
 
+            <input value="Update account" class="btnSubmit" id="updateSaved" type="submit"/>
         </div>
     </form>
 </div>
 
+<script th:inline="javascript">
+    let client = filestack.init(document.querySelector('meta.fsapi').content);
+
+    function pickMark() {
+        client.pick({
+            accept: 'image/*',
+            maxFiles: 1
+        }).then(function (result) {
+            document.getElementById("profileImage").value = result.filesUploaded[0].url;
+        });
+    }
+</script>
 </body>
 </html>
