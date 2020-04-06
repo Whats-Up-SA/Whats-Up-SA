@@ -8,10 +8,12 @@
 <!--<th:block th:include="partials/navbar"/>-->
 <nav th:replace="partials/navbar.html :: navbar"></nav>
 
-    <h1 th:text="${title}"></h1>
-    <p th:text="${description}"></p>
+<h1 th:text="${title}"></h1>
+<p th:text="${description}"></p>
 <!--    Category: <p th:text="${category}"></p>-->
-    <p>Categories: </p><div th:each="category : ${categories}"><p th:text="${category.category}"></p></div>
+<p>Categories: </p>
+<div th:each="category : ${categories}"><p th:text="${category.category}"></p></div>
+<img class="eventImage" th:attr="src=@{${eventImage}}" style="height: 250px; width: auto"  alt=""/>
 
 </body>
 </html>
