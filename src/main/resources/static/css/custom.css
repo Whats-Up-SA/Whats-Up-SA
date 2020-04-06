@@ -37,6 +37,19 @@ li {
 .logout-div5 { grid-area: 3 / 2 / 4 / 3; }
 .form-div6 { grid-area: 4 / 2 / 5 / 3; }
 
+/*register page grid*/
+.register-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr .25fr 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+#nav-header { grid-area: 1 / 1 / 2 / 4; }
+.left-gutter  { grid-area: 2 / 1 / 6 / 2; }
+.right-gutter { grid-area: 2 / 3 / 6 / 4; }
+#register-h1 { grid-area: 2 / 2 / 3 / 3; }
+.register-form { grid-area: 3 / 2 / 4 / 3; }
 
 
 
