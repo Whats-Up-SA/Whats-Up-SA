@@ -101,17 +101,19 @@ public class EventController {
         Event eventToEdit = eventDao.getOne(id);
 //        if (loggedIn.getAdmin()) {
         model.addAttribute("event", eventToEdit);
+        model.addAttribute("fsapi", fsapi);
 //        }
         return "events/edit";
     }
 
     @PostMapping("/events/{id}/edit")
-    public String updatePost(@PathVariable long id, @RequestParam String title, @RequestParam String body) {
+    public String updatePost(@PathVariable long id, @RequestParam String title, @RequestParam String body, @RequestParam(name = "eventImage") String eventImage) {
 //        User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Event e = eventDao.getOne(id);
 //        if (loggedIn.getIsAdmin()) {
         e.setTitle(title);
         e.setDescription(body);
+        e.setEventImage(eventImage);
         eventDao.save(e);
 //        }
         return "redirect:/admin";
