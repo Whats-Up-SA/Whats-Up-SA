@@ -25,7 +25,7 @@ public class Event {
     @Type(type = "org.hibernate.type.NumericBooleanType")
     private Boolean isApproved;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String eventImage;
 
     @ManyToOne
