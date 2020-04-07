@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @Controller
 public class UserController {
     private UserRepository userDao;
@@ -69,7 +71,9 @@ public class UserController {
 
     @GetMapping("/update")
     public String showUpdateForm(Model model) {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user1 = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userDao.getUserById(user1.getId());
+
         model.addAttribute("user", user);
         model.addAttribute("fsapi", fsapi);
         model.addAttribute("profileImage", user.getProfileImage());
@@ -80,28 +84,10 @@ public class UserController {
     public String saveUpdate(@ModelAttribute User user) {
         User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-//        User loggedIn = userDao.getOne(Id);
         String hash = passwordEncoder.encode(user.getPassword());
-
-//        userDao.findById(Id);
         user.setId(loggedIn.getId());
-
         user.setPassword(hash);
-
-//        user.setProfileImage(loggedIn.getProfileImage());
-
-
-        //if the profile picture changes, then replace if not keep the same profile picture. prevent url from dropping off of the table
-
-//        if ((loggedIn.getProfileImage()) != null) {
-//            user.setProfileImage(loggedIn.getProfileImage());
-//        }
-//        if ((loggedIn.getProfileImage()) == null) {
-//            user.setProfileImage(profileImage);
-//        } else
-
         userDao.save(user);
-
         return "redirect:/profile";
     }
 
