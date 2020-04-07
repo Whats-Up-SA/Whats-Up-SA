@@ -87,45 +87,10 @@ public class UserController {
         return "users/profile";
     }
 
-//    @GetMapping("/profile/{id}")
-//    public String getPost(@PathVariable long id, Model model) {
-//        User user = userDao.getOne(id);
-//        model.addAttribute("user", user.getId());
-//        return "events/show";
-//    }
-
     @GetMapping("/profile/{id}")
     public String otherProfile(@PathVariable long id, Model model) {
-//        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
         User user1 = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = userDao.getUserById(user1.getId());
-
-//        if(user.getId() < id){
-//            Long checkFriends = relationshipDao.checkFriendship(user, userDao.getOne(id));
-//            if(checkFriends==0){
-//                if((relationshipDao.checkDecline(user, userDao.getOne(id)))==1){
-//                    checkFriends+=2;
-//                }
-//                if((relationshipDao.checkPending(user, userDao.getOne(id)))==1){
-//                    checkFriends+=3;
-//                }
-//            }
-//            model.addAttribute("relationship", relationshipDao.getRelationshipByFriends(user, userDao.getOne(id)).get(0));
-//            model.addAttribute("checkFriendship", checkFriends);
-//        } else {
-//            Long checkFriends = relationshipDao.checkFriendship(userDao.getOne(id), user);
-//            if(checkFriends==0){
-//                if((relationshipDao.checkDecline(userDao.getOne(id), user))==1){
-//                    checkFriends+=2;
-//                }
-//                if((relationshipDao.checkPending(userDao.getOne(id), user))==1){
-//                    checkFriends+=3;
-//                }
-//            }
-//            model.addAttribute("relationship", relationshipDao.getRelationshipByFriends(userDao.getOne(id), user).get(0));
-//            model.addAttribute("checkFriendship", checkFriends);
-//        }
 
         int checkFriends = 0;
         if (user.getId() < id) {
