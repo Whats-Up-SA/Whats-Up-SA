@@ -13,7 +13,7 @@
 <!--    Category: <p th:text="${category}"></p>-->
 <p>Categories: </p>
 <div th:each="category : ${categories}"><p th:text="${category.category}"></p></div>
-<img class="eventImage" th:attr="src=@{${eventImage}}" style="height: 250px; width: auto"  alt=""/>
+<img class="eventImage" th:attr="src=@{${eventImage}}" style="height: 250px; width: auto"/>
 
 </body>
 </html>

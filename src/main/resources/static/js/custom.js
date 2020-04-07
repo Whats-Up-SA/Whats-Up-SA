@@ -43,3 +43,13 @@ $(function () {
         return window.confirm("Are you sure you want to delete this user?");
     });
 });
+
+// hides broken image
+// $(function () {
+//     let allImages = document.images;
+//     for (let i = 0; i < allImages.length; i++) {
+//         allImages[i].onerror = function () {
+//             this.style.visibility = "hidden";
+//         }
+//     }
+// })();

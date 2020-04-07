@@ -8,6 +8,7 @@
 
 <div class="profile-container">
 
+
     <div id="nav">
         <nav th:replace="partials/navbar.html :: navbar"></nav>
     </div>
@@ -20,6 +21,7 @@
         <div class="welcome" th:object="${user}">
             <h1 th:text="${user.username}"></h1>
             <h5 th:text="${user.email}"></h5><a href="/update">edit</a>
+          <img class="profileImage" th:attr="src=@{${user.profileImage}}" style="height: 250px; width: auto"/>
         </div>
     </div>
 
@@ -51,7 +53,7 @@
             <th:block th:each="event : ${events}">
                 <h1 th:text="${event.title}"></h1>
                 <h5 th:text="${event.description}"></h5>
-                <img class="eventImage" th:attr="src=@{${event.eventImage}}" style="height: 250px; width: auto"  alt=""/>
+                <img class="eventImage" th:attr="src=@{${event.eventImage}}" style="height: 250px; width: auto"/>
             </th:block>
         </th:block>
     </div>
@@ -61,6 +63,7 @@
     </div>
 
 </div>
+
 
 </body>
 </html>

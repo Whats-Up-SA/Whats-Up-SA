@@ -25,6 +25,9 @@ public class User {
     private String password;
 
     @Column(nullable = true)
+    private String profileImage;
+
+    @Column(nullable = true)
     private Boolean admin;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
@@ -41,6 +44,7 @@ public class User {
         this.email = email;
         this.password = password;
         this.admin = admin;
+//        this.profileImage = profileImage;
     }
 
     public User(User copy) {
@@ -49,6 +53,7 @@ public class User {
         username = copy.username;
         password = copy.password;
         admin = copy.admin;
+        profileImage = copy.profileImage;
     }
 
     public long getId() {
@@ -81,6 +86,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getProfileImage() {
+        return profileImage;
+    }
+
+    public void setProfileImage(String profileImage) {
+        this.profileImage = profileImage;
     }
 
     public Boolean getAdmin() {

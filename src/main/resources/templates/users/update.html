@@ -18,31 +18,48 @@
     <h1 class="update-h1">update your profile</h1>
 
     <div class="update-form">
-        <form th:action="@{/update}" method="post" th:object="${user}">
+       <form th:action="@{|/update/|}" method="POST" th:object="${user}">
 
-            <div class="input-group">
-                <label for="username">Username</label> <br>
-                <input id="username" th:field="*{username}" placeholder="Username"/>
-            </div>
-            <div class="input-group">
-                <label for="email">Email</label> <br>
-                <input class="email" id="email" th:field="*{email}" placeholder="Email"/>
-            </div>
-            <div class="input-group">
-                <label for="password">Password</label> <br>
-                <input class="password" type="password" th:field="*{password}" placeholder="Password" id="password"/>
-            </div>
-            <div class="input-group">
-                <label for="confirmPassword">Confirm Password</label> <br>
-                <input class="confirmPassword" placeholder="Confirm Password" type="password" required="required"
-                       id="confirmPassword"/>
-            </div>
-            <input value="Update account" class="btnSubmit" id="updateSaved" type="submit"/>
+        <div class="input-group">
+            <label for="username">Username</label>
+            <input th:field="*{username}" id="username"/>
+        </div>
+        <div class="input-group">
+            <label for="email">Email</label>
+            <input th:field="*{email}" class="email" id="email"/>
+        </div>
+        <div class="input-group">
+            <label for="password">Password</label>
+            <input class="password" type="password" th:field="*{password}" id="password"/>
+        </div>
+        <div class="input-group">
+            <label for="confirmPassword">Confirm Password</label>
+            <input class="confirmPassword" placeholder="Confirm Password" type="password" required="required"
+                   id="confirmPassword"/>
+        </div>
+         
+        <input type="button" value="Upload Profile Picture" id="pickWatermark" onclick="pickMark()">
 
-        </form>
+        <input type="hidden" name="profileImage" id="profileImage" th:field="*{profileImage}"/>
+
+        <input value="Update account" class="btnSubmit" id="updateSaved" type="submit"/>
+
+    </form>
     </div>
 
 </div>
 
+<script th:inline="javascript">
+    let client = filestack.init(document.querySelector('meta.fsapi').content);
+
+    function pickMark() {
+        client.pick({
+            accept: 'image/*',
+            maxFiles: 1
+        }).then(function (result) {
+            document.getElementById("profileImage").value = result.filesUploaded[0].url;
+        });
+    }
+</script>
 </body>
 </html>

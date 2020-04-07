@@ -5,6 +5,7 @@ import com.codeup.whatsupsa.Repositories.RelationshipRepository;
 import com.codeup.whatsupsa.Repositories.UserRepository;
 import com.codeup.whatsupsa.models.Relationship;
 import com.codeup.whatsupsa.models.User;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+
 @Controller
 public class UserController {
     private UserRepository userDao;
@@ -23,7 +25,11 @@ public class UserController {
     private EventsRepository eventDao;
     private RelationshipRepository relationshipDao;
 
+    @Value("${filestack.api.key}")
+    private String fsapi;
+  
     public UserController(UserRepository userDao, PasswordEncoder passwordEncoder, EventsRepository eventDao, RelationshipRepository relationshipDao) {
+
         this.userDao = userDao;
         this.passwordEncoder = passwordEncoder;
         this.eventDao = eventDao;
@@ -208,14 +214,19 @@ public class UserController {
 
     @GetMapping("/update")
     public String showUpdateForm(Model model) {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user1 = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userDao.getUserById(user1.getId());
+
         model.addAttribute("user", user);
+        model.addAttribute("fsapi", fsapi);
+        model.addAttribute("profileImage", user.getProfileImage());
         return "users/update";
     }
 
     @PostMapping("/update")
     public String saveUpdate(@ModelAttribute User user) {
         User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
         String hash = passwordEncoder.encode(user.getPassword());
         user.setId(loggedIn.getId());
         user.setPassword(hash);
