@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
 
-<nav th:fragment="navbar" class="nav">
+<nav th:fragment="navbar" class="nav" th:object="user">
     <ul>
         <li>
             <a th:href="@{/index}">view events</a>
@@ -17,6 +17,12 @@
         </li>
         <li sec:authorize="isAuthenticated()">
             <a th:href="@{/profile}">profile</a>
+        </li>
+        <li sec:authorize="isAdmin()">
+            <a th:href="@{/admin}">admin</a>
+        </li>
+        <li sec:authorize="isAdmin()">
+            <a th:href="@{/all}">users</a>
         </li>
         <li sec:authorize="isAuthenticated()">
             <form th:action="@{/logout}" th:method="post">

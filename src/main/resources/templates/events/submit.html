@@ -6,35 +6,49 @@
 </head>
 <body>
 
-<nav th:replace="partials/navbar.html :: navbar"></nav>
-
-<h1>Submit an Event</h1>
-<form th:action="@{|/submit|}" th:method="POST">
-    <label for="title">Title</label>
-    <input id="title" type="text" name="title" placeholder="Enter event title">
-    <br/>
-    <label for="description">Description</label>
-    <textarea id="description" name="description" placeholder="Enter event description"></textarea>
-    <br/>
-    <label for="parentCategory">Pick a parent category:</label>
-    <select name="parentCategory" id="parentCategory">
-        <option value="" selected disabled hidden>Categories</option>
-        <div th:each="category : ${parentCategories}">
-            <option th:value="${category.id}" th:text="${category.category}"></option>
-        </div>
-    </select>
-    <br/>
-    <div th:each="category : ${childCategories}">
-        <input type="checkbox" th:id="${category.id}" th:name="${category.id}" th:value="${category.id}">
-        <label th:for="${category.id}" th:text="${category.category}"></label>
-        <br/>
+<div class="form-container">
+    <div class="nav-div">
+        <nav th:replace="partials/navbar.html :: navbar"></nav>
     </div>
 
-    <input type="button" value="Add Image(s)" id="pickWatermark" onclick="pickMark()">
-    <input type="hidden" name="eventImage" id="eventImage">
+    <div class="left-gutter"></div>
+    <div class="right-gutter"></div>
 
-    <button id="submit-btn">Submit Event</button>
-</form>
+    <div class="header">
+        <h1>Submit an Event</h1>
+    </div>
+
+    <div class="form-group">
+        <form th:action="@{|/submit|}" th:method="POST">
+            <label for="title">Title</label> <br>
+            <input id="title" type="text" name="title" placeholder="Enter event title">
+            <br/>
+            <label for="description">Description</label> <br>
+            <textarea id="description" name="description" placeholder="Enter event description"></textarea>
+            <br/>
+            <label for="parentCategory">Pick a parent category:</label>
+            <select name="parentCategory" id="parentCategory">
+                <option value="" selected disabled hidden>Categories</option>
+                <div th:each="category : ${parentCategories}">
+                    <option th:value="${category.id}" th:text="${category.category}"></option>
+                </div>
+            </select>
+            <br/>
+            <div th:each="category : ${childCategories}">
+                <input type="checkbox" th:id="${category.id}" th:name="${category.id}" th:value="${category.id}">
+                <label th:for="${category.id}" th:text="${category.category}"></label>
+                <br/>
+            </div>
+
+            <input type="button" value="Add Image(s)" id="pickWatermark" onclick="pickMark()">
+            <input type="hidden" name="eventImage" id="eventImage">
+
+            <button id="submit-btn">Submit Event</button>
+        </form>
+    </div>
+
+    <div class="footer-div"></div>
+</div>
 
 <script th:inline="javascript">
     let client = filestack.init(document.querySelector('meta.fsapi').content);

@@ -17,19 +17,21 @@
 <!--	</ul>-->
 <!--</nav>-->
 
-<div class="logout-container">
+<div class="form-container">
 
-	<div id="header-div1">
+	<div class="nav-div">
 		<nav th:replace="partials/navbar.html :: navbar"></nav>
 	</div>
 
-	<div id="lft-gutter-div2"></div>
-	<div id="rt-gutter-div3"></div>
+	<div class="left-gutter"></div>
+	<div class="right-gutter"></div>
 
-	<h1 id="h1-div4">login</h1>
-	<h3 class="logout-div5">you have successfully been logged out</h3>
+	<div class="header">
+		<h1>login</h1>
+		<h3>you have successfully been logged out</h3>
+	</div>
 
-	<div class="form-div6">
+	<div class="form-group">
 	<form th:action="@{/logout}" method="post">
 		<div>
 			<label for="username">username</label>
@@ -43,6 +45,8 @@
 		<input type="submit" th:value="logout">
 	</form>
 	</div>
+
+	<div class="footer-div"></div>
 
 </div>
 
