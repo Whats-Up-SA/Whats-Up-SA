@@ -74,7 +74,7 @@ public class EventController {
     }
 
     @GetMapping("/events/{id}")
-    public String getPost(@PathVariable long id, Model model) {
+    public String getPost(@PathVariable Long id, Model model) {
         Event event = eventDao.getOne(id);
         model.addAttribute("categories", event.getCategories());
         model.addAttribute("title", event.getTitle());
@@ -84,7 +84,7 @@ public class EventController {
     }
 
     @GetMapping("/events/{id}/edit")
-    public String editEvent(@PathVariable long id, Model model) {
+    public String editEvent(@PathVariable Long id, Model model) {
 
         List<Category> parentCategory = new ArrayList<>();
         List<Category> categoryList = categoryDao.findAll();
@@ -97,17 +97,18 @@ public class EventController {
         model.addAttribute("parentCategories", parentCategory);
 
 
-        User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Event eventToEdit = eventDao.getOne(id);
 //        if (loggedIn.getAdmin()) {
         model.addAttribute("event", eventToEdit);
         model.addAttribute("fsapi", fsapi);
+        model.addAttribute("eventImage", eventToEdit.getEventImage());
 //        }
         return "events/edit";
     }
 
     @PostMapping("/events/{id}/edit")
-    public String updatePost(@PathVariable long id, @RequestParam String title, @RequestParam String body, @RequestParam(name = "eventImage") String eventImage) {
+    public String updatePost(@PathVariable Long id, @RequestParam String title, @RequestParam String body, @RequestParam(name = "eventImage") String eventImage) {
 //        User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Event e = eventDao.getOne(id);
 //        if (loggedIn.getIsAdmin()) {
@@ -120,7 +121,7 @@ public class EventController {
     }
 
     @PostMapping("/events/{id}/delete")
-    public String delete(@PathVariable long id) {
+    public String delete(@PathVariable Long id) {
 //        System.out.println((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
 //        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 //        if (loggedInUser.getId() == eventDao.getOne(id).getUser().getId())
@@ -131,7 +132,7 @@ public class EventController {
     }
 
     @PostMapping("/events/{id}/approve")
-    public String approvePost(@PathVariable long id) {
+    public String approvePost(@PathVariable Long id) {
 //        System.out.println((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
 //        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 //        if (loggedInUser.getId() == eventDao.getOne(id).getUser().getId())
@@ -140,4 +141,5 @@ public class EventController {
         eventDao.save(e);
         return "redirect:/index";
     }
+
 }

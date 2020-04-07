@@ -13,7 +13,7 @@ public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
-    private long id;
+    private Long id;
 
     @Column(nullable = false, length = 1000)
     private String title;
@@ -53,7 +53,7 @@ public class Event {
     public Event() {
     }
 
-    public Event(long id, String title, String body, User user, Boolean isApproved) {
+    public Event(Long id, String title, String body, User user, Boolean isApproved) {
         this.title = title;
         this.description = body;
         this.id = id;
@@ -61,11 +61,11 @@ public class Event {
         this.isApproved = isApproved;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

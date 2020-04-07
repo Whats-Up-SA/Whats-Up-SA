@@ -34,4 +34,4 @@ src/main/resources/application.properties
 
 .idea/*
 .DS_STORE
-js/keys.js
+/js/keys.js

@@ -7,25 +7,27 @@
 <body>
 <!--<nav th:replace="partials/navbar.html :: navbar"></nav>-->
 
-    <div class="login-container">
+    <div class="form-container">
 
-        <div class="header-div1">
+        <div class="nav-div">
             <nav th:replace="partials/navbar.html :: navbar"></nav>
         </div>
 
-        <div class="lft-gutter-div2"></div>
-        <div class="rt-gutter-div3"></div>
+        <div class="left-gutter"></div>
+        <div class="right-gutter"></div>
 
-        <h1 class="h1-div4">login</h1>
+        <div class="header">
+            <h1 class="h1-div4">login</h1>
 
-        <div th:if="${param.error}" class="error-div5">
-            invalid username or password
+            <div th:if="${param.error}" class="error-div5">
+                invalid username or password
+            </div>
+            <div th:if="${param.logout}" class="logout-div6">
+                you have successfully been logged out
+            </div>
         </div>
-        <div th:if="${param.logout}" class="logout-div6">
-            you have successfully been logged out
-        </div>
 
-        <div class="form-div7">
+        <div class="form-group">
         <form th:action="@{/login}" method="post">
             <div>
                 <label for="username">username</label>
@@ -39,6 +41,8 @@
             <input type="submit" th:value="login" class="login-div10">
         </form>
         </div>
+
+        <div class="footer-div"></div>
 
     </div>
 
