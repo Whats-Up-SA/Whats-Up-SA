@@ -38,8 +38,12 @@ public class UserController {
 
     @GetMapping("/all")
     public String viewAllUsers(Model model) {
-        model.addAttribute("users", userDao.findAll());
-        return "users/all";
+        User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (loggedIn.getAdmin()) {
+            model.addAttribute("users", userDao.findAll());
+            return "users/all";
+        } else
+            return "redirect:/index";
     }
 
     @GetMapping("/register")
@@ -62,22 +66,22 @@ public class UserController {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         //pending request logic
         List<Relationship> pendingRequests = relationshipDao.viewPendingRequests(user);
-        java.util.List<java.util.Map.Entry<String,Long>> pairList= new java.util.ArrayList<>();
+        java.util.List<java.util.Map.Entry<String, Long>> pairList = new java.util.ArrayList<>();
         for (Relationship pendingRequest : pendingRequests) {
             Map.Entry<String, Long> newRequest = new AbstractMap.SimpleEntry<>(pendingRequest.getActionUserID().getUsername(), pendingRequest.getId());
             pairList.add(newRequest);
         }
         //friend list logic
         List<User> friendUsers = new ArrayList<>();
-        for (Relationship friendPair : relationshipDao.viewFriendsList(user)){
-            if(friendPair.getUserOneID().getId() == user.getId()){
+        for (Relationship friendPair : relationshipDao.viewFriendsList(user)) {
+            if (friendPair.getUserOneID().getId() == user.getId()) {
                 friendUsers.add(friendPair.getUserTwoID());
             } else {
                 friendUsers.add(friendPair.getUserOneID());
             }
         }
         model.addAttribute("friendList", friendUsers);
-        model.addAttribute("pairList",pairList);
+        model.addAttribute("pairList", pairList);
         model.addAttribute("events", eventDao.FindEventsByUserID(user.getId()));
         model.addAttribute("user", userDao.getOne(user.getId()));
         return "users/profile";
@@ -124,22 +128,22 @@ public class UserController {
 //        }
 
         int checkFriends = 0;
-        if(user.getId() < id) {
-            if (relationshipDao.getRelationshipByFriends(user, userDao.getOne(id)) == 1){
-                if (relationshipDao.checkPending(user, userDao.getOne(id))==1){
-                    checkFriends+=3;
+        if (user.getId() < id) {
+            if (relationshipDao.getRelationshipByFriends(user, userDao.getOne(id)) == 1) {
+                if (relationshipDao.checkPending(user, userDao.getOne(id)) == 1) {
+                    checkFriends += 3;
                 }
-                if (relationshipDao.checkDecline(user, userDao.getOne(id))==1){
-                    checkFriends+=2;
+                if (relationshipDao.checkDecline(user, userDao.getOne(id)) == 1) {
+                    checkFriends += 2;
                 }
-                if (relationshipDao.checkFriendship(user, userDao.getOne(id))==1){
-                    checkFriends+=1;
+                if (relationshipDao.checkFriendship(user, userDao.getOne(id)) == 1) {
+                    checkFriends += 1;
                 }
                 model.addAttribute("relationship", relationshipDao.returnRelationshipFriends(user, userDao.getOne(id)));
             }
             model.addAttribute("checkFriendship", checkFriends);
-        } else if (user.getId() > id){
-            if(relationshipDao.getRelationshipByFriends(userDao.getOne(id), user) ==1) {
+        } else if (user.getId() > id) {
+            if (relationshipDao.getRelationshipByFriends(userDao.getOne(id), user) == 1) {
                 if (relationshipDao.checkPending(userDao.getOne(id), user) == 1) {
                     checkFriends += 3;
                 }
@@ -166,7 +170,7 @@ public class UserController {
         User otherUser = userDao.getOne(id);
         newRelationship.setActionUserID(actionUser);
         //checks which user's id is lower and sets the lower one to user_one_id
-        if (actionUser.getId() < otherUser.getId()){
+        if (actionUser.getId() < otherUser.getId()) {
             newRelationship.setUserOneID(actionUser);
             newRelationship.setUserTwoID(otherUser);
         } else {
@@ -184,21 +188,21 @@ public class UserController {
     }
 
     @PostMapping("/profile/{id}/approve")
-    public String approveFriend(@PathVariable long id){
+    public String approveFriend(@PathVariable long id) {
         Relationship r = relationshipDao.getOne(id);
         r.setStatus(1);
         r.setActionUserID((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         relationshipDao.save(r);
-        return"redirect:/profile";
+        return "redirect:/profile";
     }
 
     @PostMapping("/profile/{id}/decline")
-    public String declineFriend(@PathVariable long id){
+    public String declineFriend(@PathVariable long id) {
         Relationship r = relationshipDao.getOne(id);
         r.setStatus(2);
         r.setActionUserID((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         relationshipDao.save(r);
-        return"redirect:/profile";
+        return "redirect:/profile";
     }
 
     @PostMapping("/profile/{id}/fr")
