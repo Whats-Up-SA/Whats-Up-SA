@@ -84,5 +84,20 @@ li {
 .calendar-container { grid-area: 2 / 3 / 4 / 4; }
 
 /*admin grid*/
-#admin-nav
+/*#admin-nav*/
 
+.eventContainer{
+    column-count: 4;
+    column-gap: 1em;
+}
+
+.eventCard{
+    background-color: beige;
+    display: inline-block;
+    margin: 0 0 1em;
+    width: 100%;
+}
+.eventImage {
+    height: auto;
+    width: 90%;
+}
