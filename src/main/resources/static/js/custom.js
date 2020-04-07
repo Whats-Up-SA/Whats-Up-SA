@@ -45,11 +45,11 @@ $(function () {
 });
 
 // hides broken image
-$(function () {
-    let allImages = document.images;
-    for (let i = 0; i < allImages.length; i++) {
-        allImages[i].onerror = function () {
-            this.style.visibility = "hidden";
-        }
-    }
-})();
+// $(function () {
+//     let allImages = document.images;
+//     for (let i = 0; i < allImages.length; i++) {
+//         allImages[i].onerror = function () {
+//             this.style.visibility = "hidden";
+//         }
+//     }
+// })();

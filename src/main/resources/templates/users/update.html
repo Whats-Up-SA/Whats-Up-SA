@@ -9,30 +9,31 @@
 <nav th:replace="partials/navbar.html :: navbar"></nav>
 
 <div class="update-container">
-    <form th:action="@{/update}" method="post" th:object="${user}">
+    <form th:action="@{|/update/${user.id}|}" method="POST" th:object="${user}">
 
         <div class="input-group">
             <label for="username">Username</label>
-            <input id="username" th:field="*{username}" placeholder="Username"/>
+            <input th:field="*{username}" id="username"/>
         </div>
         <div class="input-group">
             <label for="email">Email</label>
-            <input class="email" id="email" th:field="*{email}" placeholder="Email"/>
+            <input th:field="*{email}" class="email" id="email"/>
         </div>
         <div class="input-group">
             <label for="password">Password</label>
-            <input class="password" type="password" th:field="*{password}" placeholder="Password" id="password"/>
+            <input type="password" th:field="*{password}" class="password" id="password"/>
         </div>
         <div class="input-group">
             <label for="confirmPassword">Confirm Password</label>
             <input class="confirmPassword" placeholder="Confirm Password" type="password" required="required"
                    id="confirmPassword"/>
-
+        </div>
+        <div>
             <input type="button" value="Upload Profile Picture" id="pickWatermark" onclick="pickMark()">
-
-            <input type="text" name="profileImage" id="profileImage" th:field="*{profileImage}"/>
-
+            <br>
             <input value="Update account" class="btnSubmit" id="updateSaved" type="submit"/>
+            <br>
+            <input type="text" name="profileImage" id="profileImage" th:field="*{profileImage}"/>
         </div>
     </form>
 </div>
