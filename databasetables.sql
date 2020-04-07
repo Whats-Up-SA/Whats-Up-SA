@@ -66,6 +66,6 @@ drop database if exists eventlister_db;
 #
 # use eventlister_db;
 #
-# Drop USER 'eventlister_user'@'localhost';
-# CREATE USER 'eventlister_user'@'localhost' IDENTIFIED BY 'pasword';
-# GRANT ALL ON eventlister_db.* TO 'eventlister_user'@'localhost';
+Drop USER 'eventlister_user'@'localhost';
+CREATE USER 'eventlister_user'@'localhost' IDENTIFIED BY 'pasword';
+GRANT ALL ON eventlister_db.* TO 'eventlister_user'@'localhost';
