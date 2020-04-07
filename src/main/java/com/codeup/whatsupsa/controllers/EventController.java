@@ -141,4 +141,5 @@ public class EventController {
         eventDao.save(e);
         return "redirect:/index";
     }
+
 }

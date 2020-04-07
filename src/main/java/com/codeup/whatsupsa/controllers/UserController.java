@@ -52,6 +52,7 @@ public class UserController {
     public String saveUser(@ModelAttribute User user) {
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
+        user.setAdmin(false);
         userDao.save(user);
         return "redirect:/login";
     }
@@ -232,6 +233,7 @@ public class UserController {
 
         String hash = passwordEncoder.encode(user.getPassword());
         user.setId(loggedIn.getId());
+        user.setAdmin(loggedIn.getAdmin());
         user.setPassword(hash);
         userDao.save(user);
         return "redirect:/profile";
