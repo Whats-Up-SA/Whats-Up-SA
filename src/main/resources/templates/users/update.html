@@ -9,7 +9,7 @@
 <nav th:replace="partials/navbar.html :: navbar"></nav>
 
 <div class="update-container">
-    <form th:action="@{|/update/${user.id}|}" method="POST" th:object="${user}">
+    <form th:action="@{|/update/|}" method="POST" th:object="${user}">
 
         <div class="input-group">
             <label for="username">Username</label>
@@ -21,7 +21,7 @@
         </div>
         <div class="input-group">
             <label for="password">Password</label>
-            <input type="password" th:field="*{password}" class="password" id="password"/>
+            <input class="password" type="password" th:field="*{password}" id="password"/>
         </div>
         <div class="input-group">
             <label for="confirmPassword">Confirm Password</label>

@@ -10,7 +10,7 @@
 
 <th:block th:object="${user}">
     <h1 th:text="${user.username}"></h1>
-    <h5 th:text="${user.email}"></h5><a th:href="@{|/update/${user.id}|}">Edit Profile</a>
+    <h5 th:text="${user.email}"></h5><a th:href="@{|/update/|}">Edit Profile</a>
     <img class="profileImage" th:attr="src=@{${user.profileImage}}" style="height: 250px; width: auto"/>
 </th:block>
 

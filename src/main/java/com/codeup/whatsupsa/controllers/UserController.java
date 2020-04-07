@@ -67,49 +67,41 @@ public class UserController {
 //        return "users/otherProfile";
 //    }
 
-    @GetMapping("/update/{id}")
-    public String showUpdateForm(Model model, @PathVariable long id) {
-//        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-        User user = userDao.getOne(id);
+    @GetMapping("/update")
+    public String showUpdateForm(Model model) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("user", user);
         model.addAttribute("fsapi", fsapi);
         model.addAttribute("profileImage", user.getProfileImage());
         return "users/update";
     }
 
-    @PostMapping("/update/{id}")
-    public String saveUpdate(@ModelAttribute User user, @PathVariable long id) {
-//        User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//
-////        User loggedIn = userDao.getOne(Id);
-//        String hash = passwordEncoder.encode(user.getPassword());
-//
-////        userDao.findById(Id);
-//        user.setId(loggedIn.getId());
-//
-//        user.setPassword(hash);
-//
-////        user.setProfileImage(loggedIn.getProfileImage());
-//
-//
-//        //if the profile picture changes, then replace if not keep the same profile picture. prevent url from dropping off of the table
-//
-////        if ((loggedIn.getProfileImage()) != null) {
-////            user.setProfileImage(loggedIn.getProfileImage());
-////        }
-////        if ((loggedIn.getProfileImage()) == null) {
-////            user.setProfileImage(profileImage);
-////        } else
-//
-//        userDao.save(user);
+    @PostMapping("/update")
+    public String saveUpdate(@ModelAttribute User user) {
+        User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-        User loggedIn = userDao.getOne(id);
-        loggedIn.setEmail(user.getEmail());
-        loggedIn.setUsername(user.getUsername());
+//        User loggedIn = userDao.getOne(Id);
         String hash = passwordEncoder.encode(user.getPassword());
-        loggedIn.setPassword(hash);
-        userDao.save(loggedIn);
+
+//        userDao.findById(Id);
+        user.setId(loggedIn.getId());
+
+        user.setPassword(hash);
+
+//        user.setProfileImage(loggedIn.getProfileImage());
+
+
+        //if the profile picture changes, then replace if not keep the same profile picture. prevent url from dropping off of the table
+
+//        if ((loggedIn.getProfileImage()) != null) {
+//            user.setProfileImage(loggedIn.getProfileImage());
+//        }
+//        if ((loggedIn.getProfileImage()) == null) {
+//            user.setProfileImage(profileImage);
+//        } else
+
+        userDao.save(user);
+
         return "redirect:/profile";
     }
 
