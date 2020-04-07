@@ -8,45 +8,44 @@
 <!--<th:block th:include="partials/navbar"/>-->
 <div class="update-container">
 
-<div class="update-header">
-    <nav th:replace="partials/navbar.html :: navbar"></nav>
-</div>
+    <div class="update-header">
+        <nav th:replace="partials/navbar.html :: navbar"></nav>
+    </div>
 
-<div class="lft-gutter"></div>
-<div class="rt-gutter"></div>
+    <div class="lft-gutter"></div>
+    <div class="rt-gutter"></div>
 
     <h1 class="update-h1">update your profile</h1>
 
     <div class="update-form">
-       <form th:action="@{|/update/|}" method="POST" th:object="${user}">
+        <form th:action="@{|/update/|}" method="POST" th:object="${user}">
 
-        <div class="input-group">
-            <label for="username">Username</label>
-            <input th:field="*{username}" id="username"/>
-        </div>
-        <div class="input-group">
-            <label for="email">Email</label>
-            <input th:field="*{email}" class="email" id="email"/>
-        </div>
-        <div class="input-group">
-            <label for="password">Password</label>
-            <input class="password" type="password" th:field="*{password}" id="password"/>
-        </div>
-        <div class="input-group">
-            <label for="confirmPassword">Confirm Password</label>
-            <input class="confirmPassword" placeholder="Confirm Password" type="password" required="required"
-                   id="confirmPassword"/>
-        </div>
-         
-        <input type="button" value="Upload Profile Picture" id="pickWatermark" onclick="pickMark()">
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input th:field="*{username}" id="username"/>
+            </div>
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input th:field="*{email}" class="email" id="email"/>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input class="password" type="password" th:field="*{password}" id="password"/>
+            </div>
+            <div class="input-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input class="confirmPassword" placeholder="Confirm Password" type="password" required="required"
+                       id="confirmPassword"/>
+            </div>
 
-        <input type="hidden" name="profileImage" id="profileImage" th:field="*{profileImage}"/>
+            <input type="button" value="Upload Profile Picture" id="pickWatermark" onclick="pickMark()">
 
-        <input value="Update account" class="btnSubmit" id="updateSaved" type="submit"/>
+            <input type="hidden" name="profileImage" id="profileImage" th:field="*{profileImage}"/>
 
-    </form>
+            <input value="Update account" class="btnSubmit" id="updateSaved" type="submit"/>
+
+        </form>
     </div>
-
 </div>
 
 <script th:inline="javascript">

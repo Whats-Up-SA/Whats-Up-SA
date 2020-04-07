@@ -27,7 +27,7 @@ public class UserController {
 
     @Value("${filestack.api.key}")
     private String fsapi;
-  
+
     public UserController(UserRepository userDao, PasswordEncoder passwordEncoder, EventsRepository eventDao, RelationshipRepository relationshipDao) {
 
         this.userDao = userDao;
@@ -78,7 +78,7 @@ public class UserController {
         model.addAttribute("friendList", friendUsers);
         model.addAttribute("pairList",pairList);
         model.addAttribute("events", eventDao.FindEventsByUserID(user.getId()));
-        model.addAttribute("user", user);
+        model.addAttribute("user", userDao.getOne(user.getId()));
         return "users/profile";
     }
 
@@ -91,7 +91,10 @@ public class UserController {
 
     @GetMapping("/profile/{id}")
     public String otherProfile(@PathVariable long id, Model model) {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        User user1 = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userDao.getUserById(user1.getId());
 
 //        if(user.getId() < id){
 //            Long checkFriends = relationshipDao.checkFriendship(user, userDao.getOne(id));
@@ -150,7 +153,7 @@ public class UserController {
             model.addAttribute("checkFriendship", checkFriends);
         }
 
-            model.addAttribute("user", userDao.getOne(id));
+        model.addAttribute("user", userDao.getOne(id));
         return "users/detail";
     }
 
