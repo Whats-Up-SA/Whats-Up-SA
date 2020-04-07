@@ -44,6 +44,7 @@ public class User {
         this.email = email;
         this.password = password;
         this.admin = admin;
+//        this.profileImage = profileImage;
     }
 
     public User(User copy) {

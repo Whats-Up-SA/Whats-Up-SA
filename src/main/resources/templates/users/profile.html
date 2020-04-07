@@ -8,9 +8,9 @@
 
 <nav th:replace="partials/navbar.html :: navbar"></nav>
 
-<th:block th:object="${events}">
+<th:block th:object="${user}">
     <h1 th:text="${user.username}"></h1>
-    <h5 th:text="${user.email}"></h5><a th:href="@{|/update/${user.id}|}"><button>Edit profile</button></a>
+    <h5 th:text="${user.email}"></h5><a th:href="@{|/update/${user.id}|}">Edit Profile</a>
     <img class="profileImage" th:attr="src=@{${user.profileImage}}" style="height: 250px; width: auto"/>
 </th:block>
 

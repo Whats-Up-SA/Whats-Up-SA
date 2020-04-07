@@ -103,7 +103,7 @@ public class UserController {
 ////        } else
 //
 //        userDao.save(user);
-//
+
         User loggedIn = userDao.getOne(id);
         loggedIn.setEmail(user.getEmail());
         loggedIn.setUsername(user.getUsername());
@@ -112,7 +112,6 @@ public class UserController {
         userDao.save(loggedIn);
         return "redirect:/profile";
     }
-
 
     @PostMapping("all/{id}/delete")
     public String deleteUserPage(@PathVariable long id) {

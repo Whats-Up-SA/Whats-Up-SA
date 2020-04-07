@@ -28,13 +28,13 @@
             <input class="confirmPassword" placeholder="Confirm Password" type="password" required="required"
                    id="confirmPassword"/>
         </div>
-        <div>
-            <input type="button" value="Upload Profile Picture" id="pickWatermark" onclick="pickMark()">
-            <br>
-            <input value="Update account" class="btnSubmit" id="updateSaved" type="submit"/>
-            <br>
-            <input type="text" name="profileImage" id="profileImage" th:field="*{profileImage}"/>
-        </div>
+
+        <input type="button" value="Upload Profile Picture" id="pickWatermark" onclick="pickMark()">
+
+        <input type="text" name="profileImage" id="profileImage" th:field="*{profileImage}"/>
+
+        <input value="Update account" class="btnSubmit" id="updateSaved" type="submit"/>
+
     </form>
 </div>
 
