@@ -232,6 +232,7 @@ public class UserController {
 
         String hash = passwordEncoder.encode(user.getPassword());
         user.setId(loggedIn.getId());
+        user.setAdmin(loggedIn.getAdmin());
         user.setPassword(hash);
         userDao.save(user);
         return "redirect:/profile";
