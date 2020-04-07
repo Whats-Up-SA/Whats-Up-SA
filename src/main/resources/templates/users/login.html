@@ -5,20 +5,27 @@
     <title>login</title>
 </head>
 <body>
-<!--<th:block th:include="partials/navbar"/>-->
-<nav th:replace="partials/navbar.html :: navbar"></nav>
+<!--<nav th:replace="partials/navbar.html :: navbar"></nav>-->
 
-    <div class="container">
+    <div class="login-container">
 
-        <h1>login</h1>
+        <div class="header-div1">
+            <nav th:replace="partials/navbar.html :: navbar"></nav>
+        </div>
 
-        <div th:if="${param.error}">
+        <div class="lft-gutter-div2"></div>
+        <div class="rt-gutter-div3"></div>
+
+        <h1 class="h1-div4">login</h1>
+
+        <div th:if="${param.error}" class="error-div5">
             invalid username or password
         </div>
-        <div th:if="${param.logout}">
+        <div th:if="${param.logout}" class="logout-div6">
             you have successfully been logged out
         </div>
 
+        <div class="form-div7">
         <form th:action="@{/login}" method="post">
             <div>
                 <label for="username">username</label>
@@ -29,8 +36,9 @@
                 <label for="password">password</label>
                 <input id="password" name="password" type="password" placeholder="password">
             </div>
-            <input type="submit" th:value="login">
+            <input type="submit" th:value="login" class="login-div10">
         </form>
+        </div>
 
     </div>
 
