@@ -18,7 +18,7 @@
 <!--Category: <p th:text="${event.category}"></p>-->
 
 <h1>Edit Event:</h1>
-<form th:action="@{|/events/${event.id}/edit|}" th:method="POST">
+<form th:action="@{|/events/${event.id}/edit|}" th:method="POST" th:object="${event}">
     <label for="title">title</label>
     <input id="title" type="text" name="title" th:value="${event.title}" placeholder="Enter title">
     <br/>
@@ -36,7 +36,8 @@
     <br/>
 
 	<input type="button" value="Add Image(s)" id="pickWatermark" onclick="pickMark()">
-	<input type="hidden" name="eventImage" id="eventImage">
+
+    <input type="hidden" name="eventImage" id="eventImage" th:field="*{eventImage}"/>
 
 	<input value="Update Event" type="submit"/>
 </form>
