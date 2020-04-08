@@ -1,5 +1,5 @@
 import { Calendar } from '@fullcalendar/core';
-// import '@fullcalendar/core/main.css';
+import '@fullcalendar/core/main.css';
 
 document.addEventListener('DOMContentLoaded', function() {
     let calendarEl = document.getElementById('calendar');

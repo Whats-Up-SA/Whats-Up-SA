@@ -49,7 +49,7 @@ li {
 
 .profile-container {
     display: grid;
-    grid-template-columns: .5fr repeat(2, 1fr) .5fr;
+    grid-template-columns: .15fr .70fr 1fr .15fr;
     grid-template-rows: .25fr .5fr 1fr .25fr;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
