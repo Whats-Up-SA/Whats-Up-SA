@@ -9,12 +9,12 @@
 <div class="profile-container">
 
 
-    <div id="nav">
+    <div class="nav-profile">
         <nav th:replace="partials/navbar.html :: navbar"></nav>
     </div>
 
-    <div id="left"></div>
-    <div id="right"></div>
+    <div class="left-profile"></div>
+    <div class="right-profile"></div>
 
 
     <div class="user-info">
@@ -23,7 +23,6 @@
             <h5 th:text="${user.email}"></h5><a href="/update">edit</a>
           <img class="profileImage" th:attr="src=@{${user.profileImage}}" style="height: 250px; width: auto"/>
         </div>
-    </div>
 
         <!--friend request notifications-->
         <th:block th:object="${pairList}">
@@ -46,6 +45,7 @@
                 <br/>
             </th:block>
         </th:block>
+    </div>
 
     <div class="user-posts">
         <p>here are your posts</p>
@@ -58,10 +58,11 @@
         </th:block>
     </div>
 
-    <div class="calendar-container" id="calendar">
+    <div class="calendar-profile" id="calendar">
         placeholder for a calendar
     </div>
 
+    <div class="footer-profile"></div>
 </div>
 
 
