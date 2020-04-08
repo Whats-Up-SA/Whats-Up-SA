@@ -41,7 +41,7 @@ public class Event {
 //
 //    private List<User> users;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany
     @JoinTable(
             name = "event_category",
             joinColumns = {@JoinColumn(name = "event_id")},
