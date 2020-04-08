@@ -21,13 +21,13 @@
     <div class="form-group">
         <form th:action="@{|/submit|}" th:method="POST">
             <label for="title">Title</label> <br>
-            <input id="title" type="text" name="title" placeholder="Enter event title">
+            <input id="title" type="text" name="title" placeholder="Enter event title" required>
             <br/>
             <label for="description">Description</label> <br>
-            <textarea id="description" name="description" placeholder="Enter event description"></textarea>
+            <textarea id="description" name="description" placeholder="Enter event description" required></textarea>
             <br/>
             <label for="parentCategory">Pick a parent category:</label>
-            <select name="parentCategory" id="parentCategory">
+            <select name="parentCategory" id="parentCategory" required>
                 <option value="" selected disabled hidden>Categories</option>
                 <div th:each="category : ${parentCategories}">
                     <option th:value="${category.id}" th:text="${category.category}"></option>
@@ -39,6 +39,19 @@
                 <label th:for="${category.id}" th:text="${category.category}"></label>
                 <br/>
             </div>
+
+
+            <label for="startTime">Start Time</label>
+            <input id="startTime" type="time" name="startTime" required>
+
+            <label for="endTime">End Time</label>
+            <input id="endTime" type="time" name="endTime">
+
+            <label for="startDate">Start Date</label>
+            <input id="startDate" type="date" name="startDate" required>
+
+            <label for="endDate">End Date</label>
+            <input id="endDate" type="date" name="endDate">
 
             <input type="button" value="Add Image(s)" id="pickWatermark" onclick="pickMark()">
             <input type="hidden" name="eventImage" id="eventImage">

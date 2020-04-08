@@ -55,7 +55,7 @@ public class EventController {
     }
 
     @PostMapping("/submit")
-    public String createPost(@RequestParam String title, @RequestParam String description, @RequestParam Long parentCategory, @RequestParam(name = "eventImage") String eventImage) {
+    public String createPost(@RequestParam String title, @RequestParam String description, @RequestParam Long parentCategory, @RequestParam(name = "eventImage") String eventImage, @RequestParam String startTime, @RequestParam String endTime, @RequestParam String endDate, @RequestParam String startDate) {
         Event newEvent = new Event();
         List<Category> eventCategories = new ArrayList<>();
 
@@ -66,6 +66,10 @@ public class EventController {
         newEvent.setTitle(title);
         newEvent.setDescription(description);
         newEvent.setEventImage(eventImage);
+        newEvent.setStartTime(startTime);
+        newEvent.setEndTime(endTime);
+        newEvent.setStartDate(startDate);
+        newEvent.setEndDate(endDate);
         User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         newEvent.setUser(loggedIn);
         newEvent.setApproved(false);
