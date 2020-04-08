@@ -2,8 +2,8 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials/header.html :: header">
 
-	<meta charset="UTF-8">
-	<title>edit event</title>
+    <meta charset="UTF-8">
+    <title>edit event</title>
 
 
 </head>
@@ -22,7 +22,7 @@
         <h1 th:text="${event.title}"></h1>
         <p th:text="${event.description}"></p>
     </div>
-<!--Category: <p th:text="${event.category}"></p>-->
+    <!--Category: <p th:text="${event.category}"></p>-->
 
     <div class="form-group">
         <h1>Edit Event:</h1>
@@ -43,7 +43,19 @@
             </select>
             <br/>
 
-            <input type="button" value="Add Image(s)" id="pickWatermark" onclick="pickMark()">
+            <label for="startTime">Start Time</label>
+            <input id="startTime" type="time" name="startTime" th:value="${event.startTime}">
+
+            <label for="endTime">End Time</label>
+            <input id="endTime" type="time" name="endTime" th:value="${event.endTime}">
+
+            <label for="startDate">Start Date</label>
+            <input id="startDate" type="date" name="startDate" th:value="${event.startDate}">
+
+            <label for="endDate">End Date</label>
+            <input id="endDate" type="date" name="endDate" th:value="${event.endDate}">
+
+            <input type="button" value="Add Profile Image" id="pickWatermark" onclick="pickMark()">
 
             <input type="hidden" name="eventImage" id="eventImage" th:field="*{eventImage}"/>
 
@@ -56,16 +68,16 @@
 </div>
 
 <script th:inline="javascript">
-	let client = filestack.init(document.querySelector('meta.fsapi').content);
+    let client = filestack.init(document.querySelector('meta.fsapi').content);
 
-	function pickMark() {
-		client.pick({
-			accept: 'image/*',
-			maxFiles: 1
-		}).then(function (result) {
-			document.getElementById("eventImage").value = result.filesUploaded[0].url;
-		});
-	}
+    function pickMark() {
+        client.pick({
+            accept: 'image/*',
+            maxFiles: 1
+        }).then(function (result) {
+            document.getElementById("eventImage").value = result.filesUploaded[0].url;
+        });
+    }
 </script>
 
 </body>
