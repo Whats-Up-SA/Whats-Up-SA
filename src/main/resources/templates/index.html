@@ -18,11 +18,24 @@
                 <a th:href="@{|/events/${event.id}|}"><h2 th:text="${event.title}"></h2></a>
                 <p th:text="${event.description}"></p>
                 <img class="eventImage" th:attr="src=@{${event.eventImage}}" style="height: 250px; width: auto"/>
+                <p th:text="|Start Date: ${event.startDate}|"></p>
+                <p th:text="|End Date: ${event.endDate}|"></p>
+                <p th:text="|Start Time: ${event.startTime}|"></p>
+                <p th:text="|End Time: ${event.endTime}|"></p>
+
+                <!--                <script type="text/javascript" th:inline="javascript">-->
+                <!--                    var dateString = ([[${event.startDate}]]);-->
+                <!--                    var dateConvert = new Date(dateString);-->
+                <!--                    document.getElementById("startDate").innerHTML = dateConvert;-->
+
+                <!--                    var dateString1 = ([[${event.endDate}]]);-->
+                <!--                    var dateConvert1 = new Date(dateString1);-->
+                <!--                    document.getElementById("endDate").innerHTML = dateConvert1;-->
+                <!--                </script>-->
+
             </div>
         </div>
     </div>
-
 </div>
-
 </body>
 </html>
