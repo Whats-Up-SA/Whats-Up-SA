@@ -28,6 +28,18 @@ public class Event {
     @Column(nullable = true)
     private String eventImage;
 
+    @Column(nullable = false)
+    private String startTime;
+
+    @Column(nullable = true)
+    private String endTime;
+
+    @Column(nullable = false)
+    private String startDate;
+
+    @Column(nullable = true)
+    private String endDate;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
@@ -53,12 +65,16 @@ public class Event {
     public Event() {
     }
 
-    public Event(Long id, String title, String body, User user, Boolean isApproved) {
+    public Event(Long id, String title, String body, User user, Boolean isApproved, String endTime, String startTime, String startDate, String endDate) {
         this.title = title;
         this.description = body;
         this.id = id;
         this.user = user;
         this.isApproved = isApproved;
+        this.endTime = endTime;
+        this.startTime = startTime;
+        this.startDate = startDate;
+        this.endDate = endDate;
     }
 
     public Long getId() {
@@ -119,5 +135,37 @@ public class Event {
 
     public void setEventImage(String eventImage) {
         this.eventImage = eventImage;
+    }
+
+    public String getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
+    }
+
+    public String getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
     }
 }
