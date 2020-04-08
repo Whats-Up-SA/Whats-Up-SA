@@ -14,22 +14,6 @@ li {
     float: right;
 }
 
-/*form grids (login/logout/update/register*/
-/*.form-container {*/
-/*    display: grid;*/
-/*    grid-template-columns: repeat(3, 1fr);*/
-/*    grid-template-rows: 1fr .25fr 1fr;*/
-/*    grid-column-gap: 0px;*/
-/*    grid-row-gap: 0px;*/
-/*}*/
-
-/*.nav-div { grid-area: 1 / 1 / 2 / 4; }*/
-/*.left-gutter  { grid-area: 2 / 1 / 6 / 2; }*/
-/*.right-gutter { grid-area: 2 / 3 / 6 / 4; }*/
-/*.header { grid-area: 2 / 2 / 3 / 3; }*/
-/*.form-group { grid-area: 3 / 2 / 4 / 3; }*/
-
-
 .form-container {
     display: grid;
     grid-template-columns: .5fr 1fr .5fr;
@@ -47,22 +31,35 @@ li {
 .header { grid-area: 2 / 2 / 3 / 3; }
 .form-group { grid-area: 3 / 2 / 4 / 3; }
 
-/*profile grid*/
+/*profile grids (admin/profile/details*/
+/*.profile-container {*/
+/*    display: grid;*/
+/*    grid-template-columns: repeat(4, 1fr);*/
+/*    grid-template-rows: repeat(3, 1fr);*/
+/*    grid-column-gap: 0px;*/
+/*    grid-row-gap: 0px;*/
+/*}*/
+
+/*#nav { grid-area: 1 / 1 / 2 / 5; }*/
+/*#left { grid-area: 2 / 1 / 4 / 2; }*/
+/*#right { grid-area: 2 / 4 / 4 / 5; }*/
+/*.user-info { grid-area: 2 / 2 / 3 / 3; }*/
+/*.user-posts { grid-area: 3 / 2 / 4 / 3; }*/
+/*.calendar-container { grid-area: 2 / 3 / 4 / 4; }*/
+
 .profile-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: .15fr .70fr 1fr .15fr;
+    grid-template-rows: .25fr .5fr 1fr .25fr;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
 }
 
-#nav { grid-area: 1 / 1 / 2 / 5; }
-#left { grid-area: 2 / 1 / 4 / 2; }
-#right { grid-area: 2 / 4 / 4 / 5; }
+.nav-profile { grid-area: 1 / 1 / 2 / 5; }
+.footer-profile { grid-area: 4 / 1 / 5 / 5; }
+.left-profile { grid-area: 2 / 1 / 4 / 2; }
+.right-profile { grid-area: 2 / 4 / 4 / 5; }
 .user-info { grid-area: 2 / 2 / 3 / 3; }
 .user-posts { grid-area: 3 / 2 / 4 / 3; }
-.calendar-container { grid-area: 2 / 3 / 4 / 4; }
-
-/*admin grid*/
-#admin-nav
+.calendar-profile { grid-area: 2 / 3 / 4 / 4; }
 
