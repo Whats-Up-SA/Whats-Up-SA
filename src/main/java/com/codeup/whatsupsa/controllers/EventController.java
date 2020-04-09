@@ -55,7 +55,7 @@ public class EventController {
     }
 
     @PostMapping("/submit")
-    public String createPost(@RequestParam String title, @RequestParam String description, @RequestParam Long parentCategory, @RequestParam(name = "eventImage") String eventImage) {
+    public String createPost(@RequestParam String title, @RequestParam String description, @RequestParam Long parentCategory, @RequestParam(name = "eventImage") String eventImage, @RequestParam String startTime, @RequestParam String endTime, @RequestParam String endDate, @RequestParam String startDate) {
         Event newEvent = new Event();
         List<Category> eventCategories = new ArrayList<>();
 
@@ -66,6 +66,10 @@ public class EventController {
         newEvent.setTitle(title);
         newEvent.setDescription(description);
         newEvent.setEventImage(eventImage);
+        newEvent.setStartTime(startTime);
+        newEvent.setEndTime(endTime);
+        newEvent.setStartDate(startDate);
+        newEvent.setEndDate(endDate);
         User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         newEvent.setUser(loggedIn);
         newEvent.setApproved(false);
@@ -107,7 +111,7 @@ public class EventController {
     }
 
     @PostMapping("/events/{id}/edit")
-    public String updatePost(@PathVariable Long id, @RequestParam String title, @RequestParam String body, @RequestParam(name = "eventImage") String eventImage) {
+    public String updatePost(@PathVariable Long id, @RequestParam String title, @RequestParam String body, @RequestParam(name = "eventImage") String eventImage, @RequestParam String startTime, @RequestParam String endTime, @RequestParam String endDate, @RequestParam String startDate) {
         User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         if (loggedIn.getAdmin()) {
@@ -115,6 +119,10 @@ public class EventController {
             e.setTitle(title);
             e.setDescription(body);
             e.setEventImage(eventImage);
+            e.setStartDate(startDate);
+            e.setEndDate(endDate);
+            e.setStartTime(startTime);
+            e.setEndTime(endTime);
             eventDao.save(e);
             return "redirect:/admin";
         } else
