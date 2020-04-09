@@ -37,8 +37,14 @@ public class Event {
     @Column(nullable = false)
     private String startDate;
 
+    @Column(nullable = false)
+    private String startDateFull;
+
     @Column(nullable = true)
     private String endDate;
+
+    @Column(nullable = true)
+    private String endDateFull;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -65,7 +71,7 @@ public class Event {
     public Event() {
     }
 
-    public Event(Long id, String title, String body, User user, Boolean isApproved, String endTime, String startTime, String startDate, String endDate) {
+    public Event(Long id, String title, String body, User user, Boolean isApproved, String endTime, String startTime, String startDate, String endDate, String startDateFull, String endDateFull) {
         this.title = title;
         this.description = body;
         this.id = id;
@@ -75,6 +81,8 @@ public class Event {
         this.startTime = startTime;
         this.startDate = startDate;
         this.endDate = endDate;
+        this.startDateFull = startDateFull;
+        this.endDateFull = endDateFull;
     }
 
     public Long getId() {
@@ -167,5 +175,21 @@ public class Event {
 
     public void setEndDate(String endDate) {
         this.endDate = endDate;
+    }
+
+    public String getStartDateFull() {
+        return startDateFull;
+    }
+
+    public void setStartDateFull(String startDateFull) {
+        this.startDateFull = startDateFull;
+    }
+
+    public String getEndDateFull() {
+        return endDateFull;
+    }
+
+    public void setEndDateFull(String endDateFull) {
+        this.endDateFull = endDateFull;
     }
 }

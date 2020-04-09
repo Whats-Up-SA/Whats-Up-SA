@@ -22,20 +22,10 @@
         <p th:text="${pair.key.description}"></p>
         <p th:text="${pair.value.category}"></p>
 
-        <p th:text="|Start Date: ${pair.key.startDate}|"></p>
-        <p th:text="|End Date: ${pair.key.endDate}|"></p>
+        <p th:text="|Start Date: ${pair.key.startDateFull}|"></p>
+        <p th:text="|End Date: ${pair.key.endDateFull}|"></p>
         <p th:text="|Start Time: ${pair.key.startTime}|"></p>
         <p th:text="|End Time: ${pair.key.endTime}|"></p>
-
-        <p>Date: <span id="startDate"></span></p>
-
-<!--        <script th:inline="javascript">-->
-<!--            let startDate = [[${pair.key.startDate}]];-->
-<!--            let otherDate = new Date(Date.parse(startDate));-->
-<!--            let displayStartDate = otherDate.toDateString();-->
-<!--            document.getElementById('startDate').innerText = displayStartDate;-->
-<!--        </script>-->
-
     </div>
 </div>
 </body>
