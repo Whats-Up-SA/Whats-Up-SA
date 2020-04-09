@@ -1,7 +1,29 @@
 // alert for submissions
-$(document).ready(function () {
+$(function () {
     $("#submit-btn").click(function () {
-        alert("Thank you for your submission! It will be reviewed by an admin.");
+        if ($('#title').val().length === 0) {
+            alert('Please provide an event title.');
+            return false;
+        }
+        if ($('#description').val().length === 0) {
+            alert('Please provide an event description.');
+            return false;
+        }
+        if ($('#parentCategory').val().length === 0) {
+            alert('Please select a category.');
+            return false;
+        }
+        if ($('#startTime').val().length === 0) {
+            alert('Please provide an event start time.');
+            return false;
+        }
+        if ($('#startDate').val().length === 0) {
+            alert('Please provide an event start date.');
+            return false;
+        } else {
+            alert('Thank you for your submission! It will be reviewed by an admin.');
+            return true;
+        }
     });
 });
 
@@ -31,11 +53,11 @@ $(function () {
 });
 
 // alert for account updates
-// $(document).ready(function () {
-//     $("#updateSaved").click(function () {
-//         alert("Your account has been updated");
-//     });
-// });
+$(document).ready(function () {
+    $("#updateSaved").click(function () {
+        alert("Your account has been updated");
+    });
+});
 
 // confirmation window when "delete user button is pressed"
 $(function () {
