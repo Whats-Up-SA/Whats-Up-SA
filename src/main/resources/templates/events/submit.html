@@ -14,7 +14,7 @@
     <div class="left-gutter"></div>
     <div class="right-gutter"></div>
 
-    <div class="header">
+    <div class="banner">
         <h1>Submit an Event</h1>
     </div>
 
@@ -39,19 +39,18 @@
                 <label th:for="${category.id}" th:text="${category.category}"></label>
                 <br/>
             </div>
-
             <label for="startTime">Start Time</label>
             <input id="startTime" type="time" name="startTime" required>
-
+            <br/>
             <label for="endTime">End Time</label>
             <input id="endTime" type="time" name="endTime">
-
+            <br/>
             <label for="startDate">Start Date</label>
             <input id="startDate" type="date" name="startDate" required>
-
+            <br/>
             <label for="endDate">End Date</label>
             <input id="endDate" type="date" name="endDate">
-
+            <br/>
             <input type="button" value="Add Image(s)" id="pickWatermark" onclick="pickMark()">
             <input type="hidden" name="eventImage" id="eventImage">
 
