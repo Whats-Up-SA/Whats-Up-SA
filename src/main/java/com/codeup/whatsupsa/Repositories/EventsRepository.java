@@ -1,5 +1,6 @@
 package com.codeup.whatsupsa.Repositories;
 
+import com.codeup.whatsupsa.models.Category;
 import com.codeup.whatsupsa.models.Event;
 import com.codeup.whatsupsa.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,5 +14,11 @@ public interface EventsRepository extends JpaRepository<Event, Long> {
 
     @Query("from Event e where e.user.id = ?1")
     List<Event> FindEventsByUserID(Long id);
+
+    @Query("FROM Event e where e.isApproved = true")
+    List<Event> findApprovedEvents();
+
+    @Query("FROM Event e where e.isApproved = false")
+    List<Event> findPendingEvents();
 
 }
