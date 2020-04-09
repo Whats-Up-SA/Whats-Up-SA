@@ -147,7 +147,7 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Montserrat', sans-serif;
     text-shadow: 1px 1px 0px rgba(0,0,0,0.2);
 }
-p {
+p, label {
     line-height: 1.5;
     font-family: 'Merriweather', serif;
 
@@ -156,6 +156,41 @@ a, .link-button {
     font-family: 'Montserrat', sans-serif;
     color: black;
     text-decoration: none;
+}
+.banner{
+    margin: 0 auto;
+}
+.form-group{
+    background-color: peachpuff;
+    margin: 0 auto;
+    border-radius: 10px;
+    width: 75%;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+
+    display:table;
+}
+.form-group form{
+    text-align: center;
+    margin: auto;
+    padding: 10px;
+
+    display: table-cell;
+    vertical-align: middle;
+}
+.form-group label{
+    text-align: center;
+}
+.form-group input, .form-group textarea{
+    text-align: center;
+    width: 70%;
+    padding: 6px 10px;
+    margin: 4px 0;
+    border: 0;
+    box-sizing: border-box;
+    border-radius: 5px;
+
+    box-shadow: 0 1px 2px rgba(0,0,0,0.12), 0 1px 1px rgba(0,0,0,0.24);
+
 }
 .form-container {
     display: grid;
