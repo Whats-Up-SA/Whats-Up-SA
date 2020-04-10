@@ -55,11 +55,21 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
                 //only authenticated users can access the following
                 .antMatchers(
-                        "/events/submit",
                         "/events/{id}/edit",
                         "/update",
                         "/all",
-                        "/profile"
+                        "/profile",
+                        "/admin",
+                        "/submit",
+                        "/events/{id}/delete",
+                        "/events/{id}/approve",
+                        "all/{id}/delete",
+                        "/profile/{id}",
+                        "/profile/{id}/unfriend",
+                        "/profile/{id}/fr",
+                        "/profile/{id}/decline",
+                        "/profile/{id}/approve",
+                        "/users/detail/fr/{id}"
                 )
                 .authenticated()
         ;
