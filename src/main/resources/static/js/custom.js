@@ -76,13 +76,26 @@ $(function () {
 //     }
 // })();
 
-$( function() {
-    $( ".datepicker" ).datepicker({
+// start date datepicker
+$(document).ready(function () {
+    $("#startDateFull").datepicker({
         altFormat: 'yy-mm-dd',
-        altField: ".alternate",
+        altField: ".alternate1",
         dateFormat: "DD, d MM, yy",
         changeMonth: true,
         changeYear: true,
         minDate: 0
     });
-} );
+});
+
+// end date datepicker
+$(document).ready(function () {
+    $("#endDateFull").datepicker({
+        altFormat: 'yy-mm-dd',
+        altField: ".alternate2",
+        dateFormat: "DD, d MM, yy",
+        changeMonth: true,
+        changeYear: true,
+        minDate: 0
+    });
+});
