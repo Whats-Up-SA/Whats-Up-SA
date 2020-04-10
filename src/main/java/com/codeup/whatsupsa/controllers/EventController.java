@@ -86,6 +86,10 @@ public class EventController {
         model.addAttribute("title", event.getTitle());
         model.addAttribute("description", event.getDescription());
         model.addAttribute("eventImage", event.getEventImage());
+        model.addAttribute("startDateFull", event.getStartDateFull());
+        model.addAttribute("endDateFull", event.getEndDateFull());
+        model.addAttribute("startTime", event.getStartTime());
+        model.addAttribute("endTime", event.getEndTime());
         return "events/show";
     }
 

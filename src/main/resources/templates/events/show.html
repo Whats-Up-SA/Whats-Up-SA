@@ -10,6 +10,10 @@
 
 <h1 th:text="${title}"></h1>
 <p th:text="${description}"></p>
+<p th:text="|Start Date: ${startDateFull}|"></p>
+<p th:text="|End Date: ${endDateFull}|"></p>
+<p th:text="|Start Time: ${startTime}|"></p>
+<p th:text="|End Time: ${endTime}|"></p>
 <!--    Category: <p th:text="${category}"></p>-->
 <p>Categories: </p>
 <div th:each="category : ${categories}"><p th:text="${category.category}"></p></div>
