@@ -75,3 +75,14 @@ $(function () {
 //         }
 //     }
 // })();
+
+$( function() {
+    $( ".datepicker" ).datepicker({
+        altFormat: 'yy-mm-dd',
+        altField: ".alternate",
+        dateFormat: "DD, d MM, yy",
+        changeMonth: true,
+        changeYear: true,
+        minDate: 0
+    });
+} );

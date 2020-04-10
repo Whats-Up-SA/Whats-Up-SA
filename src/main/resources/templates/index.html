@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:fmt="http://www.w3.org/1999/html">
 <head th:replace="partials/header.html :: header">
     <meta charset="UTF-8">
     <title>events</title>
@@ -11,17 +11,22 @@
 
 <nav th:replace="partials/navbar.html :: navbar"></nav>
 <div class="eventContainer">
-<!--    <div th:each="event : ${events}" class="eventCard">-->
-<!--        <img class="eventImage" th:attr="src=@{${event.eventImage}}"/>-->
-<!--        <a th:href="@{|/events/${event.id}|}"><h2 th:text="${event.title}"></h2></a>-->
-<!--        <p th:text="${event.description}"></p>-->
-<!--    </div>-->
+    <!--    <div th:each="event : ${events}" class="eventCard">-->
+    <!--        <img class="eventImage" th:attr="src=@{${event.eventImage}}"/>-->
+    <!--        <a th:href="@{|/events/${event.id}|}"><h2 th:text="${event.title}"></h2></a>-->
+    <!--        <p th:text="${event.description}"></p>-->
+    <!--    </div>-->
     <div th:each="pair : ${pairList}" class="eventCard" th:classappend="${pair.value.category}">
         <img class="eventImage" th:attr="src=@{${pair.key.eventImage}}"/>
         <a th:href="@{|/events/${pair.key.id}|}"><h2 th:text="${pair.key.title}"></h2></a>
         <p th:text="${pair.key.description}"></p>
         <p>Date: <span th:text="${pair.key.startDate}"></span>.<br/>Start time: <span th:text="${pair.key.startTime}"></span>.<br/>End time: <span th:text="${pair.key.endTime}"></span>.</p>
         <p th:text="${pair.value.category}"></p>
+
+        <p th:text="|Start Date: ${pair.key.startDateFull}|"></p>
+        <p th:text="|End Date: ${pair.key.endDateFull}|"></p>
+        <p th:text="|Start Time: ${pair.key.startTime}|"></p>
+        <p th:text="|End Time: ${pair.key.endTime}|"></p>
     </div>
 </div>
 </body>
