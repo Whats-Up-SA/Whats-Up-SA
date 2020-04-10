@@ -50,10 +50,13 @@
             <input id="endTime" type="time" name="endTime" th:value="${event.endTime}">
 
             <label for="startDate">Start Date</label>
-            <input id="startDate" type="date" name="startDate" th:value="${event.startDate}">
+            <input type="text" class="datepicker" id="startDateFull" name="startDateFull" size="30" th:value="${event.startDateFull}">
+            <input type="hidden" class="alternate1" id="startDate" name="startDate" th:value="${event.startDate}">
 
             <label for="endDate">End Date</label>
-            <input id="endDate" type="date" name="endDate" th:value="${event.endDate}">
+            <input type="text" class="datepicker" id="endDateFull" name="endDateFull" size="30" th:value="${event.endDateFull}">
+            <input type="hidden" class="alternate2" id="endDate" name="endDate" th:value="${event.endDate}">
+
 
             <input type="button" value="Add Profile Image" id="pickWatermark" onclick="pickMark()">
 

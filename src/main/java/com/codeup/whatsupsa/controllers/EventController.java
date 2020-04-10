@@ -113,7 +113,7 @@ public class EventController {
     }
 
     @PostMapping("/events/{id}/edit")
-    public String updatePost(@PathVariable Long id, @RequestParam String title, @RequestParam String body, @RequestParam(name = "eventImage") String eventImage, @RequestParam String startTime, @RequestParam String endTime, @RequestParam String endDate, @RequestParam String startDate) {
+    public String updatePost(@PathVariable Long id, @RequestParam String title, @RequestParam String body, @RequestParam(name = "eventImage") String eventImage, @RequestParam String startTime, @RequestParam String endTime, @RequestParam String endDate, @RequestParam String startDate, @RequestParam String endDateFull, @RequestParam String startDateFull) {
         User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         if (loggedIn.getAdmin()) {
@@ -122,7 +122,9 @@ public class EventController {
             e.setDescription(body);
             e.setEventImage(eventImage);
             e.setStartDate(startDate);
+            e.setStartDateFull(startDateFull);
             e.setEndDate(endDate);
+            e.setEndDateFull(endDateFull);
             e.setStartTime(startTime);
             e.setEndTime(endTime);
             eventDao.save(e);
