@@ -44,10 +44,10 @@
             <br/>
 
             <label for="startTime">Start Time</label>
-            <input id="startTime" type="time" name="startTime" th:value="${event.startTime}">
+            <input id="startTime" class="timepicker" type="text" name="startTime" th:value="${event.startTime}">
 
             <label for="endTime">End Time</label>
-            <input id="endTime" type="time" name="endTime" th:value="${event.endTime}">
+            <input id="endTime" class="timepicker" type="text" name="endTime" th:value="${event.endTime}">
 
             <label for="startDate">Start Date</label>
             <input type="text" class="datepicker" id="startDateFull" name="startDateFull" size="30" th:value="${event.startDateFull}">
