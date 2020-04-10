@@ -17,6 +17,10 @@
 		<div th:each="event : ${events}" class="eventCard">
 			<a th:href="@{|/events/${event.id}|}"><h2 th:text="${event.title}"></h2></a>
 			<p th:text="${event.description}"></p>
+			<p th:text="|Start Date: ${event.startDateFull}|"></p>
+			<p th:text="|End Date: ${event.endDateFull}|"></p>
+			<p th:text="|Start Time: ${event.startTime}|"></p>
+			<p th:text="|End Time: ${event.endTime}|"></p>
 			<img class="eventImage" th:attr="src=@{${event.eventImage}}" style="height: 250px; width: auto"/>
 			<a th:href="@{|/events/${event.id}/edit|}"><p th:text="edit"></p></a>
 			<form th:action="@{|/events/${event.id}/approve|}" th:method="POST" style="display:inline">
