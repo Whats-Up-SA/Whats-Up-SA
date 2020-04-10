@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="en">
 <head th:replace="partials/header.html :: header">
     <meta charset="UTF-8">
     <title>profile</title>
@@ -27,7 +27,9 @@
         <div class="welcome" th:object="${user}">
             <h1 th:text="${user.username}"></h1>
             <h5 th:text="${user.email}"></h5><a href="/update">edit</a>
-          <img class="profileImage" th:attr="src=@{${user.profileImage}}" style="height: 250px; width: auto"/>
+            <img class="profileImage" th:attr="src=@{${user.profileImage}}" style="height: 250px; width: auto"/>
+            <a th:if="${user.admin} == true" th:href="@{/admin}"> Admin Page</a>
+            <a th:if="${user.admin} == true" th:href="@{/all}">All Users</a>
         </div>
 
         <!--friend request notifications-->
