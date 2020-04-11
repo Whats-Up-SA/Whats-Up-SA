@@ -164,7 +164,8 @@ a, .link-button {
     background-color: peachpuff;
     margin: 0 auto;
     border-radius: 10px;
-    width: 75%;
+    width: 100%;
+    max-width: 400px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 
     display:table;
@@ -172,19 +173,20 @@ a, .link-button {
 .form-group form{
     text-align: center;
     margin: auto;
-    padding: 10px;
+    padding: 1.5em;
 
     display: table-cell;
     vertical-align: middle;
 }
 .form-group label{
     text-align: center;
+    font-size: 12px;
 }
 .form-group input, .form-group textarea{
     text-align: center;
     width: 70%;
     padding: 6px 10px;
-    margin: 4px 0;
+    margin: 8px 0;
     border: 0;
     box-sizing: border-box;
     border-radius: 5px;
@@ -192,14 +194,21 @@ a, .link-button {
     box-shadow: 0 1px 2px rgba(0,0,0,0.12), 0 1px 1px rgba(0,0,0,0.24);
 
 }
+#startTime, #startDateFull, #endTime, #endDateFull{
+    width: 30%;
+}
 .form-container {
     display: grid;
-    grid-template-columns: .5fr 1fr .5fr;
+    grid-template-columns: .25fr 1fr .25fr;
     grid-template-rows: .25fr .10fr 1fr .25fr;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
     height: 100vh;
     width: 100vw;
+}
+
+#detailsPage{
+    margin: 0 auto;
 }
 
 .nav-div { grid-area: 1 / 1 / 2 / 4; }

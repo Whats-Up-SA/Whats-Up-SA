@@ -15,18 +15,18 @@
     <div class="right-gutter"></div>
 
     <div class="banner">
-        <h1>Submit an Event</h1>
+        <h2>Submit an Event</h2>
     </div>
 
     <div class="form-group">
         <form th:action="@{|/submit|}" th:method="POST">
-            <label for="title">Title</label> <br>
+            <label for="title"></label>
             <input id="title" type="text" name="title" placeholder="Enter event title" required>
             <br/>
-            <label for="description">Description</label> <br>
+            <label for="description"></label>
             <textarea id="description" name="description" placeholder="Enter event description" required></textarea>
             <br/>
-            <label for="parentCategory">Pick a parent category:</label>
+            <label for="parentCategory">Category:</label>
             <select name="parentCategory" id="parentCategory" required>
                 <option value="" selected disabled hidden>Categories</option>
                 <div th:each="category : ${parentCategories}">
@@ -42,18 +42,18 @@
           
             <label for="startTime">Start Time</label>
             <input id="startTime" class="timepicker" type="text" name="startTime" required>
-
+            <br/>
             <label for="endTime">End Time</label>
             <input id="endTime" class="timepicker" type="text" name="endTime">
-
+            <br/>
             <label for="startDate">Start Date</label>
             <input type="text" class="datepicker" required  id="startDateFull" name="startDateFull" size="30">
             <input type="hidden" class="alternate1" id="startDate" name="startDate">
-
+            <br/>
             <label for="endDate">End Date</label>
             <input type="text" class="datepicker" id="endDateFull" name="endDateFull" size="30">
             <input type="hidden" class="alternate2" id="endDate" name="endDate">
-
+            <br/>
             <input type="button" value="Add Image(s)" id="pickWatermark" onclick="pickMark()">
             <input type="hidden" name="eventImage" id="eventImage">
 

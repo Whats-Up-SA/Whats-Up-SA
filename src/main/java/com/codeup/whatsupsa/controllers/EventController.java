@@ -83,6 +83,7 @@ public class EventController {
     public String getPost(@PathVariable Long id, Model model) {
         Event event = eventDao.getOne(id);
         model.addAttribute("categories", event.getCategories());
+        model.addAttribute("category", event.getCategories().get(0).getCategory());
         model.addAttribute("title", event.getTitle());
         model.addAttribute("description", event.getDescription());
         model.addAttribute("eventImage", event.getEventImage());

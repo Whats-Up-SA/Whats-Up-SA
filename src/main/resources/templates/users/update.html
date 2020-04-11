@@ -15,25 +15,25 @@
     <div class="left-gutter"></div>
     <div class="right-gutter"></div>
 
-    <h1 class="banner">update your profile</h1>
+    <h2 class="banner">Update Your Profile</h2>
 
     <div class="form-group">
         <form th:action="@{|/update/|}" method="POST" th:object="${user}">
 
             <div class="input-group">
-                <label for="username">Username</label>
+                <label for="username"></label>
                 <input th:field="*{username}" id="username"/>
             </div>
             <div class="input-group">
-                <label for="email">Email</label>
+                <label for="email"></label>
                 <input th:field="*{email}" class="email" id="email"/>
             </div>
             <div class="input-group">
-                <label for="password">Password</label>
-                <input class="password" type="password" th:field="*{password}" id="password" required="required"/>
+                <label for="password"></label>
+                <input class="password" type="password" th:field="*{password}" placeholder="Password" id="password" required="required"/>
             </div>
             <div class="input-group">
-                <label for="confirmPassword">Confirm Password</label>
+                <label for="confirmPassword"></label>
                 <input class="confirmPassword" placeholder="Confirm Password" type="password" required="required"
                        id="confirmPassword"/>
             </div>
