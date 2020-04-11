@@ -19,5 +19,6 @@
 <div th:each="category : ${categories}"><p th:text="${category.category}"></p></div>
 <img class="eventImage" th:attr="src=@{${eventImage}}" style="height: 250px; width: auto"/>
 
+<script :block th:replace="/partials/scripts :: scripts"></script>
 </body>
 </html>
