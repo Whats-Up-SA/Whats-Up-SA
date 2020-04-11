@@ -26,9 +26,13 @@
     <div class="user-info">
         <div class="welcome" th:object="${user}">
             <h1 th:text="${user.username}"></h1>
-            <h5 th:text="${user.email}"></h5><a href="/update">edit</a>
+            <h5 th:text="${user.email}"></h5>
             <img class="profileImage" th:attr="src=@{${user.profileImage}}" style="height: 250px; width: auto"/>
+            <br>
+            <a href="/update">edit</a>
+            <br>
             <a th:if="${user.admin} == true" th:href="@{/admin}"> Admin Page</a>
+            <br>
             <a th:if="${user.admin} == true" th:href="@{/all}">All Users</a>
         </div>
 
@@ -65,6 +69,7 @@
                 <p th:text="${event.endDateFull}"></p>
                 <p th:text="${event.startTime}"></p>
                 <p th:text="${event.endTime}"></p>
+                <br>
                 <img class="eventImage" th:attr="src=@{${event.eventImage}}" style="height: 250px; width: auto"/>
             </th:block>
         </th:block>
@@ -76,6 +81,7 @@
 
     <div class="footer-profile"></div>
 </div>
+<script :block th:replace="/partials/scripts :: scripts"></script>
 
 </body>
 </html>

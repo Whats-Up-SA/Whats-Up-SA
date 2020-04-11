@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
+<head th:replace="partials/header.html :: header">
 	<meta charset="UTF-8">
 	<title>profile</title>
 </head>
@@ -10,6 +10,9 @@
 
 <div class="welcome" th:object="${user}">
 	<h1 th:text="${user.username}"></h1>
+	<br>
+	<img class="profileImage" th:attr="src=@{${user.profileImage}}" style="height: 250px; width: auto"/>
+	<br>
 	<th:block th:object="${relationship}">
 		<div th:switch="${checkFriendship}">
 			<th:block th:case="1">
@@ -52,6 +55,7 @@
 <!--    <div class="calendar-container">-->
 <!--        placeholder for a calendar-->
 <!--    </div>-->
+<script :block th:replace="/partials/scripts :: scripts"></script>
 
 </body>
 </html>

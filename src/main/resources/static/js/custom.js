@@ -55,7 +55,24 @@ $(function () {
 // alert for account updates
 $(document).ready(function () {
     $("#updateSaved").click(function () {
-        alert("Your account has been updated");
+        if ($('#username').val().length === 0) {
+            alert('Please provide a username.');
+            return false;
+        }
+        if ($('#email').val().length === 0) {
+            return false;
+        }
+        if ($('#password').val().length === 0) {
+            alert('Please provide a password.');
+            return false;
+        }
+        if ($('#confirmPassword').val().length === 0) {
+            alert('Please confirm your password.');
+            return false;
+        } else {
+            alert("Your account has been updated");
+            return true;
+        }
     });
 });
 
