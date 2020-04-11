@@ -17,26 +17,26 @@
     <div class="left-gutter"></div>
     <div class="right-gutter"></div>
 
-    <h1 class="banner">Create an account</h1>
+    <h2 class="banner">Create an Account</h2>
 
     <div class="form-group">
         <form th:action="@{/register}" method="POST" th:object="${user}">
             <div>
-                <label for="username">Username</label> <br>
+                <label for="username"></label>
                 <input id="username" th:field="*{username}" placeholder="Enter Username"
                        required="required"/>
             </div>
             <div>
-                <label for="email">Email</label> <br>
+                <label for="email"></label>
                 <input class="email" id="email" th:field="*{email}" placeholder="Enter Email" required="required"/>
             </div>
             <div>
-                <label for="password">Password</label> <br>
+                <label for="password"></label>
                 <input class="password" type="password" th:field="*{password}" placeholder="Enter Password"
                        required="required" id="password"/>
             </div>
             <div>
-                <label for="confirmPassword">Confirm your password</label> <br>
+                <label for="confirmPassword"></label>
                 <input class="confirmPassword" placeholder="Confirm password" type="password" required="required"
                        id="confirmPassword"/>
 
