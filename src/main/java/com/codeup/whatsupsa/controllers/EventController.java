@@ -152,4 +152,21 @@ public class EventController {
         return "redirect:/index";
     }
 
+    //Send all the events as json objects
+    @GetMapping("/event/events.json")
+    public @ResponseBody List<Event> viewAllEventsInJSON(){
+        List<Event> events = eventDao.findAll();
+
+        for (Event event : events) {
+            String date = event.getStartDate();
+            String date2 = event.getEndDate();
+
+//            date = date.replace(" ", "T");
+            event.setStartDate(date);
+            event.setEndDate(date2);
+        }
+
+        return events;
+    }
+
 }

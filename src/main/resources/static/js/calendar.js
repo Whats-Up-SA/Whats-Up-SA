@@ -12,7 +12,8 @@ document.addEventListener('DOMContentLoaded', function() {
             left: 'prev,next today',
             center: 'title',
             right: 'dayGridMonth,timeGridWeek,timeGridDay'
-        }
+        },
+        events: '/event/events.json'
     });
 
     calendar.render();
