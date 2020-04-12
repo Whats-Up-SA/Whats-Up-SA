@@ -1,5 +1,7 @@
 package com.codeup.whatsupsa.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
@@ -22,10 +24,12 @@ public class Event {
     private String description;
 
     @Column(nullable = false)
+    @JsonIgnore
     @Type(type = "org.hibernate.type.NumericBooleanType")
     private Boolean isApproved;
 
     @Column(nullable = true)
+    @JsonIgnore
     private String eventImage;
 
     @Column(nullable = false)
@@ -38,15 +42,18 @@ public class Event {
     private String startDate;
 
     @Column(nullable = false)
+    @JsonIgnore
     private String startDateFull;
 
     @Column(nullable = true)
     private String endDate;
 
     @Column(nullable = true)
+    @JsonIgnore
     private String endDateFull;
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "user_id")
     private User user;
 
@@ -66,6 +73,7 @@ public class Event {
             inverseJoinColumns = {@JoinColumn(name = "category_id")}
     )
 
+    @JsonIgnore
     private List<Category> categories;
 
     public Event() {
