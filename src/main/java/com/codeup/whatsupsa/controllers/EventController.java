@@ -55,7 +55,7 @@ public class EventController {
     }
 
     @PostMapping("/submit")
-    public String createPost(@RequestParam String title, @RequestParam String description, @RequestParam Long parentCategory, @RequestParam(name = "eventImage") String eventImage, @RequestParam String startTime, @RequestParam String endTime, @RequestParam String endDate, @RequestParam String startDate, @RequestParam String endDateFull, @RequestParam String startDateFull) {
+    public String createPost(@RequestParam String title, @RequestParam String description, @RequestParam Long parentCategory, @RequestParam(name = "eventImage") String eventImage, @RequestParam String startTime, @RequestParam String endTime, @RequestParam String end, @RequestParam String start, @RequestParam String endDateFull, @RequestParam String startDateFull) {
         Event newEvent = new Event();
         List<Category> eventCategories = new ArrayList<>();
 
@@ -68,8 +68,8 @@ public class EventController {
         newEvent.setEventImage(eventImage);
         newEvent.setStartTime(startTime);
         newEvent.setEndTime(endTime);
-        newEvent.setStartDate(startDate);
-        newEvent.setEndDate(endDate);
+        newEvent.setStart(start);
+        newEvent.setEnd(end);
         newEvent.setStartDateFull(startDateFull);
         newEvent.setEndDateFull(endDateFull);
         User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -118,7 +118,7 @@ public class EventController {
     }
 
     @PostMapping("/events/{id}/edit")
-    public String updatePost(@PathVariable Long id, @RequestParam String title, @RequestParam String body, @RequestParam(name = "eventImage") String eventImage, @RequestParam String startTime, @RequestParam String endTime, @RequestParam String endDate, @RequestParam String startDate, @RequestParam String endDateFull, @RequestParam String startDateFull) {
+    public String updatePost(@PathVariable Long id, @RequestParam String title, @RequestParam String body, @RequestParam(name = "eventImage") String eventImage, @RequestParam String startTime, @RequestParam String endTime, @RequestParam String end, @RequestParam String start, @RequestParam String endDateFull, @RequestParam String startDateFull) {
         User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         if (loggedIn.getAdmin()) {
@@ -126,9 +126,9 @@ public class EventController {
             e.setTitle(title);
             e.setDescription(body);
             e.setEventImage(eventImage);
-            e.setStartDate(startDate);
+            e.setStart(start);
             e.setStartDateFull(startDateFull);
-            e.setEndDate(endDate);
+            e.setEnd(end);
             e.setEndDateFull(endDateFull);
             e.setStartTime(startTime);
             e.setEndTime(endTime);
@@ -150,6 +150,22 @@ public class EventController {
         e.setApproved(true);
         eventDao.save(e);
         return "redirect:/index";
+    }
+
+    //Send all the events as json objects
+    @GetMapping("/event/events.json")
+    public @ResponseBody List<Event> viewAllEventsInJSON(){
+        List<Event> events = eventDao.findAll();
+
+        for (Event event : events) {
+            String date = event.getStart();
+            String date2 = event.getEnd();
+
+            event.setStart(date);
+            event.setEnd(date2);
+        }
+
+        return events;
     }
 
 }

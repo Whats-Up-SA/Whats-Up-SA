@@ -1,5 +1,7 @@
 package com.codeup.whatsupsa.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
@@ -22,31 +24,38 @@ public class Event {
     private String description;
 
     @Column(nullable = false)
+    @JsonIgnore
     @Type(type = "org.hibernate.type.NumericBooleanType")
     private Boolean isApproved;
 
     @Column(nullable = true)
+    @JsonIgnore
     private String eventImage;
 
     @Column(nullable = false)
+    @JsonIgnore
     private String startTime;
 
     @Column(nullable = true)
+    @JsonIgnore
     private String endTime;
 
     @Column(nullable = false)
-    private String startDate;
+    private String start;
 
     @Column(nullable = false)
+    @JsonIgnore
     private String startDateFull;
 
     @Column(nullable = true)
-    private String endDate;
+    private String end;
 
     @Column(nullable = true)
+    @JsonIgnore
     private String endDateFull;
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "user_id")
     private User user;
 
@@ -66,12 +75,13 @@ public class Event {
             inverseJoinColumns = {@JoinColumn(name = "category_id")}
     )
 
+    @JsonIgnore
     private List<Category> categories;
 
     public Event() {
     }
 
-    public Event(Long id, String title, String body, User user, Boolean isApproved, String endTime, String startTime, String startDate, String endDate, String startDateFull, String endDateFull) {
+    public Event(Long id, String title, String body, User user, Boolean isApproved, String endTime, String startTime, String start, String end, String startDateFull, String endDateFull) {
         this.title = title;
         this.description = body;
         this.id = id;
@@ -79,8 +89,8 @@ public class Event {
         this.isApproved = isApproved;
         this.endTime = endTime;
         this.startTime = startTime;
-        this.startDate = startDate;
-        this.endDate = endDate;
+        this.start = start;
+        this.end = end;
         this.startDateFull = startDateFull;
         this.endDateFull = endDateFull;
     }
@@ -109,32 +119,12 @@ public class Event {
         this.description = description;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Boolean getIsApproved() {
+    public Boolean getApproved() {
         return isApproved;
     }
 
     public void setApproved(Boolean approved) {
         isApproved = approved;
-    }
-
-    public List<Category> getCategories() {
-        return categories;
-    }
-
-    public void setCategories(List<Category> categories) {
-        this.categories = categories;
-    }
-
-    public Boolean getApproved() {
-        return isApproved;
     }
 
     public String getEventImage() {
@@ -161,20 +151,12 @@ public class Event {
         this.endTime = endTime;
     }
 
-    public String getStartDate() {
-        return startDate;
+    public String getStart() {
+        return start;
     }
 
-    public void setStartDate(String startDate) {
-        this.startDate = startDate;
-    }
-
-    public String getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(String endDate) {
-        this.endDate = endDate;
+    public void setStart(String start) {
+        this.start = start;
     }
 
     public String getStartDateFull() {
@@ -185,11 +167,35 @@ public class Event {
         this.startDateFull = startDateFull;
     }
 
+    public String getEnd() {
+        return end;
+    }
+
+    public void setEnd(String end) {
+        this.end = end;
+    }
+
     public String getEndDateFull() {
         return endDateFull;
     }
 
     public void setEndDateFull(String endDateFull) {
         this.endDateFull = endDateFull;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public List<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
     }
 }
