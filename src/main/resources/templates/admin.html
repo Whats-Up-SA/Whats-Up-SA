@@ -6,31 +6,34 @@
 </head>
 <body>
 
-<div class="admin-container">
-	<div id="nav">
+<!--<div class="admin-container">-->
+<!--	<div id="nav">-->
 		<nav th:replace="partials/navbar.html :: navbar"></nav>
-	</div>
+<!--	</div>-->
 
-	<h1 class="welcome-admin">welcome, admin</h1>
+<!--	<h1 class="welcome-admin">welcome, admin</h1>-->
 <!-- event -->
 	<div class="eventContainer">
-		<div th:each="event : ${events}" class="eventCard">
-			<a th:href="@{|/events/${event.id}|}"><h2 th:text="${event.title}"></h2></a>
-			<p th:text="${event.description}"></p>
-			<p th:text="|Start Date: ${event.startDateFull}|"></p>
-			<p th:text="|End Date: ${event.endDateFull}|"></p>
-			<p th:text="|Start Time: ${event.startTime}|"></p>
-			<p th:text="|End Time: ${event.endTime}|"></p>
-			<img class="eventImage" th:attr="src=@{${event.eventImage}}" style="height: 250px; width: auto"/>
-			<a th:href="@{|/events/${event.id}/edit|}"><p th:text="edit"></p></a>
-			<form th:action="@{|/events/${event.id}/approve|}" th:method="POST" style="display:inline">
+		<div th:each="pair : ${pairList}" class="eventCard" th:classappend="${pair.value.category}">
+			<img class="eventImage" th:attr="src=@{${pair.key.eventImage}}"/>
+			<a th:href="@{|/events/${pair.key.id}|}"><h2 th:text="${pair.key.title}"></h2></a>
+			<p th:text="${pair.key.description}"></p>
+
+			<p th:text="|Start Date: ${pair.key.startDateFull}|"></p>
+			<p th:text="|End Date: ${pair.key.endDateFull}|"></p>
+			<p th:text="|Start Time: ${pair.key.startTime}|"></p>
+			<p th:text="|End Time: ${pair.key.endTime}|"></p>
+			<p th:text="|Category: ${pair.value.category}|"></p>
+
+			<a th:href="@{|/events/${pair.key.id}/edit|}"><p th:text="edit"></p></a>
+			<form th:action="@{|/events/${pair.key.id}/approve|}" th:method="POST" style="display:inline">
 				<button>Approve Event</button>
 			</form>
-			<form th:action="@{|/events/${event.id}/delete|}" th:method="POST" style="display:inline">
+			<form th:action="@{|/events/${pair.key.id}/delete|}" th:method="POST" style="display:inline">
 				<button>Delete Event</button>
 			</form>
 		</div>
 	</div>
-</div>
+<!--</div>-->
 </body>
 </html>

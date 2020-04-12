@@ -5,15 +5,23 @@
     <title>all users</title>
 </head>
 <body>
+<!--    <div class="nav-div">-->
+        <nav th:replace="partials/navbar.html :: navbar"></nav>
+<!--    </div>-->
+<!--    <div class="left-gutter"></div>-->
+<!--    <div class="right-gutter"></div>-->
+<!--    <div class="banner"></div>-->
+<div class="eventContainer">
 
-<nav th:replace="partials/navbar.html :: navbar"></nav>
-
-<div th:each="user : ${users}">
-    <a th:href="@{|/profile/${user.id}|}"><p th:text="${user.username}"></p></a>
-    <p th:text="${user.email}"></p>
-    <form th:action="@{|/all/${user.id}/delete|}" th:value="${user.id}" th:method="POST" style="display:inline">
-        <button id ="deleteBtn">delete user</button>
-    </form>
+    <div th:each="user : ${users}" class="eventCard form-group">
+        <img class="eventImage" th:attr="src=@{${user.profileImage}}"/>
+        <a th:href="@{|/profile/${user.id}|}"><p th:text="${user.username}"></p></a>
+        <p th:text="${user.email}"></p>
+        <form th:action="@{|/all/${user.id}/delete|}" th:value="${user.id}" th:method="POST" style="display:inline">
+            <button id ="deleteBtn">delete user</button>
+        </form>
+    </div>
+<!--    <div class="footer-div"></div>-->
 </div>
 <script :block th:replace="/partials/scripts :: scripts"></script>
 

@@ -50,7 +50,13 @@ public class HomeController {
         User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         if (loggedIn.getAdmin()) {
-            model.addAttribute("events", eventsDao.findPendingEvents());
+            List<Event> unapprovedEvents = eventsDao.findPendingEvents();
+            java.util.List<java.util.Map.Entry<Event, Category>> pairList = new java.util.ArrayList<>();
+            for(Event event : unapprovedEvents){
+                Map.Entry<Event, Category> newRequest = new AbstractMap.SimpleEntry<>(event, event.getCategories().get(0));
+                pairList.add(newRequest);
+            }
+            model.addAttribute("pairList", pairList);
             return "admin";
         } else
             return "redirect:/index";
