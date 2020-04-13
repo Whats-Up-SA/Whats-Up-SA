@@ -1,10 +1,10 @@
 package com.codeup.whatsupsa.controllers;
 
 import com.codeup.whatsupsa.Repositories.EventsRepository;
+import com.codeup.whatsupsa.Repositories.InterestedRepository;
 import com.codeup.whatsupsa.Repositories.RelationshipRepository;
 import com.codeup.whatsupsa.Repositories.UserRepository;
-import com.codeup.whatsupsa.models.Relationship;
-import com.codeup.whatsupsa.models.User;
+import com.codeup.whatsupsa.models.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -24,16 +24,18 @@ public class UserController {
     private PasswordEncoder passwordEncoder;
     private EventsRepository eventDao;
     private RelationshipRepository relationshipDao;
+    private InterestedRepository interestedDao;
 
     @Value("${filestack.api.key}")
     private String fsapi;
 
-    public UserController(UserRepository userDao, PasswordEncoder passwordEncoder, EventsRepository eventDao, RelationshipRepository relationshipDao) {
+    public UserController(UserRepository userDao, PasswordEncoder passwordEncoder, EventsRepository eventDao, RelationshipRepository relationshipDao, InterestedRepository interestedDao) {
 
         this.userDao = userDao;
         this.passwordEncoder = passwordEncoder;
         this.eventDao = eventDao;
         this.relationshipDao = relationshipDao;
+        this.interestedDao = interestedDao;
     }
 
     @GetMapping("/all")
@@ -68,6 +70,7 @@ public class UserController {
     @GetMapping("/profile")
     public String profile(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        User user = userDao.getUserById(user1.getId());
         //pending request logic
         List<Relationship> pendingRequests = relationshipDao.viewPendingRequests(user);
         java.util.List<java.util.Map.Entry<String, Long>> pairList = new java.util.ArrayList<>();
@@ -84,9 +87,22 @@ public class UserController {
                 friendUsers.add(friendPair.getUserOneID());
             }
         }
+
+        //event+category logic
+        List<Event> approvedEvents = eventDao.FindEventsByUserID(user.getId());
+        java.util.List<java.util.Map.Entry<Event, Category>> eventCats = new java.util.ArrayList<>();
+        for(Event event : approvedEvents){
+            Map.Entry<Event, Category> newRequest = new AbstractMap.SimpleEntry<>(event, event.getCategories().get(0));
+            eventCats.add(newRequest);
+        }
+        model.addAttribute("eventCats", eventCats);
+
+
+        model.addAttribute("interestedEvents", interestedDao.findAllByUserID(user));
+
         model.addAttribute("friendList", friendUsers);
         model.addAttribute("pairList", pairList);
-        model.addAttribute("events", eventDao.FindEventsByUserID(user.getId()));
+//        model.addAttribute("events", eventDao.FindEventsByUserID(user.getId()));
         model.addAttribute("user", userDao.getOne(user.getId()));
         return "users/profile";
     }

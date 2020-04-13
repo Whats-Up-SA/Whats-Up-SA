@@ -36,7 +36,7 @@ public class HomeController {
     public String getPosts(Model model) {
         List<Event> approvedEvents = eventsDao.findApprovedEvents();
         java.util.List<java.util.Map.Entry<Event, Category>> pairList = new java.util.ArrayList<>();
-        for(Event event : approvedEvents){
+        for (Event event : approvedEvents) {
             Map.Entry<Event, Category> newRequest = new AbstractMap.SimpleEntry<>(event, event.getCategories().get(0));
             pairList.add(newRequest);
         }
@@ -52,7 +52,7 @@ public class HomeController {
         if (loggedIn.getAdmin()) {
             List<Event> unapprovedEvents = eventsDao.findPendingEvents();
             java.util.List<java.util.Map.Entry<Event, Category>> pairList = new java.util.ArrayList<>();
-            for(Event event : unapprovedEvents){
+            for (Event event : unapprovedEvents) {
                 Map.Entry<Event, Category> newRequest = new AbstractMap.SimpleEntry<>(event, event.getCategories().get(0));
                 pairList.add(newRequest);
             }
@@ -60,5 +60,10 @@ public class HomeController {
             return "admin";
         } else
             return "redirect:/index";
+    }
+
+    @GetMapping("/about")
+    public String about() {
+        return "about";
     }
 }
