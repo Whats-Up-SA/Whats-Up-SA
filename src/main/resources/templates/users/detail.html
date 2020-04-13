@@ -1,68 +1,72 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:replace="partials/header.html :: header">
-	<meta charset="UTF-8">
-	<title>profile</title>
+    <meta charset="UTF-8">
+    <title>profile</title>
 </head>
 <body>
 
 <div class="profile-container">
 
-	<div class="nav-profile">
-		<nav th:replace="partials/navbar.html :: navbar"></nav>
-	</div>
+    <div class="nav-profile">
+        <nav th:replace="partials/navbar.html :: navbar"></nav>
+    </div>
 
-	<div class="left-profile"></div>
-	<div class="right-profile"></div>
+    <div class="left-profile"></div>
+    <div class="right-profile"></div>
 
-	<div class="user-info eventCard Music" style="width: 80%">
-		<div class="welcome" th:object="${user}">
-			<img class="eventImage profileImage" th:attr="src=@{${user.profileImage}}"/>
+    <div class="user-info eventCard Music" style="width: 80%">
+        <div class="welcome" th:object="${user}">
+            <img class="eventImage profileImage" th:attr="src=@{${user.profileImage}}"/>
 
-				<br>
-			<h1 th:text="${user.username}"></h1>
+            <br>
+            <h1 th:text="${user.username}"></h1>
 
-			<br>
-				<th:block th:object="${relationship}">
-					<div th:switch="${checkFriendship}">
-						<th:block th:case="1">
-							<form th:action="@{|/profile/${relationship.id}/unfriend|}" th:value="${relationship.id}" th:method="POST" style="display:inline">
-								<button>unfriend</button>
-							</form>
-						</th:block>
-						<th:block th:case="2">
-							<form th:action="@{|/profile/${relationship.id}/fr|}" th:value="${relationship.id}" th:method="POST" style="display:inline">
-								<button>add as friend</button>
-							</form>
-						</th:block>
-						<th:block th:case="3">
-							<form action="" style="display:inline">
-								<button disabled>friend request pending</button>
-							</form>
-						</th:block>
-						<th:block th:case="*">
-						<form th:action="@{|/users/detail/fr/${user.id}|}" th:value="${user.id}" th:method="POST" style="display:inline">
-							<button>add as friend</button>
-						</form>
-						</th:block>
-					</div>
-				</th:block>
-		</div>
-	</div>
+            <br>
+            <th:block th:object="${relationship}">
+                <div th:switch="${checkFriendship}">
+                    <th:block th:case="1">
+                        <form th:action="@{|/profile/${relationship.id}/unfriend|}" th:value="${relationship.id}"
+                              th:method="POST" style="display:inline">
+                            <button>unfriend</button>
+                        </form>
+                    </th:block>
+                    <th:block th:case="2">
+                        <form th:action="@{|/profile/${relationship.id}/fr|}" th:value="${relationship.id}"
+                              th:method="POST" style="display:inline">
+                            <button>add as friend</button>
+                        </form>
+                    </th:block>
+                    <th:block th:case="3">
+                        <form action="" style="display:inline">
+                            <button disabled>friend request pending</button>
+                        </form>
+                    </th:block>
+                    <th:block th:case="*">
+                        <form th:action="@{|/users/detail/fr/${user.id}|}" th:value="${user.id}" th:method="POST"
+                              style="display:inline">
+                            <button>add as friend</button>
+                        </form>
+                    </th:block>
+                </div>
+            </th:block>
+        </div>
+    </div>
 
-	<div class="user-posts">
+    <div class="user-posts">
 
-	</div>
+    </div>
 
-	<div class="calendar-profile" id="calendar">
-
-
-	</div>
-
-	<div class="footer-profile"></div>
+    <div class="calendar-profile" id="calendar">
 
 
-	<!--TODO: if friends show events-->
+    </div>
+
+    <div class="footer-profile"></div>
+
+</div>
+
+<!--TODO: if friends show events-->
 
 <!--<th:block th:object="${events}">-->
 <!--	<th:block th:each="event : ${events}">-->
@@ -74,7 +78,6 @@
 <!--    <div class="calendar-container">-->
 <!--        placeholder for a calendar-->
 <!--    </div>-->
-<script :block th:replace="/partials/scripts :: scripts"></script>
-
+<script :block th:replace="/partials/scripts.html :: scripts"></script>
 </body>
 </html>
