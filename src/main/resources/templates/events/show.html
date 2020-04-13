@@ -5,16 +5,10 @@
     <title>Title</title>
 </head>
 <body>
-<!--<th:block th:include="partials/navbar"/>-->
-<div class="form-container">
-    <div class="nav-div">
-        <nav th:replace="partials/navbar.html :: navbar"></nav>
-    </div>
-    <div class="left-gutter"></div>
-    <div class="right-gutter"></div>
-    <div class="banner"></div>
-    <div class="eventCard form-group" id="detailsPage" th:classappend="${category}">
-        <img class="eventImage" th:attr="src=@{${eventImage}}" style="height: 250px; width: auto"/>
+<nav th:replace="partials/navbar.html :: navbar"></nav>
+<div class="detailContainer">
+    <div class="detailCard" id="detailsPage" th:classappend="${category}">
+        <img class="eventImage" th:attr="src=@{${eventImage}}" style="height: auto; width: 95%"/>
         <h1 th:text="${title}"></h1>
         <p th:text="${description}"></p>
         <p th:text="|Start Date: ${startDateFull}|"></p>
@@ -25,7 +19,7 @@
         <div th:each="user : ${interestedUsers}">
             <div class="">
 <!--                <img th:src="${user.userID.profileImage}" alt="" style="display: block; max-width: 30px; max-height: 30px; width: auto; height: auto">-->
-                <a th:href="@{|/profile/${user.userID.id}|}" ><img th:src="${user.userID.profileImage}" alt="" style="display: block; max-width: 30px; max-height: 30px; width: auto; height: auto"></a>
+                <a th:href="@{|/profile/${user.userID.id}|}" ><img th:src="${user.userID.profileImage}" alt="" style="display: block; max-width: 30px; max-height: 30px; width: auto; height: auto; border-radius: 3px"></a>
             </div>
         </div>
         <p>Category: </p>
@@ -44,7 +38,6 @@
         </form>
 
     </div>
-    <div class="footer-div"></div>
 </div>
 <!--<script :block th:replace="/partials/scripts.html :: scripts"></script>-->
 </body>
