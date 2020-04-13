@@ -28,19 +28,19 @@
 
 	<div class="header">
 		<h1>login</h1>
-		<h3>you have successfully been logged out</h3>
+		<h3>You Have Successfully Logged Out</h3>
 	</div>
 
 	<div class="form-group">
 	<form th:action="@{/logout}" method="post">
 		<div>
 			<label for="username">username</label>
-			<input id="username" name="username" type="text" placeholder="username">
+			<input id="username" name="username" type="text" placeholder="Username"><span class="asterisk_input">  </span>
 		</div>
 
 		<div>
 			<label for="password">password</label>
-			<input id="password" name="password" type="password" placeholder="password">
+			<input id="password" name="password" type="password" placeholder="Password"><span class="asterisk_input">  </span>
 		</div>
 		<input type="submit" th:value="logout">
 	</form>
