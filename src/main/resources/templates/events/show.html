@@ -22,6 +22,12 @@
         <p th:text="|Start Time: ${startTime}|"></p>
         <p th:text="|End Time: ${endTime}|"></p>
         <!--    Category: <p th:text="${category}"></p>-->
+        <div th:each="user : ${interestedUsers}">
+            <div class="">
+<!--                <img th:src="${user.userID.profileImage}" alt="" style="display: block; max-width: 30px; max-height: 30px; width: auto; height: auto">-->
+                <a th:href="@{|/profile/${user.userID.id}|}" ><img th:src="${user.userID.profileImage}" alt="" style="display: block; max-width: 30px; max-height: 30px; width: auto; height: auto"></a>
+            </div>
+        </div>
         <p>Category: </p>
         <div th:each="category : ${categories}"><p th:text="${category.category}"></p></div>
 

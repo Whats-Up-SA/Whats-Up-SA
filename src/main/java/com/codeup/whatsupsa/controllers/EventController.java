@@ -88,6 +88,8 @@ public class EventController {
 
         Interested interested = interestedDao.checkIfInterested(loggedIn, event);
 
+        model.addAttribute("interestedUsers", interestedDao.findAllByEvent(event));
+
         model.addAttribute("categories", event.getCategories());
         model.addAttribute("category", event.getCategories().get(0).getCategory());
         model.addAttribute("title", event.getTitle());
