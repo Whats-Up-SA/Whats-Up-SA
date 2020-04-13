@@ -24,21 +24,22 @@
             <div>
                 <label for="username"></label>
                 <input id="username" th:field="*{username}" placeholder="Enter Username"
-                       required="required"/>
+                       required="required"/><span class="asterisk_input">  </span>
             </div>
             <div>
                 <label for="email"></label>
-                <input class="email" id="email" th:field="*{email}" placeholder="Enter Email" required="required"/>
+                <input class="email" id="email" th:field="*{email}" placeholder="Enter Email" required="required"/><span
+                    class="asterisk_input">  </span>
             </div>
             <div>
                 <label for="password"></label>
                 <input class="password" type="password" th:field="*{password}" placeholder="Enter Password"
-                       required="required" id="password"/>
+                       required="required" id="password"/><span class="asterisk_input">  </span>
             </div>
             <div>
                 <label for="confirmPassword"></label>
-                <input class="confirmPassword" placeholder="Confirm password" type="password" required="required"
-                       id="confirmPassword"/>
+                <input class="confirmPassword" placeholder="Confirm Password" type="password" required="required"
+                       id="confirmPassword"/><span class="asterisk_input">  </span>
 
             </div>
 
