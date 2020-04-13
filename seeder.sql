@@ -10,114 +10,36 @@ insert into users (username, email, password, admin)
 values ('chelkster', 'chelkazaur@umn.edu', 'n1RbqxWWj3Vx', 0);
 
 use eventlister_db;
-
-insert into events (title, description, is_approved, event_image, start_time, end_time, start_date, end_date, user_id)
-values ('Yellow Pincushion', 'Suspendisse accumsan tortor quis turpis. Sed ante. Vivamus tortor.', false,
-        'http://dummyimage.com/141x143.bmp/5fa2dd/ffffff', '7:29', '17:56', '2020-03-24', '2020-01-23', 1);
-insert into events (title, description, is_approved, event_image, start_time, end_time, start_date, end_date, user_id)
-values ('Columbian Onion',
-        'Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est. Phasellus sit amet erat.',
-        false, 'http://dummyimage.com/212x207.jpg/5fa2dd/ffffff', '21:12', '5:19', '2020-02-15', '2019-11-05', 4);
-insert into events (title, description, is_approved, event_image, start_time, end_time, start_date, end_date, user_id)
-values ('Asian White Birch',
-        'Nullam molestie nibh in lectus. Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.',
-        true, 'http://dummyimage.com/115x101.jpg/5fa2dd/ffffff', '1:50', '0:15', '2019-11-02', '2020-02-01', 1);
-insert into events (title, description, is_approved, event_image, start_time, end_time, start_date, end_date, user_id)
-values ('Arctic Aspicilia',
-        'Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.',
-        true, 'http://dummyimage.com/142x247.jpg/5fa2dd/ffffff', '9:40', '15:46', '2019-12-24', '2020-03-11', 2);
-insert into events (title, description, is_approved, event_image, start_time, end_time, start_date, end_date, user_id)
-values ('Nevada Agave',
-        'Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede. Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus.',
-        true, 'http://dummyimage.com/207x140.jpg/cc0000/ffffff', '14:34', '15:35', '2019-05-15', '2020-02-17', 4);
-insert into events (title, description, is_approved, event_image, start_time, end_time, start_date, end_date, user_id)
-values ('Cuming''s Lovegrass',
-        'Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui. Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc.',
-        true, 'http://dummyimage.com/217x209.jpg/5fa2dd/ffffff', '23:03', '23:37', '2019-10-31', '2019-05-06', 2);
-insert into events (title, description, is_approved, event_image, start_time, end_time, start_date, end_date, user_id)
-values ('Sorrie''s Heartleaf',
-        'Nam dui. Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.',
-        true, 'http://dummyimage.com/248x244.jpg/cc0000/ffffff', '10:29', '2:59', '2020-04-05', '2019-09-22', 1);
-insert into events (title, description, is_approved, event_image, start_time, end_time, start_date, end_date, user_id)
-values ('Sanguinaria', 'Donec posuere metus vitae ipsum.', false, 'http://dummyimage.com/236x172.bmp/cc0000/ffffff',
-        '18:28', '14:15', '2019-12-02', '2019-11-17', 3);
-insert into events (title, description, is_approved, event_image, start_time, end_time, start_date, end_date, user_id)
-values ('Drug Eyebright', 'Integer a nibh. In quis justo.', true, 'http://dummyimage.com/113x115.png/5fa2dd/ffffff',
-        '14:03', '18:44', '2019-12-07', '2019-10-30', 4);
-insert into events (title, description, is_approved, event_image, start_time, end_time, start_date, end_date, user_id)
-values ('Spotted Gum', 'Nam tristique tortor eu pede.', true, 'http://dummyimage.com/167x147.jpg/cc0000/ffffff',
-        '16:01', '11:03', '2019-05-09', '2019-09-11', 3);
-insert into events (title, description, is_approved, event_image, start_time, end_time, start_date, end_date, user_id)
-values ('Howell''s Fawnlily',
-        'Proin risus. Praesent lectus. Vestibulum quam sapien, varius ut, blandit non, interdum in, ante.', false,
-        'http://dummyimage.com/130x239.jpg/cc0000/ffffff', '19:34', '10:36', '2019-10-06', '2019-11-26', 2);
-insert into events (title, description, is_approved, event_image, start_time, end_time, start_date, end_date, user_id)
-values ('Panamint Mountain Lupine', 'Donec semper sapien a libero. Nam dui.', true,
-        'http://dummyimage.com/149x196.bmp/dddddd/000000', '18:04', '0:32', '2019-10-19', '2019-07-28', 3);
-insert into events (title, description, is_approved, event_image, start_time, end_time, start_date, end_date, user_id)
-values ('Smallfruit Beggarticks',
-        'Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl. Aenean lectus.',
-        true, 'http://dummyimage.com/178x141.bmp/dddddd/000000', '16:35', '12:14', '2019-09-02', '2019-09-10', 4);
-insert into events (title, description, is_approved, event_image, start_time, end_time, start_date, end_date, user_id)
-values ('Ephemerum Moss', 'Duis at velit eu est congue elementum.', true,
-        'http://dummyimage.com/240x138.png/5fa2dd/ffffff', '15:36', '2:22', '2019-12-31', '2019-06-12', 3);
-insert into events (title, description, is_approved, event_image, start_time, end_time, start_date, end_date, user_id)
-values ('Sugarcane', 'Nulla tellus.', true, 'http://dummyimage.com/224x192.jpg/ff4444/ffffff', '8:25', '17:27',
-        '2019-04-25', '2019-10-02', 2);
-insert into events (title, description, is_approved, event_image, start_time, end_time, start_date, end_date, user_id)
-values ('Southwestern Rabbitbrush',
-        'Pellentesque ultrices mattis odio. Donec vitae nisi. Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla.',
-        true, 'http://dummyimage.com/101x170.png/ff4444/ffffff', '23:43', '21:56', '2020-04-04', '2020-01-19', 1);
-insert into events (title, description, is_approved, event_image, start_time, end_time, start_date, end_date, user_id)
-values ('Whisk Fern',
-        'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis. Duis consequat dui nec nisi volutpat eleifend.',
-        false, 'http://dummyimage.com/234x105.bmp/cc0000/ffffff', '20:50', '1:00', '2020-04-19', '2019-06-10', 3);
-insert into events (title, description, is_approved, event_image, start_time, end_time, start_date, end_date, user_id)
-values ('Confusing Fescue', 'Nunc purus. Phasellus in felis.', true, 'http://dummyimage.com/242x159.bmp/ff4444/ffffff',
-        '4:11', '9:30', '2020-02-17', '2020-01-19', 1);
-insert into events (title, description, is_approved, event_image, start_time, end_time, start_date, end_date, user_id)
-values ('Dogbane', 'Duis bibendum. Morbi non quam nec dui luctus rutrum.', true,
-        'http://dummyimage.com/147x244.png/cc0000/ffffff', '22:47', '13:21', '2020-04-08', '2019-04-25', 4);
-insert into events (title, description, is_approved, event_image, start_time, end_time, start_date, end_date, user_id)
-values ('Pore Lichen',
-        'Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci.',
-        false, 'http://dummyimage.com/154x176.bmp/5fa2dd/ffffff', '1:22', '17:30', '2019-08-18', '2020-04-14', 1);
-insert into events (title, description, is_approved, event_image, start_time, end_time, start_date, end_date, user_id)
-values ('False Buffalograss',
-        'Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam vel augue. Vestibulum rutrum rutrum neque.',
-        true, 'http://dummyimage.com/233x240.jpg/cc0000/ffffff', '0:24', '1:31', '2020-01-17', '2020-02-13', 4);
-insert into events (title, description, is_approved, event_image, start_time, end_time, start_date, end_date, user_id)
-values ('American Century Plant', 'Suspendisse potenti.', true, 'http://dummyimage.com/144x246.jpg/5fa2dd/ffffff',
-        '8:01', '19:29', '2020-04-23', '2020-04-21', 4);
-insert into events (title, description, is_approved, event_image, start_time, end_time, start_date, end_date, user_id)
-values ('Macoun''s Pore Lichen', 'Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.', false,
-        'http://dummyimage.com/170x184.png/cc0000/ffffff', '9:36', '7:46', '2019-08-04', '2020-03-01', 1);
-insert into events (title, description, is_approved, event_image, start_time, end_time, start_date, end_date, user_id)
-values ('Mock Vervain', 'Nulla tempus. Vivamus in felis eu sapien cursus vestibulum. Proin eu mi.', true,
-        'http://dummyimage.com/224x224.png/cc0000/ffffff', '9:09', '6:27', '2020-01-09', '2020-02-24', 4);
-insert into events (title, description, is_approved, event_image, start_time, end_time, start_date, end_date, user_id)
-values ('Blackthread Lichen',
-        'Donec semper sapien a libero. Nam dui. Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis.',
-        false, 'http://dummyimage.com/210x145.png/dddddd/000000', '5:54', '1:37', '2019-07-09', '2020-04-24', 1);
-insert into events (title, description, is_approved, event_image, start_time, end_time, start_date, end_date, user_id)
-values ('Erect Tropical Daisy',
-        'Donec quis orci eget orci vehicula condimentum. Curabitur in libero ut massa volutpat convallis.', false,
-        'http://dummyimage.com/223x200.bmp/dddddd/000000', '6:10', '6:14', '2019-11-24', '2019-08-11', 2);
-insert into events (title, description, is_approved, event_image, start_time, end_time, start_date, end_date, user_id)
-values ('Graceful Bedstraw',
-        'Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
-        false, 'http://dummyimage.com/228x209.bmp/ff4444/ffffff', '19:22', '6:35', '2020-03-22', '2020-02-25', 1);
-insert into events (title, description, is_approved, event_image, start_time, end_time, start_date, end_date, user_id)
-values ('Celery', 'Etiam justo. Etiam pretium iaculis justo. In hac habitasse platea dictumst.', true,
-        'http://dummyimage.com/220x123.png/ff4444/ffffff', '16:51', '18:03', '2019-08-31', '2019-10-26', 1);
-insert into events (title, description, is_approved, event_image, start_time, end_time, start_date, end_date, user_id)
-values ('Bogrush',
-        'Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est.',
-        false, 'http://dummyimage.com/161x177.jpg/ff4444/ffffff', '4:53', '3:57', '2019-10-31', '2020-04-17', 3);
-insert into events (title, description, is_approved, event_image, start_time, end_time, start_date, end_date, user_id)
-values ('Rare Clubmoss',
-        'Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque. Quisque porta volutpat erat.',
-        true, 'http://dummyimage.com/141x153.png/5fa2dd/ffffff', '5:29', '3:00', '2020-03-02', '2019-08-13', 2);
+insert into events (title, description, is_approved, event_image, start_time, end_time, start, end, user_id, start_date_full) values ('Common Maidenhair', 'Suspendisse potenti. Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum.', true, 'http://dummyimage.com/170x146.jpg/dddddd/000000', '4:43', '17:53', '2020-01-28 16:45:00', '2019-10-17', 4, 'Friday, 17 April, 2020');
+insert into events (title, description, is_approved, event_image, start_time, end_time, start, end, user_id, start_date_full) values ('Thicket Dewberry', 'Etiam vel augue. Vestibulum rutrum rutrum neque.', true, 'http://dummyimage.com/105x204.png/ff4444/ffffff', '10:03', '5:08', '2019-12-15 04:54:38', '2019-12-14', 1, 'Friday, 17 April, 2020');
+insert into events (title, description, is_approved, event_image, start_time, end_time, start, end, user_id, start_date_full) values ('California Dutchman''s Pipe', 'Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat. In congue.', true, 'http://dummyimage.com/152x117.jpg/dddddd/000000', '17:51', '8:08', '2020-03-19 20:09:42', '2019-05-08', 4, 'Friday, 17 April, 2020');
+insert into events (title, description, is_approved, event_image, start_time, end_time, start, end, user_id, start_date_full) values ('Fall Panicgrass', 'Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus. Curabitur at ipsum ac tellus semper interdum.', false, 'http://dummyimage.com/205x211.jpg/5fa2dd/ffffff', '22:06', '23:10', '2019-06-27 11:32:08', '2019-06-07', 3, 'Friday, 17 April, 2020');
+insert into events (title, description, is_approved, event_image, start_time, end_time, start, end, user_id, start_date_full) values ('Mexican Skullcap', 'Etiam pretium iaculis justo. In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.', false, 'http://dummyimage.com/245x177.bmp/5fa2dd/ffffff', '23:53', '16:12', '2019-12-29 00:44:08', '2020-02-05', 3, 'Friday, 17 April, 2020');
+insert into events (title, description, is_approved, event_image, start_time, end_time, start, end, user_id, start_date_full) values ('Greater Showy Stickseed', 'Nam dui. Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.', true, 'http://dummyimage.com/233x169.jpg/ff4444/ffffff', '23:37', '19:22', '2020-04-14 02:22:13', '2020-01-04', 1, 'Friday, 17 April, 2020');
+insert into events (title, description, is_approved, event_image, start_time, end_time, start, end, user_id, start_date_full) values ('Smallflower Bluecurls', 'Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus.', false, 'http://dummyimage.com/229x131.png/dddddd/000000', '15:47', '17:18', '2019-12-27 06:04:08', '2019-12-29', 2, 'Friday, 17 April, 2020');
+insert into events (title, description, is_approved, event_image, start_time, end_time, start, end, user_id, start_date_full) values ('Acaulon Moss', 'Mauris sit amet eros. Suspendisse accumsan tortor quis turpis. Sed ante. Vivamus tortor.', true, 'http://dummyimage.com/182x186.bmp/cc0000/ffffff', '6:27', '14:09', '2019-05-03 16:03:11', '2020-01-19', 2, 'Friday, 17 April, 2020');
+insert into events (title, description, is_approved, event_image, start_time, end_time, start, end, user_id, start_date_full) values ('Hypnum Moss', 'Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh. Quisque id justo sit amet sapien dignissim vestibulum.', false, 'http://dummyimage.com/194x201.bmp/cc0000/ffffff', '14:43', '15:27', '2019-07-30 04:11:05', '2019-08-26', 2, 'Friday, 17 April, 2020');
+insert into events (title, description, is_approved, event_image, start_time, end_time, start, end, user_id, start_date_full) values ('Creeping Strawberry Bush', 'In est risus, auctor sed, tristique in, tempus sit amet, sem. Fusce consequat.', true, 'http://dummyimage.com/127x204.jpg/5fa2dd/ffffff', '6:00', '5:30', '2019-10-14 02:25:29', '2020-04-10', 4, 'Friday, 17 April, 2020');
+insert into events (title, description, is_approved, event_image, start_time, end_time, start, end, user_id, start_date_full) values ('Catillaria Lichen', 'Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam vel augue. Vestibulum rutrum rutrum neque.', true, 'http://dummyimage.com/166x202.png/cc0000/ffffff', '19:53', '17:00', '2020-02-01 05:24:39', '2019-11-09', 4, 'Friday, 17 April, 2020');
+insert into events (title, description, is_approved, event_image, start_time, end_time, start, end, user_id, start_date_full) values ('Meadow Garlic', 'Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui. Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc.', true, 'http://dummyimage.com/136x114.png/cc0000/ffffff', '2:32', '13:55', '2019-11-17 02:39:32', '2020-01-07', 4, 'Friday, 17 April, 2020');
+insert into events (title, description, is_approved, event_image, start_time, end_time, start, end, user_id, start_date_full) values ('Cream Albizia', 'Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem. Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy.', false, 'http://dummyimage.com/233x112.png/dddddd/000000', '15:40', '0:14', '2019-11-22 00:02:54', '2019-09-23', 2, 'Friday, 17 April, 2020');
+insert into events (title, description, is_approved, event_image, start_time, end_time, start, end, user_id, start_date_full) values ('Cottonheads', 'Vestibulum ac est lacinia nisi venenatis tristique.', true, 'http://dummyimage.com/223x215.jpg/cc0000/ffffff', '12:38', '11:05', '2019-07-17 20:51:12', '2019-05-12', 1, 'Friday, 17 April, 2020');
+insert into events (title, description, is_approved, event_image, start_time, end_time, start, end, user_id, start_date_full) values ('Bolivian Burhead', 'Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum.', true, 'http://dummyimage.com/171x152.jpg/ff4444/ffffff', '20:45', '20:11', '2019-08-14 12:46:36', '2019-10-04', 3, 'Friday, 17 April, 2020');
+insert into events (title, description, is_approved, event_image, start_time, end_time, start, end, user_id, start_date_full) values ('Pohlia Moss', 'Nulla justo.', true, 'http://dummyimage.com/141x173.jpg/dddddd/000000', '9:22', '23:07', '2019-08-31 18:55:53', '2019-09-13', 2, 'Friday, 17 April, 2020');
+insert into events (title, description, is_approved, event_image, start_time, end_time, start, end, user_id, start_date_full) values ('Peppermint Drop Lichen', 'Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.', false, 'http://dummyimage.com/238x245.bmp/5fa2dd/ffffff', '15:26', '5:53', '2020-01-10 07:58:09', '2019-09-06', 4, 'Friday, 17 April, 2020');
+insert into events (title, description, is_approved, event_image, start_time, end_time, start, end, user_id, start_date_full) values ('Canoparmelia Lichen', 'Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.', true, 'http://dummyimage.com/246x103.png/5fa2dd/ffffff', '6:51', '17:08', '2019-11-01 19:11:07', '2019-06-30', 1, 'Friday, 17 April, 2020');
+insert into events (title, description, is_approved, event_image, start_time, end_time, start, end, user_id, start_date_full) values ('Jeweled Onion', 'Duis bibendum. Morbi non quam nec dui luctus rutrum.', false, 'http://dummyimage.com/128x183.bmp/dddddd/000000', '5:17', '14:49', '2019-06-28 04:37:32', '2020-04-22', 3, 'Friday, 17 April, 2020');
+insert into events (title, description, is_approved, event_image, start_time, end_time, start, end, user_id, start_date_full) values ('Ceratostigma', 'Aliquam non mauris. Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet.', true, 'http://dummyimage.com/181x102.jpg/dddddd/000000', '2:51', '1:38', '2019-12-17 14:04:12', '2020-02-04', 2, 'Friday, 17 April, 2020');
+insert into events (title, description, is_approved, event_image, start_time, end_time, start, end, user_id, start_date_full) values ('Scarlet Keckiella', 'In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.', false, 'http://dummyimage.com/179x240.jpg/dddddd/000000', '5:59', '16:12', '2020-04-17 05:14:15', '2019-08-31', 1, 'Friday, 17 April, 2020');
+insert into events (title, description, is_approved, event_image, start_time, end_time, start, end, user_id, start_date_full) values ('Aesandra', 'Donec dapibus.', true, 'http://dummyimage.com/152x232.bmp/cc0000/ffffff', '23:35', '16:44', '2020-02-18 22:01:22', '2020-02-09', 3, 'Friday, 17 April, 2020');
+insert into events (title, description, is_approved, event_image, start_time, end_time, start, end, user_id, start_date_full) values ('Stiff Marsh Bedstraw', 'Phasellus in felis. Donec semper sapien a libero. Nam dui. Proin leo odio, porttitor id, consequat in, consequat ut, nulla.', true, 'http://dummyimage.com/121x176.png/cc0000/ffffff', '21:31', '2:35', '2019-10-23 05:54:55', '2019-11-21', 4, 'Friday, 17 April, 2020');
+insert into events (title, description, is_approved, event_image, start_time, end_time, start, end, user_id, start_date_full) values ('Purple Sage', 'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.', true, 'http://dummyimage.com/149x237.bmp/ff4444/ffffff', '14:51', '8:39', '2019-08-01 06:24:34', '2019-08-02', 2, 'Friday, 17 April, 2020');
+insert into events (title, description, is_approved, event_image, start_time, end_time, start, end, user_id, start_date_full) values ('Sacramento Valley Buttercup', 'Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci.', true, 'http://dummyimage.com/207x132.png/ff4444/ffffff', '16:49', '15:57', '2019-05-19 06:37:01', '2019-08-19', 3, 'Friday, 17 April, 2020');
+insert into events (title, description, is_approved, event_image, start_time, end_time, start, end, user_id, start_date_full) values ('Runyon''s Water-willow', 'Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla.', false, 'http://dummyimage.com/106x143.bmp/5fa2dd/ffffff', '12:39', '11:02', '2020-04-07 11:15:23', '2019-07-11', 2, 'Friday, 17 April, 2020');
+insert into events (title, description, is_approved, event_image, start_time, end_time, start, end, user_id, start_date_full) values ('Orchardgrass', 'Integer ac neque. Duis bibendum.', true, 'http://dummyimage.com/207x161.png/5fa2dd/ffffff', '19:11', '3:35', '2019-08-23 14:57:34', '2019-11-29', 1, 'Friday, 17 April, 2020');
+insert into events (title, description, is_approved, event_image, start_time, end_time, start, end, user_id, start_date_full) values ('San Clemente Island Brodiaea', 'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.', false, 'http://dummyimage.com/187x105.png/ff4444/ffffff', '14:57', '5:32', '2019-06-08 06:05:58', '2019-08-19', 1, 'Friday, 17 April, 2020');
+insert into events (title, description, is_approved, event_image, start_time, end_time, start, end, user_id, start_date_full) values ('Torrey''s Wrightwort', 'Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.', false, 'http://dummyimage.com/106x115.bmp/cc0000/ffffff', '17:17', '20:48', '2020-02-17 15:05:19', '2019-04-20', 1, 'Friday, 17 April, 2020');
+insert into events (title, description, is_approved, event_image, start_time, end_time, start, end, user_id, start_date_full) values ('Bourgeau''s Pepperweed', 'Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam vel augue.', true, 'http://dummyimage.com/123x151.jpg/ff4444/ffffff', '11:47', '6:57', '2020-02-29 22:49:09', '2019-05-07', 2, 'Friday, 17 April, 2020');
 
 insert into categories (category, parent_id)
 VALUES ('Music', 0);
@@ -188,7 +110,3 @@ insert into event_category (event_id, category_id)
 values (29, 1);
 insert into event_category (event_id, category_id)
 values (30, 4);
-
-DELETE
-from users
-where id = 1;

@@ -23,13 +23,13 @@
     <div class="right-profile"></div>
 
 
-    <div class="user-info">
+    <div class="user-info eventCard Music" style="width: 80%">
         <div class="welcome" th:object="${user}">
+            <img class="eventImage profileImage" th:attr="src=@{${user.profileImage}}"/>
             <h1 th:text="${user.username}"></h1>
             <h5 th:text="${user.email}"></h5>
-            <img class="profileImage" th:attr="src=@{${user.profileImage}}" style="height: 250px; width: auto"/>
             <br>
-            <a href="/update">edit</a>
+            <a href="/update">Edit Profile</a>
             <br>
             <a th:if="${user.admin} == true" th:href="@{/admin}">Admin Page</a>
             <br>
@@ -51,7 +51,7 @@
 
         <!--friends list-->
         <th:block th:object="${friendList}">
-            <p>Friend List:</p>
+            <h5>Friend List:</h5>
             <th:block th:each="friend : ${friendList}">
                 <a th:href="@{|/profile/${friend.id}|}" th:text="${friend.username}"></a>
                 <br/>
@@ -60,17 +60,18 @@
     </div>
 
     <div class="user-posts">
-        <p>here are your posts</p>
+        <h5>Your posts:</h5>
         <th:block th:object="${events}">
-            <th:block th:each="event : ${events}">
-                <h1 th:text="${event.title}"></h1>
-                <h5 th:text="${event.description}"></h5>
-                <p th:text="${event.startDateFull}"></p>
-                <p th:text="${event.endDateFull}"></p>
-                <p th:text="${event.startTime}"></p>
-                <p th:text="${event.endTime}"></p>
-                <br>
-                <img class="eventImage" th:attr="src=@{${event.eventImage}}" style="height: 250px; width: auto"/>
+            <th:block th:each="event : ${events}" th:class="eventCard">
+                <div class="eventCard Arts" style="width: 80%">
+                    <img class="eventImage" th:attr="src=@{${event.eventImage}}"/>
+                    <h2 th:text="${event.title}"></h2>
+                    <h5 th:text="${event.description}"></h5>
+                    <p th:text="${event.startDateFull}"></p>
+                    <p th:text="${event.endDateFull}"></p>
+                    <p th:text="${event.startTime}"></p>
+                    <p th:text="${event.endTime}"></p>
+                </div>
             </th:block>
         </th:block>
     </div>
