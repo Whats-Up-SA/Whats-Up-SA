@@ -49,34 +49,3 @@ insert into categories (category, parent_id)
 VALUES ('Arts', 0);
 insert into categories (category, parent_id)
 VALUES ('Family', 0);
-
-insert into event_category (event_id, category_id) values (1, 4);
-insert into event_category (event_id, category_id) values (2, 4);
-insert into event_category (event_id, category_id) values (3, 1);
-insert into event_category (event_id, category_id) values (4, 4);
-insert into event_category (event_id, category_id) values (5, 1);
-insert into event_category (event_id, category_id) values (6, 1);
-insert into event_category (event_id, category_id) values (7, 2);
-insert into event_category (event_id, category_id) values (8, 1);
-insert into event_category (event_id, category_id) values (9, 3);
-insert into event_category (event_id, category_id) values (10, 4);
-insert into event_category (event_id, category_id) values (11, 1);
-insert into event_category (event_id, category_id) values (12, 2);
-insert into event_category (event_id, category_id) values (13, 3);
-insert into event_category (event_id, category_id) values (14, 4);
-insert into event_category (event_id, category_id) values (15, 2);
-insert into event_category (event_id, category_id) values (16, 4);
-insert into event_category (event_id, category_id) values (17, 2);
-insert into event_category (event_id, category_id) values (18, 2);
-insert into event_category (event_id, category_id) values (19, 1);
-insert into event_category (event_id, category_id) values (20, 4);
-insert into event_category (event_id, category_id) values (21, 1);
-insert into event_category (event_id, category_id) values (22, 1);
-insert into event_category (event_id, category_id) values (23, 2);
-insert into event_category (event_id, category_id) values (24, 2);
-insert into event_category (event_id, category_id) values (25, 4);
-insert into event_category (event_id, category_id) values (26, 4);
-insert into event_category (event_id, category_id) values (27, 4);
-insert into event_category (event_id, category_id) values (28, 3);
-insert into event_category (event_id, category_id) values (29, 1);
-insert into event_category (event_id, category_id) values (30, 4);
