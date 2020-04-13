@@ -21,10 +21,10 @@
         <a th:href="@{|/events/${pair.key.id}|}"><h2 th:text="${pair.key.title}"></h2></a>
         <p th:text="${pair.key.description}"></p>
 
-        <p th:text="|Start Date: ${pair.key.startDateFull}|"></p>
-        <p th:text="|End Date: ${pair.key.endDateFull}|"></p>
-        <p th:text="|Start Time: ${pair.key.startTime}|"></p>
-        <p th:text="|End Time: ${pair.key.endTime}|"></p>
+        <p th:text="|Date: ${pair.key.startDateFull}|"></p>
+<!--        <p th:text="|End Date: ${pair.key.endDateFull}|"></p>-->
+        <p th:text="|Time: ${pair.key.startTime}|"></p>
+<!--        <p th:text="|End Time: ${pair.key.endTime}|"></p>-->
         <p th:text="|Category: ${pair.value.category}|"></p>
     </div>
 </div>
