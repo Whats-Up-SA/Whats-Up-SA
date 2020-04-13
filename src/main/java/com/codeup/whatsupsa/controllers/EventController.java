@@ -86,6 +86,10 @@ public class EventController {
         Event event = eventDao.getOne(id);
         User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
+        Interested interested = interestedDao.checkIfInterested(loggedIn, event);
+
+        model.addAttribute("interestedUsers", interestedDao.findAllByEvent(event));
+
         model.addAttribute("categories", event.getCategories());
         model.addAttribute("category", event.getCategories().get(0).getCategory());
         model.addAttribute("title", event.getTitle());
@@ -95,8 +99,6 @@ public class EventController {
         model.addAttribute("endDateFull", event.getEndDateFull());
         model.addAttribute("startTime", event.getStartTime());
         model.addAttribute("endTime", event.getEndTime());
-
-        Interested interested = interestedDao.checkIfInterested(loggedIn, event);
 
         if (interested != null) {
             model.addAttribute("interested", interested.getId());
