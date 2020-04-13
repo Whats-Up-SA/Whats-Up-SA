@@ -3,10 +3,9 @@ package com.codeup.whatsupsa.controllers;
 
 import com.codeup.whatsupsa.Repositories.CategoryRepository;
 import com.codeup.whatsupsa.Repositories.EventsRepository;
+import com.codeup.whatsupsa.Repositories.InterestedRepository;
 import com.codeup.whatsupsa.Repositories.UserRepository;
-import com.codeup.whatsupsa.models.Category;
-import com.codeup.whatsupsa.models.Event;
-import com.codeup.whatsupsa.models.User;
+import com.codeup.whatsupsa.models.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -23,13 +22,15 @@ public class EventController {
     private EventsRepository eventDao;
     private UserRepository userDao;
     private CategoryRepository categoryDao;
+    private InterestedRepository interestedDao;
     @Value("${filestack.api.key}")
     private String fsapi;
 
-    public EventController(EventsRepository eventDao, UserRepository userDao, CategoryRepository categoryDao) {
+    public EventController(EventsRepository eventDao, UserRepository userDao, CategoryRepository categoryDao, InterestedRepository interestedDao) {
         this.eventDao = eventDao;
         this.userDao = userDao;
         this.categoryDao = categoryDao;
+        this.interestedDao = interestedDao;
     }
 
     @GetMapping("/submit")
@@ -82,6 +83,11 @@ public class EventController {
     @GetMapping("/events/{id}")
     public String getPost(@PathVariable Long id, Model model) {
         Event event = eventDao.getOne(id);
+
+        User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        Interested interested = interestedDao.checkIfInterested(loggedIn, event);
+
         model.addAttribute("categories", event.getCategories());
         model.addAttribute("category", event.getCategories().get(0).getCategory());
         model.addAttribute("title", event.getTitle());
@@ -91,6 +97,11 @@ public class EventController {
         model.addAttribute("endDateFull", event.getEndDateFull());
         model.addAttribute("startTime", event.getStartTime());
         model.addAttribute("endTime", event.getEndTime());
+
+        if (interested != null) {
+            model.addAttribute("interested", interested.getId());
+        }
+
         return "events/show";
     }
 
@@ -154,7 +165,8 @@ public class EventController {
 
     //Send all the events as json objects
     @GetMapping("/event/events.json")
-    public @ResponseBody List<Event> viewAllEventsInJSON(){
+    public @ResponseBody
+    List<Event> viewAllEventsInJSON() {
         List<Event> events = eventDao.findAll();
 
         for (Event event : events) {
@@ -166,6 +178,25 @@ public class EventController {
         }
 
         return events;
+    }
+
+    @PostMapping("/events/{id}/interested")
+    public String newInterested(@PathVariable Long id) {
+        Interested newInterested = new Interested();
+        User UserID = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        newInterested.setUserID(UserID);
+        newInterested.setEvent(eventDao.getOne(id));
+        interestedDao.save(newInterested);
+        return "redirect:/index";
+    }
+
+    @PostMapping("/events/{id}/decline")
+    public String noLongerInterested(@PathVariable Long id) {
+
+        interestedDao.deleteById(id);
+
+        return "redirect:/profile";
     }
 
 }
