@@ -188,7 +188,7 @@ public class EventController {
         newInterested.setUserID(UserID);
         newInterested.setEvent(eventDao.getOne(id));
         interestedDao.save(newInterested);
-        return "redirect:/index";
+        return "redirect:/events/{id}";
     }
 
     @PostMapping("/events/{id}/decline")
@@ -196,7 +196,7 @@ public class EventController {
 
         interestedDao.deleteById(id);
 
-        return "redirect:/profile";
+        return "redirect:/events/{id}";
     }
 
 }
