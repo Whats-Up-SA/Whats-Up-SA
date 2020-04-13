@@ -41,6 +41,11 @@
                        id="confirmPassword"/>
 
             </div>
+
+            <input type="button" value="Upload Profile Picture" id="pickWatermark" onclick="pickMark()">
+
+            <input type="hidden" name="profileImage" id="profileImage" th:field="*{profileImage}"/>
+
             <input value="Create an Account" class="btnSubmit" type="submit"/>
 
         </form>
@@ -50,6 +55,17 @@
 
 </div>
 <script :block th:replace="/partials/scripts :: scripts"></script>
+<script th:inline="javascript">
+    let client = filestack.init(document.querySelector('meta.fsapi').content);
 
+    function pickMark() {
+        client.pick({
+            accept: 'image/*',
+            maxFiles: 1
+        }).then(function (result) {
+            document.getElementById("profileImage").value = result.filesUploaded[0].url;
+        });
+    }
+</script>
 </body>
 </html>

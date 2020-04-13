@@ -48,7 +48,11 @@ public class UserController {
 
     @GetMapping("/register")
     public String showSignupForm(Model model) {
-        model.addAttribute("user", new User());
+        User user = new User();
+
+        model.addAttribute("user", user);
+        model.addAttribute("fsapi", fsapi);
+        model.addAttribute("profileImage", user.getProfileImage());
         return "users/register";
     }
 
