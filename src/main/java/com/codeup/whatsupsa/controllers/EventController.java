@@ -82,11 +82,9 @@ public class EventController {
 
     @GetMapping("/events/{id}")
     public String getPost(@PathVariable Long id, Model model) {
+
         Event event = eventDao.getOne(id);
-
         User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-        Interested interested = interestedDao.checkIfInterested(loggedIn, event);
 
         model.addAttribute("categories", event.getCategories());
         model.addAttribute("category", event.getCategories().get(0).getCategory());
@@ -98,10 +96,11 @@ public class EventController {
         model.addAttribute("startTime", event.getStartTime());
         model.addAttribute("endTime", event.getEndTime());
 
+        Interested interested = interestedDao.checkIfInterested(loggedIn, event);
+
         if (interested != null) {
             model.addAttribute("interested", interested.getId());
         }
-
         return "events/show";
     }
 
@@ -188,7 +187,7 @@ public class EventController {
         newInterested.setUserID(UserID);
         newInterested.setEvent(eventDao.getOne(id));
         interestedDao.save(newInterested);
-        return "redirect:/index";
+        return "redirect:/events/{id}";
     }
 
     @PostMapping("/events/{id}/decline")
@@ -196,7 +195,7 @@ public class EventController {
 
         interestedDao.deleteById(id);
 
-        return "redirect:/profile";
+        return "redirect:/events/{id}";
     }
 
 }
