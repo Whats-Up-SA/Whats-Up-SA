@@ -21,10 +21,10 @@
     <div class="form-group">
         <form th:action="@{|/submit|}" th:method="POST">
             <label for="title"></label>
-            <input id="title" type="text" name="title" placeholder="Enter event title" required>
+            <input id="title" type="text" name="title" placeholder="Enter event title">
             <br/>
             <label for="description"></label>
-            <textarea id="description" name="description" placeholder="Enter event description" required></textarea>
+            <textarea id="description" name="description" placeholder="Enter event description"></textarea>
             <br/>
             <label for="parentCategory">Category:</label>
             <select name="parentCategory" id="parentCategory" required>
@@ -41,13 +41,13 @@
             </div>
 
             <label for="startTime">Start Time</label>
-            <input id="startTime" class="timepicker" type="text" name="startTime" required>
+            <input id="startTime" class="timepicker" type="text" name="startTime">
             <br/>
             <label for="endTime">End Time</label>
             <input id="endTime" class="timepicker" type="text" name="endTime">
             <br/>
             <label for="start">Start Date</label>
-            <input type="text" class="datepicker" required id="startDateFull" name="startDateFull" size="30">
+            <input type="text" class="datepicker" id="startDateFull" name="startDateFull" size="30">
             <input type="hidden" class="alternate1" id="start" name="start">
             <br/>
             <label for="end">End Date</label>
@@ -65,7 +65,7 @@
     <div class="footer-div"></div>
 </div>
 
-<script :block th:replace="/partials/scripts :: scripts"></script>
+<!--<script :block th:replace="/partials/scripts.html :: scripts"></script>-->
 <script th:inline="javascript">
     let client = filestack.init(document.querySelector('meta.fsapi').content);
 

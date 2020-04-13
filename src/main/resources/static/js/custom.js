@@ -17,7 +17,7 @@ $(function () {
             alert('Please provide an event start time.');
             return false;
         }
-        if ($('#startDate').val().length === 0) {
+        if ($('#startDateFull').val().length === 0) {
             alert('Please provide an event start date.');
             return false;
         } else {

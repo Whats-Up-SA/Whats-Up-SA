@@ -31,13 +31,14 @@
         <p>Category: </p>
         <div th:each="category : ${categories}"><p th:text="${category.category}"></p></div>
 
-        <form th:action="@{|/events/${id}/interested|}" th:value="${id}" th:method="POST"
+
+        <form th:if="${interested} == null" th:action="@{|/events/${id}/interested|}" th:value="${id}" th:method="POST"
               style="display:inline">
             <button>Interested</button>
         </form>
 
-        <!--if user is interested, do not display the interested button. if user is interested, display not interested button, pull in user object-->
-        <form th:action="@{|/events/${interested}/decline|}" th:value="${interested}" th:method="POST"
+        <form th:if="${interested} != null" th:action="@{|/events/${interested}/decline|}" th:value="${interested}"
+              th:method="POST"
               style="display:inline">
             <button>Uninterested</button>
         </form>
@@ -45,6 +46,6 @@
     </div>
     <div class="footer-div"></div>
 </div>
-<script :block th:replace="/partials/scripts :: scripts"></script>
+<!--<script :block th:replace="/partials/scripts.html :: scripts"></script>-->
 </body>
 </html>
