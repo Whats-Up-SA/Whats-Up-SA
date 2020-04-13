@@ -23,7 +23,7 @@ body {
 }
 .header li a, .link-button{
     display: block;
-    padding: 20px 20px;
+    padding: 15px 20px;
     border-right: 1px solid #f4f4f4;
     text-decoration: none;
 }
@@ -54,7 +54,7 @@ body {
     cursor: pointer;
     display: inline-block;
     float: right;
-    padding: 28px 20px;
+    padding: 23px 20px;
     position: relative;
     user-select: none;
 }
@@ -131,7 +131,7 @@ body {
         float: left;
     }
     .header li a {
-        padding: 20px 30px;
+        padding: 15px 30px;
     }
     .header .menu {
         clear: none;
@@ -225,13 +225,13 @@ a, .link-button {
 .profile-container {
     display: grid;
     grid-template-columns: .15fr .70fr 1fr .15fr;
-    grid-template-rows: .25fr .5fr 1fr .25fr;
+    grid-template-rows: .1fr .5fr .5fr .25fr;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
 }
 
 .nav-profile { grid-area: 1 / 1 / 2 / 5; }
-.footer-profile { grid-area: 4 / 1 / 5 / 5; }
+.footer-profile { grid-area: 4 / 2 / 5 / 4; }
 .left-profile { grid-area: 2 / 1 / 4 / 2; }
 .right-profile { grid-area: 2 / 4 / 4 / 5; }
 .user-info { grid-area: 2 / 2 / 3 / 3; }
@@ -239,6 +239,30 @@ a, .link-button {
 .calendar-container { grid-area: 2 / 3 / 4 / 4; }
 .calendar-profile { grid-area: 2 / 3 / 4 / 4; }
 
+.aboutContainer{
+    margin: 2em auto;
+    width: 90%;
+    max-width: 1024px;
+    column-gap: 3em;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.aboutCard{
+    width: 250px;
+    border-radius: 10px;
+    display: inline-block;
+    padding: 1em;
+    margin-left: 1em;
+    margin-right: 1em;
+    margin-bottom: 1em;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+.aboutCard:hover{
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
 .eventContainer{
     margin: 2em auto;
     width: 80%;

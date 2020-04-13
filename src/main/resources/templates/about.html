@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="partials/header.html :: header">
+	<meta charset="UTF-8" />
+	<title>About Us</title>
+</head>
+<body>
+
+<nav th:replace="partials/navbar.html :: navbar"></nav>
+<!--<div class="aboutContainer">-->
+	<div class="aboutContainer">
+		<div class="aboutCard Movies">
+			<img class="eventImage" src="https://cdn.filestackcontent.com/raBvAASzRkGYOX3ipjrg" alt="Yasmin Menchaca">
+			<h2>Yasmin Menchaca</h2>
+			<a href="https://www.linkedin.com/in/yasminmenchaca/"><i class="fab fa-linkedin fa-2x"></i></a>
+			<span>&emsp;</span>
+			<a href="https://github.com/yasminmenchaca"><i class="fab fa-github-square fa-2x"></i></a>
+			<span>&emsp;</span>
+			<a href="https://alumni.codeup.com/students/773"><i class="fas fa-graduation-cap fa-2x"></i></a>
+		</div>
+		<div class="aboutCard Music">
+			<img class="eventImage" src="https://cdn.filestackcontent.com/iVvNw2p2TuXpC0PQb80Q" alt="David Ortega">
+			<h2>David Ortega</h2>
+			<a href="https://www.linkedin.com/in/davidortegadev/"><i class="fab fa-linkedin fa-2x"></i></a>
+			<span>&emsp;</span>
+			<a href="https://github.com/davidortegadev"><i class="fab fa-github-square fa-2x"></i></a>
+			<span>&emsp;</span>
+			<a href="https://alumni.codeup.com/students/771"><i class="fas fa-graduation-cap fa-2x"></i></a>
+		</div>
+		<div class="aboutCard Arts">
+			<img class="eventImage" src="https://cdn.filestackcontent.com/S1pGSfVDQyWAMir65nPA" alt="Rachel Castañeda">
+			<h2>Rachel Castañeda</h2>
+			<a href="https://www.linkedin.com/in/rachel-castaneda//"><i class="fab fa-linkedin fa-2x"></i></a>
+			<span>&emsp;</span>
+			<a href="https://github.com/rachel-castaneda"><i class="fab fa-github-square fa-2x"></i></a>
+			<span>&emsp;</span>
+			<a href="https://alumni.codeup.com/students/774"><i class="fas fa-graduation-cap fa-2x"></i></a>
+		</div>
+	</div>
+<!--</div>-->
+<script :block th:replace="/partials/scripts :: scripts"></script>
+
+</body>
+</html>

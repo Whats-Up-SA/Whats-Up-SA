@@ -59,28 +59,34 @@
         </th:block>
     </div>
 
-    <div class="user-posts">
-        <h5>Your posts:</h5>
-        <th:block th:object="${events}">
-            <th:block th:each="event : ${events}" th:class="eventCard">
-                <div class="eventCard Arts" style="width: 80%">
-                    <img class="eventImage" th:attr="src=@{${event.eventImage}}"/>
-                    <h2 th:text="${event.title}"></h2>
-                    <h5 th:text="${event.description}"></h5>
-                    <p th:text="${event.startDateFull}"></p>
-                    <p th:text="${event.endDateFull}"></p>
-                    <p th:text="${event.startTime}"></p>
-                    <p th:text="${event.endTime}"></p>
-                </div>
-            </th:block>
+<!--    not user posts - events user is interested in -->
+    <div class="user-posts eventCard Family" style="width: 80%; height: 370px; overflow: auto">
+        <h3>Interested Events:</h3>
+        <th:block th:object="${interestedEvents}" th:each="event : ${interestedEvents}">
+            <a th:href="@{|/events/${event.event.id}|}"><h4 th:text="${event.event.title}"></h4></a>
         </th:block>
     </div>
 
     <div class="calendar-profile" id="calendar">
 
     </div>
-
-    <div class="footer-profile"></div>
+<!--    user's posts -->
+    <div class="footer-profile eventContainer eventCard form-group">
+        <h5>Your posts:</h5>
+        <th:block th:object="${eventCats}">
+            <th:block th:each="event : ${eventCats}" th:class="eventCard">
+                <div class="eventCard" th:classappend="${event.value.category}"style="width: 80%">
+                    <img class="eventImage" th:attr="src=@{${event.key.eventImage}}"/>
+                    <h2 th:text="${event.key.title}"></h2>
+                    <h5 th:text="${event.key.description}"></h5>
+                    <p th:text="${event.key.startDateFull}"></p>
+<!--                    <p th:text="${event.key.endDateFull}"></p>-->
+                    <p th:text="${event.key.startTime}"></p>
+<!--                    <p th:text="${event.key.endTime}"></p>-->
+                </div>
+            </th:block>
+        </th:block>
+    </div>
 </div>
 <script :block th:replace="/partials/scripts :: scripts"></script>
 

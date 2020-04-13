@@ -13,4 +13,12 @@ public interface InterestedRepository extends JpaRepository<Interested, Long> {
     @Query("FROM Interested a WHERE a.userID = ?1 AND a.event = ?2")
      Interested checkIfInterested(User user, Event event);
 
+    boolean existsByUserID(User user);
+
+//    @Query("FROM Interested a WHERE a.userID = ?1")
+    List<Interested> findAllByUserID(User user);
+
+    @Query("FROM Interested a WHERE a.event = ?1")
+    List<Interested> interestedByEvent(Event event);
+
 }
