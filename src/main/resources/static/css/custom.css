@@ -435,13 +435,14 @@ a, .link-button {
     margin-top: 1em;
 }
 
-.splashBlock{
+.splashBlock {
     width: 100%;
     margin: 0 auto;
 }
 
-.detailBlock{
-    width:100%;
+.detailBlock {
+    width: 100%;
+}
 
 .smallDetailBlock {
     width: 38%;
