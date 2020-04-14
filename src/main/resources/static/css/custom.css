@@ -434,19 +434,14 @@ a, .link-button {
     margin-right: auto;
     margin-top: 1em;
 }
-<<<<<<< HEAD
+
 .splashBlock{
     width: 100%;
     margin: 0 auto;
 }
+
 .detailBlock{
     width:100%;
-=======
-
-.detailBlock {
-    width: 100%;
->>>>>>> 453006bc62c08e43ffd8de1c4c3c405b73519568
-}
 
 .smallDetailBlock {
     width: 38%;
