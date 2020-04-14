@@ -91,7 +91,7 @@ public class UserController {
         //event+category logic
         List<Event> approvedEvents = eventDao.FindEventsByUserID(user.getId());
         java.util.List<java.util.Map.Entry<Event, Category>> eventCats = new java.util.ArrayList<>();
-        for(Event event : approvedEvents){
+        for (Event event : approvedEvents) {
             Map.Entry<Event, Category> newRequest = new AbstractMap.SimpleEntry<>(event, event.getCategories().get(0));
             eventCats.add(newRequest);
         }
@@ -171,7 +171,7 @@ public class UserController {
         //        Relationship testRelationship = new Relationship(otherUser, actionUser, actionUser, 0);
         relationshipDao.save(newRelationship);
 
-        return "redirect:/index";
+        return "redirect:/profile/{id}";
     }
 
     @PostMapping("/profile/{id}/approve")

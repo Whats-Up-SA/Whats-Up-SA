@@ -1,49 +1,22 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
-<head>
-    <style>
-        table td{
-            vertical-align:top;
-            border:solid 1px #888;
-            padding:10px;
-        }
-
-    </style>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials/header.html :: header">
+    <meta charset="UTF-8">
+    <title>Page Not Found</title>
 </head>
 <body>
-<h1>Error Page</h1>
-<table>
-    <tr>
-        <td>Date</td>
-        <td th:text="${timestamp}"/>
-    </tr>
-    <tr>
-        <td>Path</td>
-        <td th:text="${path}"/>
-    </tr>
-    <tr>
-        <td>Error</td>
-        <td th:text="${error}"/>
-    </tr>
-    <tr>
-        <td>Status</td>
-        <td th:text="${status}"/>
-    </tr>
-    <tr>
-        <td>Message</td>
-        <td th:text="${message}"/>
-    </tr>
-    <tr>
-        <td>Exception</td>
-        <td th:text="${exception}"/>
-    </tr>
-    <tr>
-        <td>Trace</td>
-        <td>
-            <pre th:text="${trace}"/>
-        </td>
-    </tr>
-</table>
+
+<div class="detailContainer">
+    <div class="detailCard Movies">
+        <div class="splashBlock" style="max-width: 500px">
+            <img src="/img/skyline.png" style="max-width:250px" alt="San Antonio's Skyline">
+            <h1>Oops! There's no page here!</h1>
+            <br/>
+            <form th:action="@{|/index|}" style="display:inline">
+                <button class="profile-btn">Go Back Home</button>
+            </form>
+        </div>
+    </div>
+</div>
 </body>
 </html>
