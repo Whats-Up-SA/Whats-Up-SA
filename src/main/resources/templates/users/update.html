@@ -22,15 +22,18 @@
 
             <div class="input-group">
                 <label for="username"></label>
-                <input th:field="*{username}" placeholder="Username" id="username"/><span class="asterisk_input">  </span>
+                <input th:field="*{username}" placeholder="Username" id="username"/><span
+                    class="asterisk_input">  </span>
             </div>
             <div class="input-group">
                 <label for="email"></label>
-                <input th:field="*{email}" placeholder="Email" class="email" id="email"/><span class="asterisk_input">  </span>
+                <input th:field="*{email}" placeholder="Email" class="email" id="email"/><span
+                    class="asterisk_input">  </span>
             </div>
             <div class="input-group">
                 <label for="password"></label>
-                <input class="password" type="password" th:field="*{password}" placeholder="Password" id="password" required="required"/><span class="asterisk_input">  </span>
+                <input class="password" type="password" th:field="*{password}" placeholder="Password" id="password"
+                       required="required"/><span class="asterisk_input">  </span>
             </div>
             <div class="input-group">
                 <label for="confirmPassword"></label>
@@ -49,7 +52,7 @@
 
     <div class="footer-div"></div>
 </div>
-
+<!--<footer>2020 What's Up, SA</footer>-->
 <!--<script :block th:replace="/partials/scripts.html :: scripts"></script>-->
 <script th:inline="javascript">
     let client = filestack.init(document.querySelector('meta.fsapi').content);

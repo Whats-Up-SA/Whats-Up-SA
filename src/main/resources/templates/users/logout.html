@@ -1,44 +1,46 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:replace="partials/header.html :: header">
-	<meta charset="UTF-8" />
-	<title>Home</title>
+    <meta charset="UTF-8"/>
+    <title>Home</title>
 </head>
 <body>
 
 <div class="form-container">
 
-	<div class="nav-div">
-		<nav th:replace="partials/navbar.html :: navbar"></nav>
-	</div>
+    <div class="nav-div">
+        <nav th:replace="partials/navbar.html :: navbar"></nav>
+    </div>
 
-	<div class="left-gutter"></div>
-	<div class="right-gutter"></div>
+    <div class="left-gutter"></div>
+    <div class="right-gutter"></div>
 
-	<div class="header">
-		<h1>Login</h1>
-		<h3>You Have Successfully Logged Out</h3>
-	</div>
+    <div class="header">
+        <h1>Login</h1>
+        <h3>You Have Successfully Logged Out</h3>
+    </div>
 
-	<div class="form-group">
-	<form th:action="@{/logout}" method="post">
-		<div>
-			<label for="username"></label>
-			<input id="username" name="username" type="text" placeholder="Username"><span class="asterisk_input">  </span>
-		</div>
+    <div class="form-group">
+        <form th:action="@{/logout}" method="post">
+            <div>
+                <label for="username"></label>
+                <input id="username" name="username" type="text" placeholder="Username"><span
+                    class="asterisk_input">  </span>
+            </div>
 
-		<div>
-			<label for="password"></label>
-			<input id="password" name="password" type="password" placeholder="Password"><span class="asterisk_input">  </span>
-		</div>
-		<input type="submit" th:value="logout">
-	</form>
-	</div>
+            <div>
+                <label for="password"></label>
+                <input id="password" name="password" type="password" placeholder="Password"><span
+                    class="asterisk_input">  </span>
+            </div>
+            <input type="submit" th:value="logout">
+        </form>
+    </div>
 
-	<div class="footer-div"></div>
+    <div class="footer-div"></div>
 
 </div>
 <!--<script :block th:replace="/partials/scripts.html :: scripts"></script>-->
-
+<!--<footer>2020 What's Up, SA</footer>-->
 </body>
 </html>
