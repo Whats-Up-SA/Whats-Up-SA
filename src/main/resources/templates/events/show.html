@@ -29,21 +29,26 @@
 
 <!--        interest block-->
         <div class="detailBlock" style="padding: 2em 2em; box-sizing:border-box;">
-            <div th:each="user : ${interestedUsers}">
-                <div class="">
-                    <a th:href="@{|/profile/${user.userID.id}|}" ><img th:src="${user.userID.profileImage}" alt="" style="display: block; max-width: 40px; max-height: 40px; width: auto; height: auto; border-radius: 4px"></a>
+            <div style="display: flex; justify-content: flex-start ">
+                <div th:each="user : ${interestedUsers}">
+                    <div class="">
+                        <a th:href="@{|/profile/${user.userID.id}|}" ><img th:src="${user.userID.profileImage}" alt="" style="display: block; max-width: 40px; max-height: 40px; width: auto; height: auto; border-radius: 4px; margin: 4px;"></a>
+                    </div>
                 </div>
             </div>
             <br/>
+
             <form th:if="${interested} == null" th:action="@{|/events/${id}/interested|}" th:value="${id}" th:method="POST"
                   style="display:inline">
-                <span>You are not interested in this event. </span><button>Interested</button>
+                <button>Interested</button>
+                <button disabled>Not interested</button>
             </form>
 
             <form th:if="${interested} != null" th:action="@{|/events/${interested}/decline|}" th:value="${interested}"
                   th:method="POST"
                   style="display:inline">
-                <span>You are interested in this event. </span><button>Not Interested</button>
+                <button disabled>Interested</button>
+                <button>Not Interested</button>
             </form>
         </div>
     </div>

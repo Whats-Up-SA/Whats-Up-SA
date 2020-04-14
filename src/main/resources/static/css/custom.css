@@ -390,6 +390,10 @@ a, .link-button {
     margin-right: auto;
     margin-top: 1em;
 }
+.splashBlock{
+    width: 100%;
+    margin: 0 auto;
+}
 .detailBlock{
     width:100%;
 }
