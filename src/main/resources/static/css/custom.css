@@ -289,21 +289,15 @@ a, .link-button {
     grid-row-gap: 0px;
 }
 
-.nav-profile {
-    grid-area: 1 / 1 / 2 / 5;
-}
-
-.footer-profile {
-    grid-area: 4 / 2 / 5 / 4;
-}
-
-.left-profile {
-    grid-area: 2 / 1 / 4 / 2;
-}
-
-.right-profile {
-    grid-area: 2 / 4 / 4 / 5;
-}
+.nav-profile { grid-area: 1 / 1 / 2 / 5; }
+.footer-profile { grid-area: 4 / 2 / 5 / 4; }
+.left-profile { grid-area: 2 / 1 / 4 / 2; }
+.right-profile { grid-area: 2 / 4 / 4 / 5; }
+.user-info { grid-area: 2 / 2 / 3 / 3; }
+.user-posts { grid-area: 3 / 2 / 4 / 3; }
+.calendar-container { grid-area: 2 / 3 / 3 / 3;}
+.calendar-profile { grid-area: 2 / 3 / 3 / 3; }
+.friends-container{grid-area: 3 / 3 / 3/ 4}
 
 .user-info {
     grid-area: 2 / 2 / 3 / 3;
@@ -359,15 +353,54 @@ a, .link-button {
 
 .detailCard {
     border-radius: 10px;
-    display: inline-block;
-    padding: 1em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4em 1em;
     margin: 0 0 1em;
     width: 100%;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
 }
+.detailImage {
+    height: auto;
+    width: 90%;
+    max-width: 250px;
+    border-radius: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1em;
+}
+.detailBlock{
+    width:100%;
+}
+.smallDetailBlock{
+    width:38%;
+}
+.profileContainer {
+    margin: 2em auto;
+    width: 80%;
+    max-width: 1024px;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.profileCard {
+    border-radius: 10px;
+    /*display: inline-block;*/
+    padding: 1em;
+    margin: 0 0em 1em 0em;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+.profileCard:hover{
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 
-.eventContainer {
+}
+.eventContainer{
     margin: 2em auto;
     width: 80%;
     max-width: 1024px;
@@ -418,14 +451,26 @@ a, .link-button {
 /* Masonry on large screens */
 @media only screen and (min-width: 1024px) {
     .eventContainer {
-        column-count: 4;
+        column-count: 3;
+    }
+    .detailBlock{
+        width: 50%
+    }
+    .smallDetailBlock{
+        width:21%;
     }
 }
 
 /* Masonry on medium-sized screens */
 @media only screen and (max-width: 1023px) and (min-width: 768px) {
     .eventContainer {
-        column-count: 3;
+        column-count: 2;
+    }
+    .detailBlock{
+        width: 50%;
+    }
+    .smallDetailBlock{
+        width:21%;
     }
 }
 
@@ -433,5 +478,11 @@ a, .link-button {
 @media only screen and (max-width: 767px) and (min-width: 540px) {
     .eventContainer {
         column-count: 2;
+    }
+    .detailBlock{
+        width:50%;
+    }
+    .smallDetailBlock{
+        width:21%;
     }
 }
