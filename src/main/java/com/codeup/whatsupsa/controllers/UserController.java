@@ -112,6 +112,8 @@ public class UserController {
         User user1 = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = userDao.getUserById(user1.getId());
 
+        model.addAttribute("interestedEvents", interestedDao.findAllByUserID(userDao.getOne(id)));
+
         int checkFriends = 0;
         if (user.getId() < id) {
             if (relationshipDao.getRelationshipByFriends(user, userDao.getOne(id)) == 1) {
