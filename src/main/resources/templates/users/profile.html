@@ -14,7 +14,7 @@
 
         <div class="welcome" th:object="${user}">
             <img class="eventImage profileImage" th:attr="src=@{${user.profileImage}}"/>
-            <h1 th:text="${user.username}"></h1>
+            <h2 th:text="${user.username}"></h2>
             <p id="emailFont" th:text="${user.email}"></p>
             <form th:action="@{|/update|}" style="display:inline">
                 <button class="profile-btn">Edit Profile</button>
@@ -45,13 +45,14 @@
     <div class="profileCard Family detailBlock"
          style="height: 370px; overflow: auto; box-sizing: border-box; max-width: 400px;">
 
-        <h3>Interested Events:</h3>
+        <h2>Interested Events:</h2>
         <th:block th:object="${interestedEvents}" th:each="event : ${interestedEvents}">
-            <a th:href="@{|/events/${event.event.id}|}"><h4 th:text="${event.event.title}"></h4></a>
+            <a th:href="@{|/events/${event.event.id}|}"><p id="emailFont" th:text="${event.event.title}"></p></a>
         </th:block>
     </div>
 
     <div class="" style="box-sizing: border-box; width: 100%">
+        <h2>Friends:</h2>
         <div th:each="friend : ${friendList}" class="eventCard smallDetailBlock Movies">
             <img class="eventImage" th:attr="src=@{${friend.profileImage}}"/>
             <a th:href="@{|/profile/${friend.id}|}"><p th:text="${friend.username}"></p></a>
