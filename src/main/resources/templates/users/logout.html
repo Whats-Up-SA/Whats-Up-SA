@@ -5,17 +5,6 @@
 	<title>Home</title>
 </head>
 <body>
-<!--<th:block th:include="partials/navbar"/>-->
-<!--<nav>-->
-<!--	<ul>-->
-<!--		 More links here...-->
-<!--		<li>-->
-<!--			<form th :action="@{/logout}" th:method="post">-->
-<!--				<button class="btn-link btn" style="margin-top: 8px">Logout</button>-->
-<!--			</form>-->
-<!--		</li>-->
-<!--	</ul>-->
-<!--</nav>-->
 
 <div class="form-container">
 
@@ -27,19 +16,19 @@
 	<div class="right-gutter"></div>
 
 	<div class="header">
-		<h1>login</h1>
+		<h1>Login</h1>
 		<h3>You Have Successfully Logged Out</h3>
 	</div>
 
 	<div class="form-group">
 	<form th:action="@{/logout}" method="post">
 		<div>
-			<label for="username">username</label>
+			<label for="username"></label>
 			<input id="username" name="username" type="text" placeholder="Username"><span class="asterisk_input">  </span>
 		</div>
 
 		<div>
-			<label for="password">password</label>
+			<label for="password"></label>
 			<input id="password" name="password" type="password" placeholder="Password"><span class="asterisk_input">  </span>
 		</div>
 		<input type="submit" th:value="logout">

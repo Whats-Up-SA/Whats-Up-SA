@@ -215,6 +215,23 @@ a, .link-button {
 
 }
 
+.profile-btn {
+    background: peachpuff;
+    color: black;
+    font-size: 1em;
+    font-family: 'Montserrat', sans-serif;
+    width: 9em;
+    border-radius: 10px;
+    text-align: center;
+    margin: 2px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+#emailFont{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1em;
+}
+
 .asterisk_input::after {
     content: " *";
     color: #e32;
@@ -446,6 +463,10 @@ a, .link-button {
 
 .Family {
     background-color: #F9DED7;
+}
+
+.Livestream{
+    background-color: #F5CDDE;
 }
 
 /* Masonry on large screens */

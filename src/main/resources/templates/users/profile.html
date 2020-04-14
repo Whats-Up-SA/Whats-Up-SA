@@ -10,18 +10,23 @@
 
 <div class="profileContainer">
 
-
     <div class="profileCard Music detailBlock" style="box-sizing: border-box;">
+
         <div class="welcome" th:object="${user}">
             <img class="eventImage profileImage" th:attr="src=@{${user.profileImage}}"/>
             <h1 th:text="${user.username}"></h1>
-            <h5 th:text="${user.email}"></h5>
+            <p id="emailFont" th:text="${user.email}"></p>
+            <form th:action="@{|/update|}" style="display:inline">
+                <button class="profile-btn">Edit Profile</button>
+            </form>
             <br>
-            <a href="/update">Edit Profile</a>
+            <form th:if="${user.admin} == true" th:action="@{|/admin|}" style="display:inline">
+                <button class="profile-btn">Admin Page</button>
+            </form>
             <br>
-            <a th:if="${user.admin} == true" th:href="@{/admin}">Admin Page</a>
-            <br>
-            <a th:if="${user.admin} == true" th:href="@{/all}">All Users</a>
+            <form th:if="${user.admin} == true" th:action="@{|/all|}" style="display:inline">
+                <button class="profile-btn">All Users</button>
+            </form>
         </div>
         <!--friend request notifications-->
         <th:block th:object="${pairList}">
@@ -38,6 +43,7 @@
     </div>
 
     <div class="profileCard Family detailBlock" style="height: 370px; overflow: auto; box-sizing: border-box; max-width: 400px;">
+
         <h3>Interested Events:</h3>
         <th:block th:object="${interestedEvents}" th:each="event : ${interestedEvents}">
             <a th:href="@{|/events/${event.event.id}|}"><h4 th:text="${event.event.title}"></h4></a>
