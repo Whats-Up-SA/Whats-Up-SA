@@ -21,12 +21,12 @@
             </form>
             <br>
             <form th:if="${user.admin} == true" th:action="@{|/admin|}" style="display:inline">
-                <button class="profile-btn">Admin Page</button>
+                <button class="profile-btn">Pending Events</button>
             </form>
-            <br>
-            <form th:if="${user.admin} == true" th:action="@{|/all|}" style="display:inline">
-                <button class="profile-btn">All Users</button>
-            </form>
+<!--            <br>-->
+<!--            <form th:if="${user.admin} == true" th:action="@{|/all|}" style="display:inline">-->
+<!--                <button class="profile-btn">All Users</button>-->
+<!--            </form>-->
         </div>
         <!--friend request notifications-->
         <th:block th:object="${pairList}">
@@ -42,7 +42,8 @@
         </th:block>
     </div>
 
-    <div class="profileCard Family detailBlock" style="height: 370px; overflow: auto; box-sizing: border-box; max-width: 400px;">
+    <div class="profileCard Family detailBlock"
+         style="height: 370px; overflow: auto; box-sizing: border-box; max-width: 400px;">
 
         <h2>Interested Events:</h2>
         <th:block th:object="${interestedEvents}" th:each="event : ${interestedEvents}">
@@ -59,7 +60,7 @@
     </div>
 
 </div>
+<!--<footer>2020 What's Up, SA</footer>-->
 <!--<script :block th:replace="/partials/scripts.html :: scripts"></script>-->
-
 </body>
 </html>
