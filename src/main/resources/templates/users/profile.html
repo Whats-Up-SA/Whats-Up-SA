@@ -42,7 +42,8 @@
         </th:block>
     </div>
 
-    <div class="profileCard Family detailBlock" style="height: 370px; overflow: auto; box-sizing: border-box; max-width: 400px;">
+    <div class="profileCard Family detailBlock"
+         style="height: 370px; overflow: auto; box-sizing: border-box; max-width: 400px;">
 
         <h3>Interested Events:</h3>
         <th:block th:object="${interestedEvents}" th:each="event : ${interestedEvents}">
@@ -58,7 +59,7 @@
     </div>
 
 </div>
+<!--<footer>2020 What's Up, SA</footer>-->
 <!--<script :block th:replace="/partials/scripts.html :: scripts"></script>-->
-
 </body>
 </html>
