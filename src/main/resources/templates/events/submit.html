@@ -1,91 +1,86 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials/header.html :: header">
-    <meta charset="UTF-8">
-    <title>Submit an Event</title>
+	<meta charset="UTF-8">
+	<title>Submit an Event</title>
 </head>
 <body>
+<nav th:replace="partials/navbar.html :: navbar"></nav>
 
-<div class="form-container">
-    <div class="nav-div">
-        <nav th:replace="partials/navbar.html :: navbar"></nav>
-    </div>
 
-    <div class="left-gutter"></div>
-    <div class="right-gutter"></div>
+<h2 style="text-align: center">Submit an Event</h2>
 
-    <div class="banner">
-        <h2>Submit an Event</h2>
-    </div>
+<div class="detailContainer" id="formGroupContainer">
+	<div class="detailCard Family">
+		<p class="detailBlock">
+			Please use this form to submit an event. Your submission will be reviewed by an admin and if approved,
+			it will appear on the home page.<br><br>Before your
+			submission, please review our homepage to prevent duplicate event posts.<br><br>Thank you for using
+			What’s
+			Up, SA!
+		</p>
 
-    <div class="form-group">
-        <form th:action="@{|/submit|}" th:method="POST">
-            <p>
-                Please use this form to submit an event. Your submission will be reviewed by an admin and if approved,
-                it will appear on the home page.<br><br>Before your
-                submission, please review our homepage to prevent duplicate event posts.<br><br>Thank you for using What’s
-                Up, SA!
-            </p>
-            <label for="title"></label>
-            <input id="title" type="text" name="title" placeholder="Enter event title"><span
-                class="asterisk_input">  </span>
-            <br/>
-            <label for="description"></label>
-            <textarea id="description" name="description" placeholder="Enter event description"></textarea><span
-                class="asterisk_input">  </span>
-            <br/>
-            <label for="parentCategory">Category:</label>
-            <select class="select-css" name="parentCategory" id="parentCategory" required>
-                <option value="" selected disabled hidden>Categories</option>
-                <div th:each="category : ${parentCategories}">
-                    <option th:value="${category.id}" th:text="${category.category}"></option>
-                </div>
-            </select>
-            <br/>
-            <div th:each="category : ${childCategories}">
-                <input type="checkbox" th:id="${category.id}" th:name="${category.id}" th:value="${category.id}">
-                <label th:for="${category.id}" th:text="${category.category}"></label>
+		<div class="detailBlock form-group" id="formGroupSubmit">
+			<form th:action="@{|/submit|}" th:method="POST">
+				<label for="title"></label>
+				<input id="title" type="text" name="title" placeholder="Enter event title"><span
+					class="asterisk_input">  </span>
+				<br/>
+				<label for="description"></label>
+				<textarea id="description" name="description" placeholder="Enter event description"></textarea><span
+					class="asterisk_input">  </span>
+				<br/>
+				<label for="parentCategory"></label>
+				<select class="select-css" name="parentCategory" id="parentCategory" required>
+					<option value="" selected disabled hidden>Categories</option>
+					<div th:each="category : ${parentCategories}">
+						<option th:value="${category.id}" th:text="${category.category}"></option>
+					</div>
+				</select>
+				<br/>
+				<div th:each="category : ${childCategories}">
+					<input type="checkbox" th:id="${category.id}" th:name="${category.id}" th:value="${category.id}">
+					<label th:for="${category.id}" th:text="${category.category}"></label>
+					<br/>
+				</div>
+				<label for="startTime"></label>
+				<input id="startTime" class="timepicker" type="text" name="startTime"><span
+					class="asterisk_input">  </span>
+				<label for="endTime">to</label>
+				<input id="endTime" class="timepicker" type="text" name="endTime"><span class="asterisk_input">  </span>
+				<br/>
+				<label for="start">Start Date</label>
                 <br/>
-            </div>
-
-            <label for="startTime">From:</label>
-            <input id="startTime" class="timepicker" type="text" name="startTime"><span class="asterisk_input">  </span>
-            <br/>
-            <label for="endTime">To:</label>
-            <input id="endTime" class="timepicker" type="text" name="endTime"><span class="asterisk_input">  </span>
-            <br/>
-            <label for="start">Start Date</label>
-            <input type="text" class="datepicker" id="startDateFull" name="startDateFull" size="30">
-            <input type="hidden" class="alternate1" id="start" name="start"><span class="asterisk_input">  </span>
-            <br/>
-            <label for="end">End Date</label>
-            <input type="text" class="datepicker" id="endDateFull" name="endDateFull" size="30">
-            <input type="hidden" class="alternate2" id="end" name="end"><span class="asterisk_input">  </span>
-            <br/>
-            <input type="button" value="Add Image(s)" id="pickWatermark" onclick="pickMark()">
-            <br/>
-            <input type="hidden" name="eventImage" id="eventImage">
-
-            <button id="submit-btn">Submit Event</button>
-        </form>
-    </div>
-
-    <div class="footer-div"></div>
+				<input type="text" class="datepicker" id="startDateFull" name="startDateFull" size="30">
+				<input type="hidden" class="alternate1" id="start" name="start"><span class="asterisk_input">  </span>
+				<br/>
+				<label for="end">End Date</label>
+                <br/>
+				<input type="text" class="datepicker" id="endDateFull" name="endDateFull" size="30">
+				<input type="hidden" class="alternate2" id="end" name="end"><span class="asterisk_input">  </span>
+				<br/>
+				<input type="button" value="Add Image(s)" id="pickWatermark" onclick="pickMark()">
+				<br/>
+				<input type="hidden" name="eventImage" id="eventImage">
+				<button class="interested-btn" id="submit-btn">Submit Event</button>
+			</form>
+		</div>
+	</div>
 </div>
 <!--<footer>2020 What's Up, SA</footer>-->
 
 <!--<script :block th:replace="/partials/scripts.html :: scripts"></script>-->
 <script th:inline="javascript">
-    let client = filestack.init(document.querySelector('meta.fsapi').content);
+	let client = filestack.init(document.querySelector('meta.fsapi').content);
 
-    function pickMark() {
-        client.pick({
-            accept: 'image/*',
-            maxFiles: 1
-        }).then(function (result) {
-            document.getElementById("eventImage").value = result.filesUploaded[0].url;
-        });
-    }
+	function pickMark() {
+		client.pick({
+			accept: 'image/*',
+			maxFiles: 1
+		}).then(function (result) {
+			document.getElementById("eventImage").value = result.filesUploaded[0].url;
+		});
+	}
 
 </script>
 </body>
