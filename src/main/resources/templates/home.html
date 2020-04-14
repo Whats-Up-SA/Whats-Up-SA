@@ -1,12 +1,27 @@
-<!--<!DOCTYPE html>-->
-<!--<html xmlns:th="http://www.thymeleaf.org" lang="en">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8" />-->
-<!--    <title>Home</title>-->
-<!--</head>-->
-<!--<body>-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials/header.html :: header">
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<nav th:replace="partials/navbar.html :: navbar"></nav>
 
-<!--<h1>This is the home page</h1>-->
-
-<!--</body>-->
-<!--</html>-->
+<div class="detailContainer">
+	<div class="detailCard Movies">
+		<div class="splashBlock" style="max-width: 500px">
+			<img src="/img/skyline.png" style="max-width:250px" alt="San Antonio's Skyline">
+			<h1>Welcome To What's Up SA!</h1>
+			<h3>We are a user-submission powered event aggregator focused on San Antonio, striving to connect
+				the community through providing a platform where users can easily access local events.</h3>
+			<h4>We understand that we aren't able to attend events presently due to shelter-in-place but that doesn't stop our passion for connecting the community!
+				We are listing live-streamed events as well as events to look forward to once we're able to gather again. We hope to see you out there! - What's Up SA</h4>
+			<br/>
+			<form th:action="@{|/index|}" style="display:inline">
+				<button class="profile-btn">Take me to What's Up SA!</button>
+			</form>
+		</div>
+	</div>
+</div>
+</body>
+</html>
