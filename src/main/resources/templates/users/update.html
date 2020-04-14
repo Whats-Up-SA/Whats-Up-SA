@@ -5,7 +5,7 @@
     <title>update profile</title>
 </head>
 <body>
-<!--<th:block th:include="partials/navbar"/>-->
+
 <div class="form-container">
 
     <div class="nav-div">
@@ -22,27 +22,27 @@
 
             <div class="input-group">
                 <label for="username"></label>
-                <input th:field="*{username}" id="username"/>
+                <input th:field="*{username}" placeholder="Username" id="username"/><span class="asterisk_input">  </span>
             </div>
             <div class="input-group">
                 <label for="email"></label>
-                <input th:field="*{email}" class="email" id="email"/>
+                <input th:field="*{email}" placeholder="Email" class="email" id="email"/><span class="asterisk_input">  </span>
             </div>
             <div class="input-group">
                 <label for="password"></label>
-                <input class="password" type="password" th:field="*{password}" placeholder="Password" id="password" required="required"/>
+                <input class="password" type="password" th:field="*{password}" placeholder="Password" id="password" required="required"/><span class="asterisk_input">  </span>
             </div>
             <div class="input-group">
                 <label for="confirmPassword"></label>
                 <input class="confirmPassword" placeholder="Confirm Password" type="password" required="required"
-                       id="confirmPassword"/>
+                       id="confirmPassword"/><span class="asterisk_input">  </span>
             </div>
 
             <input type="button" value="Upload Profile Picture" id="pickWatermark" onclick="pickMark()">
 
             <input type="hidden" name="profileImage" id="profileImage" th:field="*{profileImage}"/>
 
-            <input value="Update account" class="btnSubmit" id="updateSaved" type="submit"/>
+            <input value="Update Account" class="btnSubmit" id="updateSaved" type="submit"/>
 
         </form>
     </div>

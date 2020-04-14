@@ -5,7 +5,6 @@
     <title>login</title>
 </head>
 <body>
-<!--<nav th:replace="partials/navbar.html :: navbar"></nav>-->
 
     <div class="form-container">
 
@@ -20,10 +19,10 @@
             <h1 class="h1-div4">Login</h1>
 
             <div th:if="${param.error}" class="error-div5">
-                invalid username or password
+                Invalid Username or Password
             </div>
             <div th:if="${param.logout}" class="logout-div6">
-                you have successfully been logged out
+                You Have Successfully Logged Out
             </div>
         </div>
 
@@ -31,13 +30,13 @@
         <form th:action="@{/login}" method="post">
             <div>
                 <label for="username"></label>
-                <input id="username" name="username" type="text" placeholder="username">
+                <input id="username" name="username" type="text" placeholder="Username"><span class="asterisk_input">  </span>
             </div>
             <div>
                 <label for="password"></label>
-                <input id="password" name="password" type="password" placeholder="password">
+                <input id="password" name="password" type="password" placeholder="Password"><span class="asterisk_input">  </span>
             </div>
-            <input type="submit" th:value="login" class="login-div10">
+            <input type="submit" th:value="Login" class="login-div10">
         </form>
         </div>
 

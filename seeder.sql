@@ -49,15 +49,17 @@ insert into categories (category, parent_id)
 VALUES ('Arts', 0);
 insert into categories (category, parent_id)
 VALUES ('Family', 0);
+insert into categories (category, parent_id)
+VALUES ('Livestream', 0);
 
 insert into event_category (event_id, category_id)
 values (1, 4);
 insert into event_category (event_id, category_id)
-values (2, 4);
+values (2, 5);
 insert into event_category (event_id, category_id)
 values (3, 1);
 insert into event_category (event_id, category_id)
-values (4, 4);
+values (4, 5);
 insert into event_category (event_id, category_id)
 values (5, 1);
 insert into event_category (event_id, category_id)
@@ -69,7 +71,7 @@ values (8, 1);
 insert into event_category (event_id, category_id)
 values (9, 3);
 insert into event_category (event_id, category_id)
-values (10, 4);
+values (10, 5);
 insert into event_category (event_id, category_id)
 values (11, 1);
 insert into event_category (event_id, category_id)
@@ -77,11 +79,11 @@ values (12, 2);
 insert into event_category (event_id, category_id)
 values (13, 3);
 insert into event_category (event_id, category_id)
-values (14, 4);
+values (14, 5);
 insert into event_category (event_id, category_id)
 values (15, 2);
 insert into event_category (event_id, category_id)
-values (16, 4);
+values (16, 5);
 insert into event_category (event_id, category_id)
 values (17, 2);
 insert into event_category (event_id, category_id)
