@@ -305,7 +305,7 @@ button[disabled] {
     width: 41%;
 }
 
-#startDateFull, #endDateFull, #title, #description, #pickWatermark {
+#startDateFull, #endDateFull, #title, #description {
     width: 90%;
 }
 
