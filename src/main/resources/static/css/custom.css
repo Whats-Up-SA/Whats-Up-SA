@@ -18,9 +18,10 @@ footer {
 
 select {
     font-size: 15px;
-    width: 10em;
+    width: 90%;
     height: 3em;
     border: none;
+    text-align-last: center;
 }
 
 /*nav begin*/
@@ -204,6 +205,14 @@ a, .link-button {
     display: table;
 }
 
+#formGroupSubmit{
+    background-color: transparent;
+    box-shadow: none;
+}
+#formGroupContainer{
+    width: 95%;
+}
+
 .form-group form {
     text-align: center;
     margin: auto;
@@ -269,11 +278,11 @@ a, .link-button {
 
 
 #startTime, #endTime {
-    width: 30%;
+    width: 41%;
 }
 
-#startDateFull, #endDateFull {
-    width: 50%;
+#startDateFull, #endDateFull, #title, #description, #pickWatermark {
+    width: 90%;
 }
 
 .form-container {
@@ -537,6 +546,9 @@ a, .link-button {
     .smallDetailBlock {
         width: 21%;
     }
+    #formGroupContainer{
+        width: 80%;
+    }
 }
 
 /* Masonry on medium-sized screens */
@@ -552,6 +564,9 @@ a, .link-button {
     .smallDetailBlock {
         width: 21%;
     }
+    #formGroupContainer{
+        width: 80%;
+    }
 }
 
 /* Masonry on small screens */
@@ -566,5 +581,8 @@ a, .link-button {
 
     .smallDetailBlock {
         width: 21%;
+    }
+    #formGroupContainer{
+        width: 80%;
     }
 }
