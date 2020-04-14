@@ -40,15 +40,15 @@
 
             <form th:if="${interested} == null" th:action="@{|/events/${id}/interested|}" th:value="${id}" th:method="POST"
                   style="display:inline">
-                <button>Interested</button>
-                <button disabled>Not interested</button>
+                <button class="interested-btn">Interested</button>
+                <button disabled>Not Interested</button>
             </form>
 
             <form th:if="${interested} != null" th:action="@{|/events/${interested}/decline|}" th:value="${interested}"
                   th:method="POST"
                   style="display:inline">
                 <button disabled>Interested</button>
-                <button>Not Interested</button>
+                <button class="interested-btn">Not Interested</button>
             </form>
         </div>
     </div>

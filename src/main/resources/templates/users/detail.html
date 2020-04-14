@@ -10,41 +10,42 @@
 <div class="profileContainer">
 
     <div class="profileCard Music detailBlock" style="box-sizing: border-box;">
-         <div class="welcome" th:object="${user}">
-                <img class="eventImage profileImage" th:attr="src=@{${user.profileImage}}"/>
-                <h2 th:text="${user.username}"></h2>
-                <br>
-                <th:block th:object="${relationship}">
-                    <div th:switch="${checkFriendship}">
-                        <th:block th:case="1">
-                            <form th:action="@{|/profile/${relationship.id}/unfriend|}" th:value="${relationship.id}"
-                                  th:method="POST" style="display:inline">
-                                <button>unfriend</button>
-                            </form>
-                        </th:block>
-                        <th:block th:case="2">
-                            <form th:action="@{|/profile/${relationship.id}/fr|}" th:value="${relationship.id}"
-                                  th:method="POST" style="display:inline">
-                                <button>add as friend</button>
-                            </form>
-                        </th:block>
-                        <th:block th:case="3">
-                            <form action="" style="display:inline">
-                                <button disabled>friend request pending</button>
-                            </form>
-                        </th:block>
-                        <th:block th:case="*">
-                            <form th:action="@{|/users/detail/fr/${user.id}|}" th:value="${user.id}" th:method="POST"
-                                  style="display:inline">
-                                <button>add as friend</button>
-                            </form>
-                        </th:block>
-                    </div>
-                </th:block>
+        <div class="welcome" th:object="${user}">
+            <img class="eventImage profileImage" th:attr="src=@{${user.profileImage}}"/>
+            <h2 th:text="${user.username}"></h2>
+            <br>
+            <th:block th:object="${relationship}">
+                <div th:switch="${checkFriendship}">
+                    <th:block th:case="1">
+                        <form th:action="@{|/profile/${relationship.id}/unfriend|}" th:value="${relationship.id}"
+                              th:method="POST" style="display:inline">
+                            <button class="interested-btn">Unfriend</button>
+                        </form>
+                    </th:block>
+                    <th:block th:case="2">
+                        <form th:action="@{|/profile/${relationship.id}/fr|}" th:value="${relationship.id}"
+                              th:method="POST" style="display:inline">
+                            <button class="interested-btn">Add Friend</button>
+                        </form>
+                    </th:block>
+                    <th:block th:case="3">
+                        <form action="" style="display:inline">
+                            <button disabled>Friend Request Pending</button>
+                        </form>
+                    </th:block>
+                    <th:block th:case="*">
+                        <form th:action="@{|/users/detail/fr/${user.id}|}" th:value="${user.id}" th:method="POST"
+                              style="display:inline">
+                            <button class="interested-btn">Add Friend</button>
+                        </form>
+                    </th:block>
+                </div>
+            </th:block>
         </div>
     </div>
 
-    <div class="profileCard Family detailBlock" style="height: 370px; overflow: auto; box-sizing: border-box; max-width: 400px;">
+    <div class="profileCard Family detailBlock"
+         style="height: 370px; overflow: auto; box-sizing: border-box; max-width: 400px;">
 
         <h2>Interested Events:</h2>
         <th:block th:object="${interestedEvents}" th:each="event : ${interestedEvents}">

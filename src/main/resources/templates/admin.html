@@ -26,13 +26,13 @@
         <p th:text="|Category: ${pair.value.category}|"></p>
 
         <form th:action="@{|/events/${pair.key.id}/edit|}" style="display:inline">
-            <button>Edit Event</button>
+            <button class="interested-btn">Edit Event</button>
         </form>
         <form th:action="@{|/events/${pair.key.id}/approve|}" th:method="POST" style="display:inline">
-            <button>Approve Event</button>
+            <button class="interested-btn">Approve Event</button>
         </form>
         <form th:action="@{|/events/${pair.key.id}/delete|}" th:method="POST" style="display:inline">
-            <button>Delete Event</button>
+            <button class="interested-btn">Delete Event</button>
         </form>
     </div>
 </div>
