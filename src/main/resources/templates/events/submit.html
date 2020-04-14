@@ -21,13 +21,13 @@
     <div class="form-group">
         <form th:action="@{|/submit|}" th:method="POST">
             <label for="title"></label>
-            <input id="title" type="text" name="title" placeholder="Enter event title">
+            <input id="title" type="text" name="title" placeholder="Enter event title"><span class="asterisk_input">  </span>
             <br/>
             <label for="description"></label>
-            <textarea id="description" name="description" placeholder="Enter event description"></textarea>
+            <textarea id="description" name="description" placeholder="Enter event description"></textarea><span class="asterisk_input">  </span>
             <br/>
             <label for="parentCategory">Category:</label>
-            <select name="parentCategory" id="parentCategory" required>
+            <select class="select-css" name="parentCategory" id="parentCategory" required>
                 <option value="" selected disabled hidden>Categories</option>
                 <div th:each="category : ${parentCategories}">
                     <option th:value="${category.id}" th:text="${category.category}"></option>
@@ -41,18 +41,18 @@
             </div>
 
             <label for="startTime">Start Time</label>
-            <input id="startTime" class="timepicker" type="text" name="startTime">
+            <input id="startTime" class="timepicker" type="text" name="startTime"><span class="asterisk_input">  </span>
             <br/>
             <label for="endTime">End Time</label>
-            <input id="endTime" class="timepicker" type="text" name="endTime">
+            <input id="endTime" class="timepicker" type="text" name="endTime"><span class="asterisk_input">  </span>
             <br/>
             <label for="start">Start Date</label>
             <input type="text" class="datepicker" id="startDateFull" name="startDateFull" size="30">
-            <input type="hidden" class="alternate1" id="start" name="start">
+            <input type="hidden" class="alternate1" id="start" name="start"><span class="asterisk_input">  </span>
             <br/>
             <label for="end">End Date</label>
             <input type="text" class="datepicker" id="endDateFull" name="endDateFull" size="30">
-            <input type="hidden" class="alternate2" id="end" name="end">
+            <input type="hidden" class="alternate2" id="end" name="end"><span class="asterisk_input">  </span>
             <br/>
             <input type="button" value="Add Image(s)" id="pickWatermark" onclick="pickMark()">
             <br/>
