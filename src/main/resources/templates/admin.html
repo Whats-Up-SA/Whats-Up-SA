@@ -1,39 +1,41 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials/header.html :: header">
-	<meta charset="UTF-8">
-	<title>Admin</title>
+    <meta charset="UTF-8">
+    <title>Admin</title>
 </head>
 <body>
 
 <!--<div class="admin-container">-->
 <!--	<div id="nav">-->
-		<nav th:replace="partials/navbar.html :: navbar"></nav>
+<nav th:replace="partials/navbar.html :: navbar"></nav>
 <!--	</div>-->
 
 <!--	<h1 class="welcome-admin">welcome, admin</h1>-->
 <!-- event -->
-	<div class="eventContainer">
-		<div th:each="pair : ${pairList}" class="eventCard" th:classappend="${pair.value.category}">
-			<img class="eventImage" th:attr="src=@{${pair.key.eventImage}}"/>
-			<a th:href="@{|/events/${pair.key.id}|}"><h2 th:text="${pair.key.title}"></h2></a>
-			<p th:text="${pair.key.description}"></p>
+<div class="eventContainer">
+    <div th:each="pair : ${pairList}" class="eventCard" th:classappend="${pair.value.category}">
+        <img class="eventImage" th:attr="src=@{${pair.key.eventImage}}"/>
+        <a th:href="@{|/events/${pair.key.id}|}"><h2 th:text="${pair.key.title}"></h2></a>
+        <p th:text="${pair.key.description}"></p>
 
-			<p th:text="|Start Date: ${pair.key.startDateFull}|"></p>
-			<p th:text="|End Date: ${pair.key.endDateFull}|"></p>
-			<p th:text="|Start Time: ${pair.key.startTime}|"></p>
-			<p th:text="|End Time: ${pair.key.endTime}|"></p>
-			<p th:text="|Category: ${pair.value.category}|"></p>
+        <p th:text="|Start Date: ${pair.key.startDateFull}|"></p>
+        <p th:text="|End Date: ${pair.key.endDateFull}|"></p>
+        <p th:text="|Start Time: ${pair.key.startTime}|"></p>
+        <p th:text="|End Time: ${pair.key.endTime}|"></p>
+        <p th:text="|Category: ${pair.value.category}|"></p>
 
-			<a th:href="@{|/events/${pair.key.id}/edit|}"><p th:text="edit"></p></a>
-			<form th:action="@{|/events/${pair.key.id}/approve|}" th:method="POST" style="display:inline">
-				<button>Approve Event</button>
-			</form>
-			<form th:action="@{|/events/${pair.key.id}/delete|}" th:method="POST" style="display:inline">
-				<button>Delete Event</button>
-			</form>
-		</div>
-	</div>
+        <form th:action="@{|/events/${pair.key.id}/edit|}" style="display:inline">
+            <button>Edit Event</button>
+        </form>
+        <form th:action="@{|/events/${pair.key.id}/approve|}" th:method="POST" style="display:inline">
+            <button>Approve Event</button>
+        </form>
+        <form th:action="@{|/events/${pair.key.id}/delete|}" th:method="POST" style="display:inline">
+            <button>Delete Event</button>
+        </form>
+    </div>
+</div>
 <!--</div>-->
 <!--<script :block th:replace="/partials/scripts.html :: scripts"></script>-->
 <!--<footer>2020 What's Up, SA</footer>-->
