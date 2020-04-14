@@ -16,6 +16,13 @@ footer {
     font-family: 'Montserrat', sans-serif;
 }
 
+select {
+    font-size: 15px;
+    width: 10em;
+    height: 3em;
+    border: none;
+}
+
 /*nav begin*/
 .header {
     background-color: #fff;
