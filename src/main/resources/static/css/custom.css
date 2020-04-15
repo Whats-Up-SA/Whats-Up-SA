@@ -309,6 +309,15 @@ button[disabled] {
     padding: 0 5px 0 0;
 }
 
+.asterisk_input3::after {
+    content: " *";
+    color: #e32;
+    position: absolute;
+    margin: 12px 0px 0px -16px;
+    font-size: xx-large;
+    padding: 0 5px 0 0;
+}
+
 #startTime, #endTime {
     width: 41%;
 }
