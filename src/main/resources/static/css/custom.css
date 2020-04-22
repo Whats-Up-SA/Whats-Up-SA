@@ -18,9 +18,10 @@ footer {
 
 select {
     font-size: 15px;
-    width: 10em;
+    width: 90%;
     height: 3em;
     border: none;
+    text-align-last: center;
 }
 
 /*nav begin*/
@@ -204,6 +205,14 @@ a, .link-button {
     display: table;
 }
 
+#formGroupSubmit{
+    background-color: transparent;
+    box-shadow: none;
+}
+#formGroupContainer{
+    width: 95%;
+}
+
 .form-group form {
     text-align: center;
     margin: auto;
@@ -291,13 +300,30 @@ button[disabled] {
     padding: 0 5px 0 0;
 }
 
-
-#startTime, #endTime {
-    width: 30%;
+.asterisk_inputstart::after {
+    content: " *";
+    color: #e32;
+    position: absolute;
+    margin: 12px 0px 0px -20px;
+    font-size: xx-large;
+    padding: 0 5px 0 0;
 }
 
-#startDateFull, #endDateFull {
-    width: 50%;
+.asterisk_input3::after {
+    content: " *";
+    color: #e32;
+    position: absolute;
+    margin: 12px 0px 0px -16px;
+    font-size: xx-large;
+    padding: 0 5px 0 0;
+}
+
+#startTime, #endTime {
+    width: 41%;
+}
+
+#startDateFull, #endDateFull, #title, #description {
+    width: 90%;
 }
 
 .form-container {
@@ -561,6 +587,9 @@ button[disabled] {
     .smallDetailBlock {
         width: 21%;
     }
+    #formGroupContainer{
+        width: 80%;
+    }
 }
 
 /* Masonry on medium-sized screens */
@@ -576,6 +605,9 @@ button[disabled] {
     .smallDetailBlock {
         width: 21%;
     }
+    #formGroupContainer{
+        width: 80%;
+    }
 }
 
 /* Masonry on small screens */
@@ -590,5 +622,8 @@ button[disabled] {
 
     .smallDetailBlock {
         width: 21%;
+    }
+    #formGroupContainer{
+        width: 80%;
     }
 }
